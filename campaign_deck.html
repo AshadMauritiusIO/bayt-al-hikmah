@@ -9,167 +9,138 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         .serif-title { font-family: 'Playfair Display', serif; }
-        .slide { display: none; }
-        .slide.active { display: flex; }
-        @media print {
-            .no-print { display: none !important; }
-            .print-stack { display: block !important; }
-            .slide { display: block !important; page-break-after: always; min-height: auto !important; height: auto !important; }
-        }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col selection:bg-teal-500 selection:text-white">
 
-    <!-- Top Action Bar -->
-    <header class="no-print w-full max-w-6xl mx-auto px-6 py-4 flex justify-between items-center border-b border-slate-800">
-        <!-- Back Feature Link -->
+    <!-- Top Navigation Bar -->
+    <header class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center border-b border-slate-800 sticky top-0 bg-slate-900/95 backdrop-blur z-50">
         <a href="index.html" class="inline-flex items-center gap-2 text-xs font-mono text-teal-400 hover:text-teal-300 transition group">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            ← Back to Control Hub
+            ← Back to Hub
         </a>
-        <div class="text-xs font-mono tracking-widest text-slate-500 uppercase">Riche-Mare Executive Campaign 2026</div>
+        <div class="text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">Riche-Mare Campaign 2026</div>
     </header>
 
-    <!-- Main Presentation Vessel -->
-    <main id="presentationContainer" class="print-stack flex-grow flex items-center justify-center max-w-6xl w-full mx-auto p-4 md:p-8">
+    <!-- Main Stacked Presentation Container -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 space-y-12 my-6">
         
-        <!-- Slide 1: Title Slide -->
-        <section class="slide active w-full min-h-[70vh] bg-gradient-to-br from-slate-900 via-slate-850 to-teal-950 rounded-2xl border border-slate-800 p-8 md:p-16 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+        <!-- Section 1: Title Slide -->
+        <section class="w-full bg-gradient-to-br from-slate-900 via-slate-850 to-teal-950 rounded-2xl border border-slate-800 p-6 sm:p-12 flex flex-col justify-between shadow-2xl relative overflow-hidden">
             <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#0d9488_1px,transparent_1px)] [background-size:16px_16px]"></div>
-            <div class="z-10">
-                <span class="text-teal-400 text-sm font-semibold uppercase tracking-wider block mb-4">A Sincere Candidacy for Executive Administration</span>
-                <h1 class="serif-title text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight max-w-4xl">
+            <div class="z-10 mb-8">
+                <span class="text-teal-400 text-xs sm:text-sm font-semibold uppercase tracking-wider block mb-3">A Sincere Candidacy for Executive Administration</span>
+                <h1 class="serif-title text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
                     Moving Beyond the <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-amber-300">Filtered View</span> of Community Service
                 </h1>
                 <div class="w-20 h-1 bg-amber-500 mt-6 rounded-full"></div>
             </div>
-            <div class="z-10 mt-12 md:mt-0 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-8 border-t border-slate-800/60">
-                <div>
-                    <p class="text-lg font-medium text-slate-200">A Vision of Pure Stewardship & Accountability</p>
-                    <p class="text-sm text-slate-400">Built upon radical trust, transparency, and submission to the Divine Decree</p>
-                </div>
-                <div class="text-xs text-right font-mono text-slate-500 no-print">Slide 1 / 6</div>
+            <div class="z-10 pt-6 border-t border-slate-800/60">
+                <p class="text-base sm:text-lg font-medium text-slate-200">A Vision of Pure Stewardship & Accountability</p>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Built upon radical trust, transparency, and submission to the Divine Decree</p>
             </div>
         </section>
 
-        <!-- Slide 2: The Filtered Universe -->
-        <section class="slide w-full min-h-[70vh] bg-slate-900 rounded-2xl border border-slate-800 p-8 md:p-16 flex flex-col justify-between shadow-2xl">
-            <div>
-                <span class="text-amber-400 text-xs font-mono uppercase tracking-widest block mb-2">The Spiritual Reality</span>
-                <h2 class="serif-title text-3xl md:text-4xl font-bold text-white mb-8">Everything We Know is Filtered</h2>
-                
-                <div class="grid md:grid-cols-2 gap-8 mt-4">
-                    <div class="bg-slate-850/60 p-6 rounded-xl border border-slate-800 border-l-4 border-l-rose-500">
-                        <h3 class="text-lg font-semibold text-rose-300 mb-2">The Human Filter</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            We look at our daily lives, our trials, and our ambitions through narrow filters. We judge our state solely by material change, panic during adversity, and attribute success to our own cleverness.
-                        </p>
-                    </div>
-                    <div class="bg-slate-850/60 p-6 rounded-xl border border-slate-800 border-l-4 border-l-teal-500">
-                        <h3 class="text-lg font-semibold text-teal-300 mb-2">The Reality of the Ayat (Signs)</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            Allah introduces Himself directly through His signs in the universe. When we peel back personal desires, we see that true success isn't just changing our material conditions, but waking our hearts to witness the blessings right in front of us.
-                        </p>
-                    </div>
+        <!-- Section 2: The Filtered Universe -->
+        <section class="w-full bg-slate-850/40 rounded-2xl border border-slate-800 p-6 sm:p-12 shadow-2xl">
+            <span class="text-amber-400 text-xs font-mono uppercase tracking-widest block mb-2">The Spiritual Reality</span>
+            <h2 class="serif-title text-2xl sm:text-3xl font-bold text-white mb-6">Everything We Know is Filtered</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-900/90 p-5 rounded-xl border border-slate-800 border-l-4 border-l-rose-500">
+                    <h3 class="text-base font-semibold text-rose-300 mb-2">The Human Filter</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                        We look at our daily lives, our trials, and our ambitions through narrow filters. We judge our state solely by material change, panic during adversity, and attribute success to our own cleverness.
+                    </p>
                 </div>
-            </div>
-            <div class="mt-8 pt-4 border-t border-slate-800/60 flex justify-between items-center text-xs font-mono text-slate-500">
-                <span>Riche-Mare 2026</span>
-                <span class="no-print">Slide 2 / 6</span>
+                <div class="bg-slate-900/90 p-5 rounded-xl border border-slate-800 border-l-4 border-l-teal-500">
+                    <h3 class="text-base font-semibold text-teal-300 mb-2">The Reality of the Ayat (Signs)</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                        Allah introduces Himself directly through His signs in the universe. When we peel back personal desires, we see that true success isn't just changing our material conditions, but waking our hearts to witness the blessings right in front of us.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- Slide 3: Transactional vs Transformational -->
-        <section class="slide w-full min-h-[70vh] bg-slate-900 rounded-2xl border border-slate-800 p-8 md:p-16 flex flex-col justify-between shadow-2xl">
-            <div>
-                <span class="text-teal-400 text-xs font-mono uppercase tracking-widest block mb-2">The Conceptual Shift</span>
-                <h2 class="serif-title text-3xl md:text-4xl font-bold text-white mb-6">A Matrix of True Belief</h2>
-                <p class="text-slate-400 text-sm max-w-2xl mb-8">Moving away from treating faith and community service like a transactional arrangement, and stepping into complete transformation.</p>
+        <!-- Section 3: Transactional vs Transformational Matrix -->
+        <section class="w-full bg-slate-850/40 rounded-2xl border border-slate-800 p-6 sm:p-12 shadow-2xl">
+            <span class="text-teal-400 text-xs font-mono uppercase tracking-widest block mb-2">The Conceptual Shift</span>
+            <h2 class="serif-title text-2xl sm:text-3xl font-bold text-white mb-4">A Matrix of True Belief</h2>
+            <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mb-6">Moving away from treating faith and community service like a transactional arrangement, and stepping into complete transformation.</p>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b border-slate-800 text-xs font-mono text-teal-400 uppercase tracking-wider">
-                                <th class="pb-3 pr-4">Dimension</th>
-                                <th class="pb-3 px-4 bg-slate-950/40 rounded-t-lg text-rose-400">Transactional Mindset</th>
-                                <th class="pb-3 pl-4 bg-teal-950/20 rounded-t-lg">Transformational Submission</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm divide-y divide-slate-800/50">
-                            <tr>
-                                <td class="py-4 pr-4 font-medium text-slate-300">Worship & Deen</td>
-                                <td class="py-4 px-4 text-slate-400 bg-slate-950/20">"I do good deeds solely as a tool to secure wealth, pass exams, and fix my Dunya."</td>
-                                <td class="py-4 pl-4 font-medium text-teal-200 bg-teal-950/10">"I serve because He is worthy of service, accepting whatever reality is decreed."</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 pr-4 font-medium text-slate-300">Community Focus</td>
-                                <td class="py-4 px-4 text-slate-400 bg-slate-950/20">Demanding immediate personal credit, focus on outward validation and politics.</td>
-                                <td class="py-4 pl-4 font-medium text-teal-200 bg-teal-950/10">Recognizing that the community's success is a visible blessing from Allah to protect.</td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 pr-4 font-medium text-slate-300">Core Driver</td>
-                                <td class="py-4 px-4 text-slate-400 bg-slate-950/20 text-xs italic text-rose-400/80">"What can I get out of this role?"</td>
-                                <td class="py-4 pl-4 font-medium text-amber-300 bg-teal-950/10 text-xs italic">"How can I submit my skills to protect this trust?"</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="mt-8 pt-4 border-t border-slate-800/60 flex justify-between items-center text-xs font-mono text-slate-500">
-                <span>The Station of Ihsan</span>
-                <span class="no-print">Slide 3 / 6</span>
+            <div class="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
+                <table class="w-full text-left border-collapse min-w-[500px]">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-[11px] font-mono text-teal-400 uppercase tracking-wider">
+                            <th class="pb-3 pr-4 w-1/4">Dimension</th>
+                            <th class="pb-3 px-4 bg-slate-950/40 rounded-t-lg text-rose-400 w-3/8">Transactional Mindset</th>
+                            <th class="pb-3 pl-4 bg-teal-950/20 rounded-t-lg w-3/8">Transformational Submission</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs sm:text-sm divide-y divide-slate-800/50">
+                        <tr>
+                            <td class="py-4 pr-4 font-medium text-slate-300">Worship & Deen</td>
+                            <td class="py-4 px-4 text-slate-400 bg-slate-950/20">"I do good deeds solely as a tool to secure wealth, pass exams, and fix my Dunya."</td>
+                            <td class="py-4 pl-4 font-medium text-teal-200 bg-teal-950/10">"I serve because He is worthy of service, accepting whatever reality is decreed."</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 pr-4 font-medium text-slate-300">Community Focus</td>
+                            <td class="py-4 px-4 text-slate-400 bg-slate-950/20">Demanding immediate personal credit, focus on outward validation and politics.</td>
+                            <td class="py-4 pl-4 font-medium text-teal-200 bg-teal-950/10">Recognizing that the community's success is a visible blessing from Allah to protect.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 pr-4 font-medium text-slate-300">Core Driver</td>
+                            <td class="py-4 px-4 text-slate-400 bg-slate-950/20 text-xs italic text-rose-400/80">"What can I get out of this role?"</td>
+                            <td class="py-4 pl-4 font-medium text-amber-300 bg-teal-950/10 text-xs italic">"How can I submit my skills to protect this trust?"</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
-        <!-- Slide 4: The Four Sacrifices -->
-        <section class="slide w-full min-h-[70vh] bg-slate-900 rounded-2xl border border-slate-800 p-8 md:p-16 flex flex-col justify-between shadow-2xl">
-            <div>
-                <span class="text-amber-400 text-xs font-mono uppercase tracking-widest block mb-2">Our Blueprint</span>
-                <h2 class="serif-title text-3xl md:text-4xl font-bold text-white mb-2">The Radical Taslim of Ibrahim ('Alayhi as-Salam)</h2>
-                <p class="text-slate-400 text-sm max-w-2xl mb-8">He did not negotiate with worldly logic. He submitted completely, proving that ultimate safety lies in Divine Obedience.</p>
+        <!-- Section 4: The Four Sacrifices -->
+        <section class="w-full bg-slate-850/40 rounded-2xl border border-slate-800 p-6 sm:p-12 shadow-2xl">
+            <span class="text-amber-400 text-xs font-mono uppercase tracking-widest block mb-2">Our Blueprint</span>
+            <h2 class="serif-title text-2xl sm:text-3xl font-bold text-white mb-2">The Radical Taslim of Ibrahim ('Alayhi as-Salam)</h2>
+            <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mb-6">He did not negotiate with worldly logic. He submitted completely, proving that ultimate safety lies in Divine Obedience.</p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-slate-850 p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition">
-                        <div class="w-8 h-8 rounded-lg bg-teal-900/50 text-teal-400 flex items-center justify-center font-bold text-sm mb-3">01</div>
-                        <h4 class="text-white font-semibold text-base mb-1">His Body</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Stepped directly into the blazing fire, entirely reliant on the perfect protection of Allah.</p>
-                    </div>
-                    <div class="bg-slate-850 p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition">
-                        <div class="w-8 h-8 rounded-lg bg-teal-900/50 text-teal-400 flex items-center justify-center font-bold text-sm mb-3">02</div>
-                        <h4 class="text-white font-semibold text-base mb-1">His Son</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Laid down his ultimate joy, trusting the command of the Creator over deep parental instinct.</p>
-                    </div>
-                    <div class="bg-slate-850 p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition">
-                        <div class="w-8 h-8 rounded-lg bg-teal-900/50 text-teal-400 flex items-center justify-center font-bold text-sm mb-3">03</div>
-                        <h4 class="text-white font-semibold text-base mb-1">His Wealth</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Refused to ever eat alone. Shared all provisions instantly with the traveler and guest.</p>
-                    </div>
-                    <div class="bg-slate-850 p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition">
-                        <div class="w-8 h-8 rounded-lg bg-teal-900/50 text-teal-400 flex items-center justify-center font-bold text-sm mb-3">04</div>
-                        <h4 class="text-white font-semibold text-base mb-1">His Family</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Left his loved ones in a completely barren desert, leading directly to the miracle of Zamzam.</p>
-                    </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition">
+                    <div class="w-8 h-8 rounded-lg bg-teal-900/50 text-teal-400 flex items-center justify-center font-bold text-sm mb-3">01</div>
+                    <h4 class="text-white font-semibold text-sm sm:text-base mb-1">His Body</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Stepped directly into the blazing fire, entirely reliant on the perfect protection of Allah.</p>
                 </div>
-            </div>
-            <div class="mt-8 pt-4 border-t border-slate-800/60 flex justify-between items-center text-xs font-mono text-slate-500">
-                <span>The Way of the Believers</span>
-                <span class="no-print">Slide 4 / 6</span>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition">
+                    <div class="w-8 h-8 rounded-lg bg-teal-900/50 text-teal-400 flex items-center justify-center font-bold text-sm mb-3">02</div>
+                    <h4 class="text-white font-semibold text-sm sm:text-base mb-1">His Son</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Laid down his ultimate joy, trusting the command of the Creator over deep parental instinct.</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition">
+                    <div class="w-8 h-8 rounded-lg bg-teal-900/50 text-teal-400 flex items-center justify-center font-bold text-sm mb-3">03</div>
+                    <h4 class="text-white font-semibold text-sm sm:text-base mb-1">His Wealth</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Refused to ever eat alone. Shared all provisions instantly with the traveler and guest.</p>
+                </div>
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition">
+                    <div class="w-8 h-8 rounded-lg bg-teal-900/50 text-teal-400 flex items-center justify-center font-bold text-sm mb-3">04</div>
+                    <h4 class="text-white font-semibold text-sm sm:text-base mb-1">His Family</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Left his loved ones in a completely barren desert, leading directly to the miracle of Zamzam.</p>
+                </div>
             </div>
         </section>
 
-        <!-- Slide 5: Qadr in the Now & The Candidacy -->
-        <section class="slide w-full min-h-[70vh] bg-gradient-to-r from-slate-900 to-slate-950 rounded-2xl border border-slate-800 p-8 md:p-16 flex flex-col justify-between shadow-2xl relative overflow-hidden">
-            <div class="grid md:grid-cols-5 gap-8 items-center z-10">
+        <!-- Section 5: Qadr in the Now & The Candidacy -->
+        <section class="w-full bg-gradient-to-r from-slate-900 to-slate-950 rounded-2xl border border-slate-800 p-6 sm:p-12 shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
                 <div class="md:col-span-3">
                     <span class="text-teal-400 text-xs font-mono uppercase tracking-widest block mb-2">The Executive Mission</span>
-                    <h2 class="serif-title text-3xl md:text-4xl font-bold text-white mb-6">Act in the "Now": Competence Meets Humility</h2>
+                    <h2 class="serif-title text-2xl sm:text-3xl font-bold text-white mb-4">Act in the "Now": Competence Meets Humility</h2>
                     
-                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                         Anxiety belongs to the unknown future, and regret belongs to the past. Spiritual logic dictates that <strong>Qadr unfolds right now</strong>. The present moment demands an honest, unselfish administrative response.
                     </p>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
                         I am offering my professional IT, data, and structured corporate background to serve as an administrator for our community organization. Not to chase temporary status or alter your pre-decreed success, but to simply fulfill the duty of sincere stewardship.
                     </p>
 
@@ -178,7 +149,7 @@
                     </div>
                 </div>
 
-                <div class="md:col-span-2 space-y-3">
+                <div class="md:col-span-2 space-y-3 pt-4 md:pt-0">
                     <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 flex items-start gap-3">
                         <span class="text-teal-400 font-bold text-sm">✓</span>
                         <div>
@@ -202,92 +173,27 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-8 pt-4 border-t border-slate-800/60 flex justify-between items-center text-xs font-mono text-slate-500 z-10">
-                <span>Accountable Stewardship</span>
-                <span class="no-print">Slide 5 / 6</span>
-            </div>
         </section>
 
-        <!-- Slide 6: Closing / Q&A -->
-        <section class="slide w-full min-h-[70vh] bg-gradient-to-tr from-slate-950 via-slate-900 to-slate-850 rounded-2xl border border-slate-800 p-8 md:p-16 flex flex-col justify-between shadow-2xl text-center items-center justify-center">
-            <div class="max-w-2xl my-auto">
-                <span class="text-amber-400 text-xs font-mono uppercase tracking-widest block mb-4">Conclusion</span>
-                <h2 class="serif-title text-4xl md:text-5xl font-bold text-white mb-6">Let Us Work Solely to Please Him</h2>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8">
-                    "Our mission is simple: to bring technical integrity, pure hearts, and dedicated focus to the administration of Riche-Mare, trusting entirely in the One who controls all conditions."
-                </p>
-                
-                <div class="inline-block bg-slate-900 px-6 py-3 rounded-xl border border-slate-800 font-mono text-xs text-teal-400 tracking-wide">
-                    BarakAllahu Feekum • Riche-Mare Community Union 2026
-                </div>
-            </div>
-            <div class="w-full mt-8 pt-4 border-t border-slate-800/60 flex justify-between items-center text-xs font-mono text-slate-500">
-                <span>Unity & Submission</span>
-                <span class="no-print">Slide 6 / 6</span>
+        <!-- Section 6: Closing -->
+        <section class="w-full bg-gradient-to-tr from-slate-950 via-slate-900 to-slate-850 rounded-2xl border border-slate-800 p-6 sm:p-12 text-center flex flex-col items-center justify-center shadow-2xl">
+            <span class="text-amber-400 text-xs font-mono uppercase tracking-widest block mb-3">Conclusion</span>
+            <h2 class="serif-title text-3xl sm:text-4xl font-bold text-white mb-4">Let Us Work Solely to Please Him</h2>
+            <p class="text-slate-300 text-xs sm:text-base leading-relaxed max-w-2xl mb-6">
+                "Our mission is simple: to bring technical integrity, pure hearts, and dedicated focus to the administration of Riche-Mare, trusting entirely in the One who controls all conditions."
+            </p>
+            
+            <div class="inline-block bg-slate-900 px-4 sm:px-6 py-3 rounded-xl border border-slate-800 font-mono text-[10px] sm:text-xs text-teal-400 tracking-wide">
+                BarakAllahu Feekum • Riche-Mare Community Union 2026
             </div>
         </section>
 
     </main>
 
-    <!-- Bottom Navigation Controls -->
-    <footer class="no-print w-full max-w-6xl mx-auto px-6 py-6 border-t border-slate-800 flex justify-between items-center">
-        <button id="prevBtn" onclick="changeSlide(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-4 py-2.5 rounded-lg border border-slate-700 transition font-medium flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed">
-            ← Previous
-        </button>
-        <div id="slideIndicator" class="text-xs font-mono text-slate-400">
-            Slide <span id="currentNum">1</span> of 6
-        </div>
-        <button id="nextBtn" onclick="changeSlide(1)" class="bg-teal-600 hover:bg-teal-500 text-white text-xs px-5 py-2.5 rounded-lg font-medium shadow-lg shadow-teal-950/50 transition flex items-center gap-2">
-            Next →
-        </button>
+    <footer class="w-full text-center py-6 border-t border-slate-800 text-xs font-mono text-slate-500 bg-slate-950/40">
+        Unity & Submission • Hub System Offline Protocol
     </footer>
 
-    <!-- Interactive Logic Script -->
-    <script>
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const currentNumSpan = document.getElementById('currentNum');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        function updateSlideVisibility() {
-            slides.forEach((slide, index) => {
-                if (index === currentSlideIndex) {
-                    slide.classList.add('active');
-                } else {
-                    slide.classList.remove('active');
-                }
-            });
-            
-            currentNumSpan.textContent = currentSlideIndex + 1;
-            prevBtn.disabled = currentSlideIndex === 0;
-            
-            if (currentSlideIndex === slides.length - 1) {
-                nextBtn.textContent = "Restart";
-            } else {
-                nextBtn.textContent = "Next →";
-            }
-        }
-
-        function changeSlide(direction) {
-            currentSlideIndex += direction;
-            if (currentSlideIndex >= slides.length) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = slides.length - 1;
-            }
-            updateSlideVisibility();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Keyboard Arrow Bindings
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight') changeSlide(1);
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-        });
-
-        // Initialize state
-        updateSlideVisibility();
-    </script>
 </body>
 </html>
+
