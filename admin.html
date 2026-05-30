@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Kartabah - Admin Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0F5132;
+            --primary-dark: #0a3621;
+            --primary-light: #e7f0ec;
+            --secondary: #D4AF37;
+            --secondary-hover: #bfa030;
+            --bg-neutral: #F8F9FA;
+            --text-dark: #212529;
+            --text-muted: #6C757D;
+            --white: #FFFFFF;
+            --border-color: #E9ECEF;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-neutral);
+            color: var(--text-dark);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: row;
+        }
+
+        /* --- MOBILE TOP NAVIGATION BAR --- */
+        .mobile-header {
+            display: none;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 16px;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            zIndex: 100;
+            height: 60px;
+        }
+
+        .mobile-header .brand h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .menu-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* --- RESPONSIVE SIDEBAR --- */
+        aside {
+            width: 260px;
+            background-color: var(--white);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 16px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 12px 24px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .brand h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links li.active a, .nav-links a:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .user-profile-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .user-info h4 { font-size: 0.875rem; font-weight: 600; }
+        .user-info p { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* --- OVERLAY FOR MOBILE SIDEBAR --- */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 999;
+        }
+
+        /* --- MAIN VIEWPORT --- */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 16px 32px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-bar { position: relative; width: 300px; }
+        .search-bar i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+        .search-bar input {
+            width: 100%; padding: 10px 12px 10px 38px;
+            border-radius: 8px; border: 1px solid var(--border-color);
+            background-color: var(--bg-neutral); font-size: 0.875rem; outline: none;
+        }
+
+        .header-actions { display: flex; align-items: center; gap: 20px; }
+        .noti-btn { background: none; border: none; font-size: 1.25rem; color: var(--text-muted); cursor: pointer; position: relative; }
+        .noti-badge { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background-color: #D9534F; border-radius: 50%; }
+
+        .container {
+            padding: 32px;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* --- PRAYER BANNER --- */
+        .prayer-banner {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .banner-title h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 4px; }
+        .banner-title p { color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; }
+        .prayer-times-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+        
+        .prayer-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 90px;
+        }
+
+        .prayer-name { font-size: 0.75rem; text-transform: uppercase; color: var(--secondary); font-weight: 700; margin-bottom: 4px; }
+        .prayer-time { font-size: 1.125rem; font-weight: 600; }
+
+        .edit-prayer-btn {
+            background-color: var(--secondary); color: var(--primary-dark); border: none;
+            padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* --- STATS & LAYOUT SECTIONS --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-box {
+            background-color: var(--white); padding: 24px; border-radius: var(--radius);
+            border: 1px solid var(--border-color); box-shadow: var(--shadow);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .stat-info h3 { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 8px; }
+        .stat-info .value { font-size: 1.75rem; font-weight: 700; }
+        .stat-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        
+        .stat-box:nth-child(1) .stat-icon { background-color: #E8F5E9; color: #2E7D32; }
+        .stat-box:nth-child(2) .stat-icon { background-color: #E3F2FD; color: #1565C0; }
+        .stat-box:nth-child(3) .stat-icon { background-color: #FFF3E0; color: #EF6C00; }
+        .stat-box:nth-child(4) .stat-icon { background-color: #F3E5F5; color: #6A1B9A; }
+
+        .dashboard-sections { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+        .panel { background-color: var(--white); border: 1px solid var(--border-color); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; }
+        .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+        .panel-header h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--primary); }
+
+        /* --- DONATION TRACKING --- */
+        .progress-label { display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 8px; }
+        .progress-bar-container { width: 100%; height: 10px; background-color: var(--bg-neutral); border-radius: 5px; overflow: hidden; margin-bottom: 20px; }
+        .progress-bar { height: 100%; background-color: var(--secondary); width: 62%; }
+        
+        .data-table-wrapper { width: 100%; overflow-x: auto; }
+        .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem; min-width: 450px; }
+        .data-table th, .data-table td { padding: 12px 8px; border-bottom: 1px solid var(--border-color); }
+        .tag { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+        .tag-zakat { background-color: #EFFFFA; color: #00A86B; }
+        .tag-general { background-color: #F0F4F8; color: #486581; }
+
+        /* --- QUICK ACTIONS & LOGS --- */
+        .actions-list { display: flex; flex-direction: column; gap: 12px; }
+        .action-btn { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--bg-neutral); text-align: left; font-size: 0.9rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 12px; }
+        .action-btn:hover { border-color: var(--primary); background-color: var(--primary-light); color: var(--primary); }
+        .activity-log { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+        .log-item { display: flex; gap: 12px; font-size: 0.875rem; }
+        .log-icon { color: var(--primary); margin-top: 2px; }
+        .log-text span { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* --- CONTROLLER HOOKS FOR APP VIEWS --- */
+        .app-view-panel { display: none; }
+        .app-view-panel.active-view { display: block; }
+
+        /* ==========================================================================
+           ⚡ HARD RESPONSIVE BREAKPOINTS (Mobile & Tablet Adjustments)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .dashboard-sections { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            
+            .mobile-header { display: flex; }
+            
+            /* Convert sidebar into a slide-out drawer drawers */
+            aside {
+                position: fixed;
+                top: 0; left: 0; bottom: 0;
+                transform: translateX(-100%);
+                box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+            }
+            
+            aside.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay.open {
+                display: block;
+            }
+
+            main { padding-top: 60px; }
+            header { display: none; } /* Use simple mobile header bar instead */
+            .container { padding: 16px; gap: 16px; }
+            .prayer-banner { padding: 16px; flex-direction: column; align-items: stretch; }
+            .prayer-times-grid { justify-content: space-between; }
+            .edit-prayer-btn { justify-content: center; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-header">
+        <div class="brand">
+            <i class="fa-solid fa-mosque"></i>
+            <h1>Kartabah Admin</h1>
+        </div>
+        <button class="menu-toggle-btn" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside id="sidebarNav">
+        <div>
+            <div class="brand">
+                <i class="fa-solid fa-mosque"></i>
+                <h1>Kartabah Admin</h1>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-target="dashboard-view"><a href="#dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+                <li data-target="prayers-view"><a href="#prayers"><i class="fa-solid fa-calendar-days"></i> Prayers & Events</a></li>
+                <li data-target="financial-view"><a href="#financial"><i class="fa-solid fa-wallet"></i> Financial Hub</a></li>
+                <li data-target="madrasah-view"><a href="#madrasah"><i class="fa-solid fa-graduation-cap"></i> Madrasah Portal</a></li>
+                <li data-target="welfare-view"><a href="#welfare"><i class="fa-solid fa-hand-holding-heart"></i> Welfare & Zakat</a></li>
+                <li data-target="outreach-view"><a href="#outreach"><i class="fa-solid fa-bullhorn"></i> Outreach</a></li>
+                <li data-target="settings-view"><a href="#settings"><i class="fa-solid fa-sliders"></i> Settings</a></li>
+            </ul>
+        </div>
+        
+        <div class="user-profile-footer">
+            <div class="avatar">YA</div>
+            <div class="user-info">
+                <h4>Yusuf Ahmed</h4>
+                <p>Super Admin</p>
+            </div>
+        </div>
+    </aside>
+
+    <main>
+        <div id="dashboard-view" class="app-view-panel active-view">
+            <div class="container">
+                
+                <section class="prayer-banner">
+                    <div class="banner-title">
+                        <h2>Iqamah Schedule</h2>
+                        <p>Live sync to Lobby Boards & Public App</p>
+                    </div>
+                    <div class="prayer-times-grid">
+                        <div class="prayer-card"><div class="prayer-name">Fajr</div><div class="prayer-time">5:15 AM</div></div>
+                        <div class="prayer-card"><div class="prayer-name">Dhuhr</div><div class="prayer-time">1:15 PM</div></div>
+                        <div class="prayer-card"><div class="prayer-name">Asr</div><div class="prayer-time">4:45 PM</div></div>
+                        <div class="prayer-card"><div class="prayer-name">Maghrib</div><div class="prayer-time">7:30 PM</div></div>
+                        <div class="prayer-card"><div class="prayer-name">Isha</div><div class="prayer-time">9:00 PM</div></div>
+                    </div>
+                    <button class="edit-prayer-btn"><i class="fa-solid fa-pen-to-square"></i> Change Times</button>
+                </section>
+
+                <section class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-info"><h3>Today's Attendance</h3><div class="value">420</div></div>
+                        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-info"><h3>Monthly Donations</h3><div class="value">$46,650</div></div>
+                        <div class="stat-icon"><i class="fa-solid fa-vault"></i></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-info"><h3>Madrasah Students</h3><div class="value">184</div></div>
+                        <div class="stat-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-info"><h3>Pending Welfare</h3><div class="value">12</div></div>
+                        <div class="stat-icon"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                    </div>
+                </section>
+
+                <div class="dashboard-sections">
+                    <div class="panel">
+                        <div class="panel-header"><h3>Financial Summary</h3></div>
+                        <div class="donation-summary">
+                            <div class="progress-label"><span>Mosque Expansion Campaign Goal</span><strong>62%</strong></div>
+                            <div class="progress-bar-container"><div class="progress-bar"></div></div>
+                        </div>
+                        <div class="data-table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr><th>Donor</th><th>Category</th><th>Amount</th><th>Date</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Anonymous</td><td><span class="tag tag-zakat">Zakat</span></td><td><strong>$1,200.00</strong></td><td>Just now</td></tr>
+                                    <tr><td>Omar Farooq</td><td><span class="tag tag-general">Sadaqah</span></td><td><strong>$250.00</strong></td><td>2 hrs ago</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header"><h3>Quick Actions</h3></div>
+                        <div class="actions-list">
+                            <button class="action-btn"><i class="fa-solid fa-bullhorn"></i> Announcement</button>
+                            <button class="action-btn"><i class="fa-solid fa-file-invoice-dollar"></i> Process Welfare</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="prayers-view" class="app-view-panel"><div class="container"><div class="panel"><h3>Prayers & Events Configuration Module</h3><p>Configure schedules here.</p></div></div></div>
+        <div id="financial-view" class="app-view-panel"><div class="container"><div class="panel"><h3>Financial Hub Ledger</h3><p>Ledger items and statements.</p></div></div></div>
+        <div id="madrasah-view" class="app-view-panel"><div class="container"><div class="panel"><h3>Madrasah Student Portal</h3><p>Class enrollments and grade logs.</p></div></div></div>
+        <div id="welfare-view" class="app-view-panel"><div class="container"><div class="panel"><h3>Welfare Case Worker Queue</h3><p>Zakat requests.</p></div></div></div>
+        <div id="outreach-view" class="app-view-panel"><div class="container"><div class="panel"><h3>Outreach & Marketing Broadcasts</h3><p>Newsletters.</p></div></div></div>
+        <div id="settings-view" class="app-view-panel"><div class="container"><div class="panel"><h3>System Global Configurations</h3><p>Access control metrics.</p></div></div></div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebarNav = document.getElementById('sidebarNav');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const navItems = document.querySelectorAll('.nav-links li');
+        const viewPanels = document.querySelectorAll('.app-view-panel');
+
+        // Drawer Control for Handheld Screens
+        function toggleMobileMenu() {
+            sidebarNav.classList.toggle('open');
+            sidebarOverlay.classList.toggle('open');
+        }
+
+        menuToggle.addEventListener('click', toggleMobileMenu);
+        sidebarOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Core App Routing Controller Matrix
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Remove existing focus anchors
+                navItems.forEach(i => i.classList.remove('active'));
+                viewPanels.forEach(p => p.classList.remove('active-view'));
+
+                // Focus item active status
+                this.classList.add('active');
+                const targetViewId = this.getAttribute('data-target');
+                document.getElementById(targetViewId).classList.add('active-view');
+
+                // Auto collapse if screen layout triggers drawer bounds
+                if (window.innerWidth <= 768) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
