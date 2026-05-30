@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Kartabah Administrative Portal - System Design Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA; /* Neutral Background */
+            color: #212529;
+        }
+        .heading-serif {
+            font-family: 'Playfair Display', serif; /* Typography */
+        }
+        .bg-emerald-deep {
+            background-color: #0F5132; /* Primary Color */
+        }
+        .text-emerald-deep {
+            color: #0F5132; /* Primary Color */
+        }
+        .border-emerald-deep {
+            border-color: #0F5132;
+        }
+        .bg-gold-warm {
+            background-color: #D4AF37; /* Secondary Color */
+        }
+        .text-gold-warm {
+            color: #D4AF37; /* Secondary Color */
+        }
+        .border-gold-warm {
+            border-color: #D4AF37;
+        }
+        .sidebar-link.active {
+            background-color: rgba(212, 169, 55, 0.15);
+            border-left: 4px solid #D4AF37;
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-emerald-deep text-white shadow-md sticky top-0 z-50 px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <button onclick="toggleMobileSidebar()" class="lg:hidden text-white text-xl p-1 focus:outline-none" title="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="bg-white text-emerald-deep px-2 py-1 rounded font-bold text-lg tracking-wider">MK</div>
+            <div>
+                <h1 class="heading-serif text-base sm:text-xl font-bold tracking-wide">Masjid Kartabah</h1>
+                <p class="text-[10px] sm:text-xs text-gray-300 tracking-tight">Administrative Portal Framework</p>
+                
+                
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4 sm:space-x-6">
+            <div class="relative hidden md:block w-64">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" placeholder="Search modules..." class="w-full bg-emerald-900/50 text-white placeholder-gray-400 text-sm rounded-lg pl-9 pr-4 py-2 border border-emerald-700 focus:outline-none focus:ring-2 focus:ring-gold-warm focus:border-transparent transition-all">
+            </div>
+            
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <button class="relative p-2 text-gray-300 hover:text-white transition-colors" title="System Notifications">
+                    <i class="fa-solid fa-bell text-base sm:text-lg"></i>
+                    <span class="absolute top-1 right-1 bg-gold-warm w-2 h-2 rounded-full"></span>
+                </button>
+                <div class="flex items-center space-x-2 border-l border-emerald-700 pl-3 sm:pl-4">
+                    <div class="w-7 h-7 sm:w-8 h-8 rounded-full bg-gold-warm flex items-center justify-center text-emerald-deep font-bold text-xs sm:text-sm">SA</div>
+                    <span class="text-xs sm:text-sm font-medium hidden sm:inline-block">Super Admin</span>
+                </div>
+            </div>
+        </div>
+ 
+ 
+    </header>
+
+    <div class="flex flex-1 relative">                  
+        <aside id="sidebar-container" class="fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 lg:static w-72 bg-emerald-deep text-white flex flex-col border-t border-emerald-800 shrink-0 z-40 transition-transform duration-300 ease-in-out shadow-xl lg:shadow-none pt-16 lg:pt-0">
+            <div class="p-4 border-b border-emerald-800 flex                 justify-between items-center">
+                <div>
+                    <p class="text-xs uppercase font-semibold text-gray-400 tracking-wider">Document Sections</p>
+                    <p class="text-[10px] text-gold-warm/80 lg:hidden"><i class="fa-solid fa-hand-pointer mr-1"></i> Swipe content area left/right</p>                                  
+                </div>
+                <button onclick="toggleMobileSidebar()" class="lg:hidden text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i>
+                           </button>
+            </div>
+            <nav class="flex-1 p-2 space-y-1 overflow-y-auto">   
+                <button onclick="switchTab('overview')" id="tab-overview" class="sidebar-link active w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left text-sm font-medium hover:bg-emerald-900/40 transition-all">
+                    <i class="fa-solid fa-circle-info w-5 text-center"></i>
+                    <span>1. Design System & Aesthetics</span>
+                </button>
+                <button onclick="switchTab('dashboard')" id="tab-dashboard" class="sidebar-link w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left text-sm font-medium hover:bg-emerald-900/40 transition-all">
+                    <i class="fa-solid fa-gauge w-5 text-center"></i>
+                    <span>2. Dashboard Live Preview</span>
+                </button>
+                <button onclick="switchTab('modules')" id="tab-modules" class="sidebar-link w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left text-sm font-medium hover:bg-emerald-900/40 transition-all">
+                    <i class="fa-solid fa-cubes w-5 text-center"></i>
+                    <span>3. Core Modules & Features</span>
+                </button>
+                <button onclick="switchTab('roles')" id="tab-roles" class="sidebar-link w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left text-sm font-medium hover:bg-emerald-900/40 transition-all">
+                    <i class="fa-solid fa-user-shield w-5 text-center"></i>
+                    <span>4. Access Control Matrix</span>
+                </button>
+                <button onclick="switchTab('outreach')" id="tab-outreach" class="sidebar-link w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left text-sm font-medium hover:bg-emerald-900/40 transition-all">
+                    <i class="fa-solid fa-bullhorn w-5 text-center"></i>
+                    <span>5. Outreach & Broadcasts</span>
+                </button>
+            </nav>
+            <div class="p-4 bg-emerald-950/60 text-xs border-t border-emerald-800 text-gray-400">
+                <p><i class="fa-solid fa-shield-halved mr-1"></i> Role Context Switcher:</p>
+                <select id="roleContext" onchange="simulateRoleContext()" class="w-full mt-2 bg-emerald-900 border border-emerald-700 text-white rounded p-2 text-xs focus:outline-none focus:border-gold-warm">
+                    <option value="Super Admin">Super Admin (Full Access)</option>
+                    <option value="Imam">Imam / Khateeb</option>
+                    <option value="Treasurer">Treasurer (Financials Only)</option>
+                    <option value="Volunteer">Volunteer (Operations Only)</option>
+                </select>
+            </div>
+        </aside>
+
+        <div id="sidebar-overlay" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+    
+        <main id="main-interactive-section" class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full overflow-x-hidden">
+            <section id="sec-overview" class="tab-content space-y-6 sm:space-y-8">
+                <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm border border-gray-200">
+                    <h2 class="heading-serif text-2xl sm:text-3xl font-bold text-emerald-deep mb-2">Design System & Aesthetic Specification</h2>
+                    <p class="text-sm sm:text-base text-gray-600 max-w-3xl">The visual framework bridges spiritual devotion with structural efficiency, generating a high-trust atmosphere engineered for modern SaaS environments managing community ecosystems.</p>
+                    
+                    <hr class="my-6 border-gray-200">
+                    
+                    <h3 class="text-base sm:text-lg font-semibold mb-4 text-gray-800">Color Palette Blueprint</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                        <div class="bg-white border border-gray-200 rounded-xl p-4 flex items-center space-x-4 shadow-sm">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-emerald-deep flex-shrink-0 shadow-inner"></div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm sm:text-base">Primary Deep Emerald</h4>
+                                <p class="text-xs font-mono text-gray-500">#0F5132</p>
+                                <p class="text-xs text-gray-600 mt-1">Growth, peace, and Islamic tradition.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-4 flex items-center space-x-4 shadow-sm">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-gold-warm flex-shrink-0 shadow-inner"></div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm sm:text-base">Secondary Warm Gold</h4>
+                                <p class="text-xs font-mono text-gray-500">#D4AF37</p>
+                                <p class="text-xs text-gray-600 mt-1">Highlights, active states, and active features.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-4 flex items-center space-x-4 shadow-sm sm:col-span-2 lg:col-span-1">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-[#F8F9FA] border border-gray-300 flex-shrink-0 shadow-inner"></div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm sm:text-base">Neutral Background</h4>
+                                <p class="text-xs font-mono text-gray-500">#F8F9FA</p>
+                                <p class="text-xs text-gray-600 mt-1">High readability, reduced systemic eye strain.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-base sm:text-lg font-semibold mt-8 mb-4 text-gray-800">Typography Typography Weights</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Headings & Titles</span>
+                            <p class="heading-serif text-2xl sm:text-3xl font-bold text-emerald-deep">Playfair Display Serif</p>
+                            <p class="text-xs sm:text-sm text-gray-600">Applied across primary dashboard widgets, main headings, and layout titles.</p>
+                        </div>
+                        <div class="space-y-2 border-t md:border-t-0 md:border-l border-gray-200 pt-4 md:pt-0 md:pl-6">
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Data, Metrics & Forms</span>
+                            <p class="text-xl sm:text-2xl font-semibold tracking-tight text-gray-900 font-sans">Inter / Public Sans</p>
+                            <p class="text-xs sm:text-sm text-gray-600">Configured for quantitative tables, metrics cards, numbers, and system data parameters.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-dashboard" class="tab-content hidden space-y-6 sm:space-y-8">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-gray-50 border-b border-gray-200 px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-red-400 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-400 inline-block"></span>
+                            <span class="text-xs font-mono text-gray-400 ml-2">Masjid Kartabah Administrative Interface Live Preview</span>
+                        </div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded border border-emerald-300">Live Simulation</span>
+                    </div>
+
+                    <div class="p-3 sm:p-6 bg-gray-100 grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200 space-y-1 hidden lg:block">
+                            <div class="text-xs font-bold uppercase tracking-wider text-gray-400 px-3 mb-2">Navigation Framework</div>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded text-sm bg-emerald-50 text-emerald-900 font-medium border-l-4 border-emerald-700">
+                                <i class="fa-solid fa-chart-pie text-emerald-700"></i><span>Dashboard</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded text-sm text-gray-600 hover:bg-gray-50">
+                                <i class="fa-solid fa-clock"></i><span>Prayers</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded text-sm text-gray-600 hover:bg-gray-50" id="nav-finances">
+                                <i class="fa-solid fa-wallet"></i><span>Finances</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded text-sm text-gray-600 hover:bg-gray-50">
+                                <i class="fa-solid fa-graduation-cap"></i><span>Madrasah</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded text-sm text-gray-600 hover:bg-gray-50">
+                                <i class="fa-solid fa-bullhorn"></i><span>Announcements</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded text-sm text-gray-600 hover:bg-gray-50">
+                                <i class="fa-solid fa-hand-holding-heart"></i><span>Welfare</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded text-sm text-gray-600 hover:bg-gray-50">
+                                <i class="fa-solid fa-gear"></i><span>Settings</span>
+                            </a>
+                        </div>
+
+                        <div class="lg:col-span-3 space-y-4 sm:space-y-6">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Today's Attendance</p>
+                                    <p class="text-2xl font-bold text-gray-800 mt-1">1,240</p>
+                                    <span class="text-[11px] text-emerald-600"><i class="fa-solid fa-caret-up"></i> Estimated Attendees</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200" id="kpi-donations">
+                                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Monthly Donations</p>
+                                    <p class="text-2xl font-bold text-gray-800 mt-1">$12,450</p>
+                                    <div class="w-full bg-gray-200 h-1.5 rounded-full mt-2">
+                                        <div class="bg-emerald-deep h-1.5 rounded-full" style="width: 60%"></div>
+                                    </div>
+                                    <span class="text-[11px] text-gray-500 block mt-1">60% to Goal</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Active Programs</p>
+                                    <p class="text-2xl font-bold text-gray-800 mt-1">14</p>
+                                    <span class="text-[11px] text-gray-500">Ongoing Classes</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Hall Bookings</p>
+                                    <p class="text-2xl font-bold text-gray-800 mt-1">3 <span class="text-xs font-normal text-yellow-600 bg-yellow-50 px-1.5 py-0.5 rounded border border-yellow-200">Pending</span></p>
+                                    <span class="text-[11px] text-gray-500">Nikah/Community</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-4 sm:p-5 rounded-lg shadow-sm border border-gray-200">
+                                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-gray-100 pb-3 mb-4 gap-3">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-clock text-emerald-deep"></i>
+                                        <h4 class="font-bold text-gray-800 uppercase tracking-wide text-xs">Today's Prayer Times</h4>
+                                    </div>
+                                    <button onclick="openIqamahModal()" class="w-full sm:w-auto text-xs bg-emerald-deep text-white hover:bg-emerald-900 transition-colors px-3 py-1.5 rounded font-medium flex items-center justify-center space-x-1">
+                                        <i class="fa-solid fa-pen-to-square"></i> <span>Edit Iqamah Times</span>
+                                    </button>
+                                </div>
+                                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
+                                    <div class="p-2 bg-gray-50 border border-gray-200 rounded">
+                                        <p class="text-xs font-semibold text-gray-400 uppercase">Fajr</p>
+                                        <p class="text-sm sm:text-base font-bold text-gray-800 mt-0.5" id="val-fajr">5:15 AM</p>
+                                    </div>
+                                    <div class="p-2 bg-gray-50 border border-gray-200 rounded">
+                                        <p class="text-xs font-semibold text-gray-400 uppercase">Dhuhr</p>
+                                        <p class="text-sm sm:text-base font-bold text-gray-800 mt-0.5" id="val-dhuhr">1:15 PM</p>
+                                    </div>
+                                    <div class="p-2 bg-gray-50 border border-gray-200 rounded">
+                                        <p class="text-xs font-semibold text-gray-400 uppercase">Asr</p>
+                                        <p class="text-sm sm:text-base font-bold text-gray-800 mt-0.5" id="val-asr">4:45 PM</p>
+                                    </div>
+                                    <div class="p-2 bg-gray-50 border border-gray-200 rounded">
+                                        <p class="text-xs font-semibold text-gray-400 uppercase">Maghrib</p>
+                                        <p class="text-sm sm:text-base font-bold text-gray-800 mt-0.5" id="val-maghrib">7:30 PM</p>
+                                    </div>
+                                    <div class="p-2 bg-gray-50 border border-gray-200 rounded col-span-2 sm:col-span-1">
+                                        <p class="text-xs font-semibold text-gray-400 uppercase">Isha</p>
+                                        <p class="text-sm sm:text-base font-bold text-gray-800 mt-0.5" id="val-isha">9:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6" id="row-financial-logs">
+                                <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200 md:col-span-2" id="block-financials">
+                                    <div class="flex items-center justify-between border-b border-gray-100 pb-3 mb-3">
+                                        <div class="flex items-center space-x-2">
+                                            <i class="fa-solid fa-chart-line text-emerald-deep"></i>
+                                            <h4 class="font-bold text-gray-800 uppercase tracking-wide text-xs">Financial Overview</h4>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <div class="flex justify-between text-xs text-gray-600 mb-1">
+                                                <span>Total Zakat (Month)</span>
+                                                <span class="font-bold text-gray-900">$12,450</span>
+                                            </div>
+                                            <div class="w-full bg-gray-100 h-2 rounded-full">
+                                                <div class="bg-emerald-700 h-2 rounded-full" style="width: 45%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-xs text-gray-600 mb-1">
+                                                <span>General Fund</span>
+                                                <span class="font-bold text-gray-900">$34,200</span>
+                                            </div>
+                                            <div class="w-full bg-gray-100 h-2 rounded-full">
+                                                <div class="bg-emerald-600 h-2 rounded-full" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                                    <h4 class="font-bold text-gray-800 uppercase tracking-wide text-xs border-b border-gray-100 pb-3 mb-3">Quick Actions</h4>
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <button class="w-full text-left text-xs bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200 p-2 rounded font-medium flex items-center text-gray-700">
+                                            <i class="fa-solid fa-plus text-emerald-deep mr-2"></i> New Announcement
+                                        </button>
+                                        <button class="w-full text-left text-xs bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200 p-2 rounded font-medium flex items-center text-gray-700">
+                                            <i class="fa-solid fa-plus text-emerald-deep mr-2"></i> Book Janazah
+                                        </button>
+                                        <button class="w-full text-left text-xs bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200 p-2 rounded font-medium flex items-center text-gray-700">
+                                            <i class="fa-solid fa-plus text-emerald-deep mr-2"></i> Create Event
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                                <h4 class="font-bold text-gray-800 uppercase tracking-wide text-xs border-b border-gray-100 pb-3 mb-3">Recent Activity Log</h4>
+                                <div class="space-y-3" id="activity-log-box">
+                                    <div class="flex items-start space-x-3 text-xs border-b border-gray-50 pb-2">
+                                        <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-mono shrink-0">Log</span>
+                                        <p class="text-gray-600" id="log-imam">Imam Yusuf updated the Khutbah topic for Friday, June 5th.</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs">
+                                        <span class="bg-purple-50 text-purple-700 px-2 py-0.5 rounded font-mono shrink-0">Log</span>
+                                        <p class="text-gray-600" id="log-system">System auto-sent 42 tuition reminders for Madrasah Level 2.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-modules" class="tab-content hidden space-y-6 sm:space-y-8">
+                <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm border border-gray-200">
+                    <h2 class="heading-serif text-2xl sm:text-3xl font-bold text-emerald-deep mb-2">Core Modules & Features</h2>
+                    <p class="text-sm sm:text-base text-gray-600">Comprehensive functional blocks built inside the structural system application ecosystem.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 sm:mt-8">
+                        
+                        <div class="border border-gray-200 p-4 sm:p-6 rounded-xl hover:shadow-md transition-all">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-deep flex items-center justify-center text-lg"><i class="fa-solid fa-business-time"></i></div>
+                                <h3 class="font-bold text-lg text-gray-800">1. Operations & Prayer Management</h3>
+                            </div>
+                            <ul class="space-y-3 text-xs sm:text-sm text-gray-600">
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Iqamah Scheduler:</strong> Easily update the gap between Adhan and Iqamah. Changes instantly sync to the masjid's public app/website and TV screens.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Jummah Speaker Rota:</strong> A calendar interface to assign Khateebs (speakers) for Friday prayers, manage their honorariums, and store sermon topics.</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="border border-gray-200 p-4 sm:p-6 rounded-xl hover:shadow-md transition-all">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-deep flex items-center justify-center text-lg"><i class="fa-solid fa-scale-balanced"></i></div>
+                                <h3 class="font-bold text-lg text-gray-800">2. Financial Hub (Donations & Zakat)</h3>
+                            </div>
+                            <ul class="space-y-3 text-xs sm:text-sm text-gray-600">
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Donation Tracker:</strong> Categorized incoming funds (General Sadaqah, Zakat, Mosque Expansion, Orphan Fund).</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Kiosk/POS Integration:</strong> Manage the digital donation kiosks located in the musallah.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Financial Transparency Reports:</strong> One-click generation of PDF expense and income reports for the board of trustees and community transparency.</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="border border-gray-200 p-4 sm:p-6 rounded-xl hover:shadow-md transition-all">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-deep flex items-center justify-center text-lg"><i class="fa-solid fa-book-quran"></i></div>
+                                <h3 class="font-bold text-lg text-gray-800">3. Madrasah & Education Portal</h3>
+                            </div>
+                            <ul class="space-y-3 text-xs sm:text-sm text-gray-600">
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Student Roster:</strong> Profiles for children and adults enrolled in Quranic Arabic, Hifz, or Islamic studies.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Attendance & Progress:</strong> Digital logbooks for teachers to track Juz/Surah memorization progress.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Tuition Invoicing:</strong> Automated monthly fee collection and waiver management for families in need.</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="border border-gray-200 p-4 sm:p-6 rounded-xl hover:shadow-md transition-all">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-deep flex items-center justify-center text-lg"><i class="fa-solid fa-hands-holding"></i></div>
+                                <h3 class="font-bold text-lg text-gray-800">4. Community Services & Social Welfare</h3>
+                            </div>
+                            <ul class="space-y-3 text-xs sm:text-sm text-gray-600">
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Zakat Disbursement:</strong> A secure portal to review applications from families seeking financial assistance, tracking case history and distributions.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Matrimonial & Nikah Registry:</strong> Digital booking system for marriage ceremonies, document uploads (IDs, marriage licenses), and Imam assignments.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-chevron-right text-gold-warm text-xs mt-1 mr-2"></i><span><strong>Funeral (Janazah) Coordination:</strong> Quick-action dashboard to coordinate with funeral homes, log burial plots, and blast community announcements.</span></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-roles" class="tab-content hidden space-y-6 sm:space-y-8">
+                <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                        <div>
+                            <h2 class="heading-serif text-2xl sm:text-3xl font-bold text-emerald-deep mb-2">User Role Matrix</h2>
+                            <p class="text-sm text-gray-600">Security is vital. Not every volunteer needs access to financial data.</p>
+                        </div>
+                        <span class="self-start sm:self-center bg-red-50 text-red-800 text-xs font-semibold px-2.5 py-1 rounded border border-red-200 flex items-center"><i class="fa-solid fa-lock mr-1"></i> RBAC Enforced</span>
+                    </div>
+
+                    <div class="overflow-x-auto border border-gray-200 rounded-lg mt-6">
+                        <table class="w-full text-left text-xs sm:text-sm min-w-[600px]">
+                            <thead class="bg-emerald-deep text-white uppercase tracking-wider text-[11px]">
+                                <tr>
+                                    <th class="px-4 py-3 font-semibold">Role</th>
+                                    <th class="px-4 py-3 font-semibold">Access Level</th>
+                                    <th class="px-4 py-3 font-semibold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-white text-xs">
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-4 py-4 font-bold text-gray-900"><i class="fa-solid fa-crown text-yellow-600 mr-1.5"></i> Super Admin</td>
+                                    <td class="px-4 py-4"><span class="bg-red-100 text-red-800 text-[10px] px-2 py-0.5 rounded font-semibold">Full Access</span></td>
+                                    <td class="px-4 py-4 text-gray-600">Board members / Head Administrator. Can view finances, manage users, and change system settings.</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-4 py-4 font-bold text-gray-900"><i class="fa-solid fa-user-tie text-emerald-700 mr-1.5"></i> Imam / Khateeb</td>
+                                    <td class="px-4 py-4"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-semibold">Content & Community</span></td>
+                                    <td class="px-4 py-4 text-gray-600">Can manage prayer times, education modules, and view matrimonial/counseling requests.</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-4 py-4 font-bold text-gray-900"><i class="fa-solid fa-coins text-blue-700 mr-1.5"></i> Treasurer</td>
+                                    <td class="px-4 py-4"><span class="bg-blue-100 text-blue-800 text-[10px] px-2 py-0.5 rounded font-semibold">Financials Only</span></td>
+                                    <td class="px-4 py-4 text-gray-600">Full access to Donations, Zakat applications, and expense logging. <span class="text-red-600 font-medium">No access to student grades.</span></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-4 py-4 font-bold text-gray-900"><i class="fa-solid fa-hands-holding text-purple-700 mr-1.5"></i> Volunteer</td>
+                                    <td class="px-4 py-4"><span class="bg-purple-100 text-purple-800 text-[10px] px-2 py-0.5 rounded font-semibold">Operations Only</span></td>
+                                    <td class="px-4 py-4 text-gray-600">Can check in event attendees, update community bulletin drafts, and log facility maintenance issues.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-outreach" class="tab-content hidden space-y-6 sm:space-y-8">
+                <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm border border-gray-200">
+                    <h2 class="heading-serif text-2xl sm:text-3xl font-bold text-emerald-deep mb-2">Communication & Outreach Broadcast</h2>
+                    <p class="text-sm text-gray-600">A dedicated section to push information out to the community instantly.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 sm:mt-8">
+                        <div class="bg-gray-50 p-5 sm:p-6 rounded-xl border border-gray-200 flex flex-col justify-between">
+                            <div>
+                                <div class="text-2xl text-emerald-deep mb-3"><i class="fa-brands fa-whatsapp"></i> <i class="fa-solid fa-comment-sms text-lg"></i></div>
+                                <h3 class="font-bold text-base text-gray-800 mb-2">SMS/WhatsApp Gateway</h3>
+                                <p class="text-xs text-gray-600 leading-relaxed">For urgent announcements (e.g., Eid moon sighting, Janazah announcements, weather closures).</p>
+                            </div>
+                            <button class="mt-4 w-full bg-emerald-deep text-white text-xs py-2 rounded font-medium hover:bg-emerald-900 transition-colors">Configure System Gateways</button>
+                        </div>
+
+                        <div class="bg-gray-50 p-5 sm:p-6 rounded-xl border border-gray-200 flex flex-col justify-between">
+                            <div>
+                                <div class="text-2xl text-emerald-deep mb-3"><i class="fa-solid fa-envelope-open-text"></i></div>
+                                <h3 class="font-bold text-base text-gray-800 mb-2">Email Newsletter Builder</h3>
+                                <p class="text-xs text-gray-600 leading-relaxed">Drag-and-drop builder for weekly community updates.</p>
+                            </div>
+                            <button class="mt-4 w-full bg-emerald-deep text-white text-xs py-2 rounded font-medium hover:bg-emerald-900 transition-colors">Open Builder Workspace</button>
+                        </div>
+
+                        <div class="bg-gray-50 p-5 sm:p-6 rounded-xl border border-gray-200 flex flex-col justify-between">
+                            <div>
+                                <div class="text-2xl text-emerald-deep mb-3"><i class="fa-solid fa-display"></i></div>
+                                <h3 class="font-bold text-base text-gray-800 mb-2">Digital Signage Controller</h3>
+                                <p class="text-xs text-gray-600 leading-relaxed">Push flyers, daily Hadiths, and prayer times directly to the TV monitors inside the masjid lobby.</p>
+                            </div>
+                            <button class="mt-4 w-full bg-emerald-deep text-white text-xs py-2 rounded font-medium hover:bg-emerald-900 transition-colors">Manage Display Sync</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="iqamahModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-200">
+            <div class="bg-emerald-deep text-white p-4 flex justify-between items-center">
+                <h3 class="font-bold text-xs tracking-wide uppercase"><i class="fa-solid fa-clock-rotate-left mr-1"></i> Update Iqamah Times</h3>
+                <button onclick="closeIqamahModal()" class="text-white/80 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-4 sm:p-6 space-y-4">
+                <p class="text-xs text-gray-500">Changes instantly sync across platforms.</p>
+                <div>
+                    <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1">Fajr Time</label>
+                    <input type="text" id="input-fajr" value="5:15 AM" class="w-full border border-gray-300 rounded p-2 text-xs sm:text-sm focus:outline-none focus:border-emerald-deep">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1">Dhuhr Time</label>
+                    <input type="text" id="input-dhuhr" value="1:15 PM" class="w-full border border-gray-300 rounded p-2 text-xs sm:text-sm focus:outline-none focus:border-emerald-deep">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1">Asr</label>
+                        <input type="text" id="input-asr" value="4:45 PM" class="w-full border border-gray-300 rounded p-2 text-xs sm:text-sm focus:outline-none focus:border-emerald-deep">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1">Maghrib</label>
+                        <input type="text" id="input-maghrib" value="7:30 PM" class="w-full border border-gray-300 rounded p-2 text-xs sm:text-sm focus:outline-none focus:border-emerald-deep">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold uppercase text-gray-400 mb-1">Isha Time</label>
+                    <input type="text" id="input-isha" value="9:00 PM" class="w-full border border-gray-300 rounded p-2 text-xs sm:text-sm focus:outline-none focus:border-emerald-deep">
+                </div>
+            </div>
+            <div class="bg-gray-50 p-4 flex justify-end space-x-3 border-t border-gray-100">
+                <button onclick="closeIqamahModal()" class="px-4 py-2 text-xs text-gray-500 hover:text-gray-700 font-medium">Cancel</button>
+                <button onclick="saveIqamahTimes()" class="px-4 py-2 text-xs bg-emerald-deep text-white rounded font-medium hover:bg-emerald-900 transition-colors">Commit Structural Sync</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-emerald-deep text-white/60 text-[10px] sm:text-xs py-4 text-center mt-auto border-t border-emerald-800 px-4">
+        <p>© 2026 Masjid Kartabah Administrative Ecosystem Framework. Developed under strict RBAC guidelines.</p>
+    </footer>
+
+    <script>
+        // Track alphabetical sequential tab arrangement lists
+        const tabSequence = ['overview', 'dashboard', 'modules', 'roles', 'outreach'];
+        let currentActiveTab = 'overview';
+
+        // Toggle mobile menu visibility tracking
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar-container');
+            const overlay = document.getElementById('sidebar-overlay');
+            
+            if(sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // System Wide Document Tab Controller 
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(element => {
+                element.classList.add('hidden');
+            });
+            document.querySelectorAll('.sidebar-link').forEach(element => {
+                element.classList.remove('active');
+            });
+            
+            document.getElementById('sec-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId).classList.add('active');
+            currentActiveTab = tabId;
+
+            // Explicitly close layout menu drawers on responsive clicks
+            const sidebar = document.getElementById('sidebar-container');
+            if(!sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.add('-translate-x-full');
+                document.getElementById('sidebar-overlay').classList.add('hidden');
+            }
+        }
+
+        // --- SWIPE GESTURES GATERWAY CONFIGURATION ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const mainInteractiveCanvas = document.getElementById('main-interactive-section');
+
+        mainInteractiveCanvas.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        }, { passive: true });
+
+        mainInteractiveCanvas.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipeGesture();
+        }, { passive: true });
+
+        function handleSwipeGesture() {
+            const currentPositionIndex = tabSequence.indexOf(currentActiveTab);
+            const swipeThresholdPixel = 60; // Minimum distance to recognize as a swipe
+
+            // Swipe Left (Move forward to Next section)
+            if (touchStartX - touchEndX > swipeThresholdPixel) {
+                if (currentPositionIndex < tabSequence.length - 1) {
+                    const nextTabId = tabSequence[currentPositionIndex + 1];
+                    switchTab(nextTabId);
+                }
+            }
+            
+            // Swipe Right (Move backward to Previous section)
+            if (touchEndX - touchStartX > swipeThresholdPixel) {
+                if (currentPositionIndex > 0) {
+                    const prevTabId = tabSequence[currentPositionIndex - 1];
+                    switchTab(prevTabId);
+                }
+            }
+        }
+
+        // Iqamah Modal Actions
+        function openIqamahModal() {
+            document.getElementById('iqamahModal').classList.remove('hidden');
+            document.getElementById('iqamahModal').classList.add('flex');
+        }
+        
+        function closeIqamahModal() {
+            document.getElementById('iqamahModal').classList.add('hidden');
+            document.getElementById('iqamahModal').classList.remove('flex');
+        }
+
+        function saveIqamahTimes() {
+            const fajr = document.getElementById('input-fajr').value;
+            const dhuhr = document.getElementById('input-dhuhr').value;
+            const asr = document.getElementById('input-asr').value;
+            const maghrib = document.getElementById('input-maghrib').value;
+            const isha = document.getElementById('input-isha').value;
+
+            document.getElementById('val-fajr').innerText = fajr;
+            document.getElementById('val-dhuhr').innerText = dhuhr;
+            document.getElementById('val-asr').innerText = asr;
+            document.getElementById('val-maghrib').innerText = maghrib;
+            document.getElementById('val-isha').innerText = isha;
+
+            const logBox = document.getElementById('activity-log-box');
+            const newLog = document.createElement('div');
+            newLog.className = "flex items-start space-x-3 text-xs text-emerald-900 font-medium bg-emerald-50 p-2 rounded border border-emerald-200";
+            newLog.innerHTML = `
+                <span class="bg-emerald-700 text-white px-2 py-0.5 rounded font-mono shrink-0">Now</span>
+                <p>System Admin committed an update sequence to local prayer times.</p>
+            `;
+            logBox.insertBefore(newLog, logBox.firstChild);
+
+            closeIqamahModal();
+        }
+
+        // Simulate Role-Based View Restrictions
+        function simulateRoleContext() {
+            const role = document.getElementById('roleContext').value;
+            const blockFinances = document.getElementById('block-financials');
+            const kpiDonations = document.getElementById('kpi-donations');
+            const navFinances = document.getElementById('nav-finances');
+            
+            switchTab('dashboard');
+
+            // Reset components visibility baseline
+            blockFinances.style.opacity = "1";
+            blockFinances.style.pointerEvents = "auto";
+            kpiDonations.style.opacity = "1";
+            if(navFinances) navFinances.style.display = "flex";
+
+            if (role === "Volunteer" || role === "Imam") {
+                blockFinances.style.opacity = "0.15";
+                blockFinances.style.pointerEvents = "none";
+                kpiDonations.style.opacity = "0.15";
+                if(navFinances) navFinances.style.display = "none";
+                alert("RBAC Restriction Applied: This view contains finance data hidden from this role.");
+            }
+        }
+    </script>
+</body>
+</html>
