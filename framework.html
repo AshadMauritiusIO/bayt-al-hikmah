@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Governance Model Framework & Structure | Masjid Kartabah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-deep: #064e3b; /* Emerald Green */
+            --primary-light: #0f766e;
+            --accent-gold: #d97706; /* Sophisticated Gold */
+            --accent-gold-light: #fef3c7;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+            --bg-sand: #fcfbf7;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-sand);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Fixed Top Navigation Bar */
+        .top-navbar {
+            background-color: #022c22;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            color: #fbbf24; /* Amber text */
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: #f59e0b;
+        }
+
+        /* SVG Sizing forced via clean style parameters */
+        .back-icon {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            transition: var(--transition);
+        }
+
+        .back-link:hover .back-icon {
+            transform: translateX(-3px);
+        }
+
+        .nav-meta {
+            font-size: 0.75rem;
+            font-family: monospace;
+            letter-spacing: 1px;
+            color: rgba(52, 211, 153, 0.7);
+            text-transform: uppercase;
+        }
+
+        /* Hero Section with Islamic Geometric Accents */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary-deep) 0%, #022c22 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--accent-gold);
+        }
+
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.04;
+            background-image: radial-gradient(circle at 50% 50%, var(--accent-gold) 20%, transparent 20%);
+            background-size: 40px 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(217, 119, 6, 0.2);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold-light);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-banner h1 {
+            font-family: 'Amiri', serif;
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            color: var(--accent-gold-light);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Action Buttons Container */
+        .header-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* High-impact Link Styling */
+        .reflection-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.15) 0%, rgba(217, 119, 6, 0.3) 100%);
+            border: 1px solid var(--accent-gold);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .reflection-link:hover {
+            background: var(--accent-gold);
+            color: var(--text-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+        }
+
+        .reflection-link .arrow {
+            transition: var(--transition);
+        }
+
+        .reflection-link:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Personal Card Wrapper */
+        .personal-bond {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 45px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 60px;
+            border-right: 5px solid var(--primary-deep);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .personal-bond h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            color: var(--primary-deep);
+        }
+
+        .personal-bond p {
+            color: #4b5563;
+            font-size: 1.05rem;
+            max-width: 900px;
+        }
+
+        .personal-bond mt-auto {
+            margin-top: auto;
+        }
+
+        .personal-meta {
+            display: flex;
+            gap: 30px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .personal-meta span strong {
+            color: var(--accent-gold);
+        }
+
+        /* Scriptural References (Quran & Hadith Blocks) */
+        .scripture-section {
+            margin-bottom: 60px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            border-left: 5px solid var(--accent-gold);
+            box-shadow: var(--card-shadow);
+        }
+
+        .scripture-block {
+            margin-bottom: 40px;
+        }
+
+        .scripture-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            text-align: right;
+            direction: rtl;
+            color: var(--primary-deep);
+            line-height: 2.2;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            background: #fafaf9;
+            border-radius: 8px;
+        }
+
+        .translation {
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .translation::before {
+            content: "“";
+            font-size: 2rem;
+            position: absolute;
+            left: 0;
+            top: -10px;
+            color: var(--accent-gold);
+            opacity: 0.5;
+        }
+
+        .source {
+            font-size: 0.85rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Main Pillars Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--primary-light);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(217, 119, 6, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-deep);
+            font-weight: 600;
+        }
+
+        /* Governance Axis Component */
+        .governance-axis {
+            background: linear-gradient(to right, #064e3b, #0f766e);
+            color: var(--text-light);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .axis-intro {
+            flex: 1 1 400px;
+        }
+
+        .axis-intro h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold-light);
+            margin-bottom: 15px;
+        }
+
+        .axis-container {
+            flex: 1 1 500px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .axis-node {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            flex: 1;
+            transition: var(--transition);
+        }
+
+        .axis-node:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .axis-node h4 {
+            color: var(--accent-gold-light);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .axis-node ul {
+            list-style: none;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .axis-node ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .axis-node ul li::before {
+            content: "•";
+            color: var(--accent-gold);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Architectural CTA Section Link */
+        .architecture-cta {
+            background: #ffffff;
+            border: 1px solid rgba(6, 78, 59, 0.15);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            border-left: 5px solid var(--primary-deep);
+            transition: var(--transition);
+        }
+
+        .architecture-cta:hover {
+            box-shadow: 0 15px 35px rgba(6, 78, 59, 0.08);
+            border-color: rgba(6, 78, 59, 0.3);
+        }
+
+        .cta-info h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--primary-deep);
+            margin-bottom: 8px;
+        }
+
+        .cta-info p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            max-width: 750px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-deep);
+            color: var(--text-light);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(6, 78, 59, 0.2);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.3);
+        }
+
+        .cta-button .arrow {
+            transition: var(--transition);
+        }
+
+        .cta-button:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        footer {
+            background-color: #022c22;
+            color: #9ca3af;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner h1 { font-size: 2.2rem; }
+            .axis-container { flex-direction: column; }
+            .scripture-section, .personal-bond { padding: 25px; }
+            .arabic-text { font-size: 1.4rem; }
+            .personal-meta { flex-direction: column; gap: 10px; }
+            .header-actions { flex-direction: column; align-items: stretch; }
+            .architecture-cta { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .cta-button { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="back-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span> Back to Campaign Portal</span>
+            </a>
+            <div class="nav-meta">Institutional Framework</div>
+        </div>
+    </nav>
+    
+    <header class="hero-banner">
+        <div class="badge">Islamic Governance Model Framework & Structure</div>
+        <h1>إِدَارَةُ <span class="text-gold-warm">المَسَاجِد</span></h1> 
+        <p>The Sacred Trust: Administrative Excellence & Spiritual Integrity at Masjid Kartabah</p>
+        
+        <div class="header-actions">
+            <a href="quran-reflections.html" class="reflection-link">
+                <span>Quran Verses - Mosque Guardianship</span>
+                <span class="arrow">&rarr;</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="personal-bond">
+            <h2>The Architect's Vision</h2>
+            <p>
+                As a professional deeply rooted in engineering and systems design, I view the management of sacred infrastructure as the ultimate harmonization of <strong>Itqan (excellence)</strong> and <strong>Amanah (trust)</strong>. This framework represents a formal commitment to evolving the administrative systems of <strong>Masjid Kartabah</strong>. By fusing timeless prophetic governance with clean, modern transparency, we ensure the masjid remains an inclusive, high-impact, and smoothly operating sanctuary for the entire community.
+            </p>
+            <div class="personal-meta">
+                <span>Presented By: <strong>Ashad</strong></span>
+                <span>Project Focus: <strong>Masjid Kartabah Systems & Governance</strong></span>
+            </div>
+        </section>
+        
+        <section class="scripture-section">
+            
+            <div class="scripture-block">
+                <div class="arabic-text">
+                    إِنَّمَا يَعْمُرُ مَسَاجِدَ اللَّهِ مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ وَأَقَامَ الصَّلَاةَ وَآتَى الزَّكَاةَ وَلَمْ يَخْشَ إِلَّا اللَّهَ ۖ فَعَسَىٰ أُولَٰئِكَ أَنْ يَكُونُوا مِنَ الْمُهْتَدِينَ
+                </div>
+                <div class="translation">
+                    "The mosques of Allah are only to be maintained by those who believe in Allah and the Last Day and establish prayer and give zakah and do not fear except Allah, for it is expected that those will be of the [rightly] guided."
+                </div>
+                <div class="source">Surah At-Tawbah (9:18)</div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 30px 0;">
+
+            <div class="scripture-block">
+                <div class="arabic-text">
+                    إِنَّ اللَّهَ يُحِبُّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلاً أَنْ يُتْقِنَهُ
+                </div>
+                <div class="translation">
+                    "Verily, Allah loves that when any one of you does a job, he performs it with excellence and utmost competence (Itqan)."
+                </div>
+                <div class="source">Hadith — Al-Mu'jam Al-Awsat</div>
+            </div>
+
+        </section>
+
+        <section>
+            <h2 style="font-family: 'Amiri', serif; text-align: center; font-size: 2rem; color: var(--primary-deep);">Core Administrative Principles</h2>
+            <p style="text-align: center; color: #6b7280; max-width: 600px; margin: 0 auto 40px auto;">Deploying robust governance structures to safeguard our sacred spaces.</p>
+            
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon">❖</div>
+                    <h3>Mutual Consultation (Shura)</h3>
+                    <p>Decisions affecting Masjid Kartabah are driven collectively. We replace isolated management with an active administrative council that listens intently to the congregation's feedback to build long-term consensus.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Financial Trusteeship</h3>
+                    <p>Every donation is handled as a strict public trust. Funds allocated for dedicated initiatives (such as charity or physical assets) are meticulously isolated from general operational costs to ensure maximum transparency.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">❈</div>
+                    <h3>Radical Inclusivity</h3>
+                    <p>Mirroring the foundational Prophetic model, our operational objective is to ensure Masjid Kartabah is a pristine, secure, and deeply welcoming spiritual home for everyone—regardless of age, background, or social standing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="governance-axis">
+            <div class="axis-intro">
+                <h2>The Axis of Governance</h2>
+                <p>To preserve operational equilibrium, a deliberate boundary maps out the distinct responsibilities of strategic administration and spiritual leadership.</p>
+            </div>
+            <div class="axis-container">
+                <div class="axis-node">
+                    <h4>The Administration</h4>
+                    <ul>
+                        <li>Financial auditing & compliance</li>
+                        <li>Infrastructure & asset preservation</li>
+                        <li>Digital tools & security protocols</li>
+                        <li>Community program logistics</li>
+                    </ul>
+                </div>
+                <div class="axis-node">
+                    <h4>The Imamat</h4>
+                    <ul>
+                        <li>Spiritual stewardship & congregational prayer</li>
+                        <li>Pulpit (Minbar) autonomy</li>
+                        <li>Authentic religious education</li>
+                        <li>Pastoral care & guidance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="architecture-cta">
+            <div class="cta-info">
+                <h3>Technical System Design Framework</h3>
+                <p>Explore the complete application schema, database relations, layout logic matrices, and role-based access control (RBAC) maps engineered to make this administrative ecosystem operational.</p>
+            </div>
+            <a href="ecosystem.html" class="cta-button">
+                <span>View Architecture Specs</span>
+                <span class="arrow">&rarr;</span>
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Framework designed by Ashad for Masjid Kartabah. Empowering communities through thoughtful architecture.</p>
+    </footer>
+
+</body>
+</html>
