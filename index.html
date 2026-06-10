@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashad Dookhee | Executive Portfolio & Systems Architecture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        slate: {
+                            950: '#0b1329',
+                        },
+                        gold: {
+                            100: '#f4ebd0',
+                            400: '#d4af37',
+                            500: '#aa7c11',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 40%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .premium-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 12px 30px -10px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-gold-400 selection:text-slate-950 antialiased">
+
+    <nav class="fixed top-0 left-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5 px-6 lg:px-16 py-4 flex justify-between items-center">
+        <div class="text-lg font-serif tracking-widest text-white uppercase">
+            Ashad Dookhee<span class="text-gold-400">.io</span>
+        </div>
+        <div class="hidden lg:flex space-x-8 text-xs font-medium tracking-widest uppercase text-slate-400">
+            <a href="#philosophy" class="hover:text-gold-400 transition-colors py-2">Philosophy</a>
+            <a href="#haqq-musalli" class="hover:text-gold-400 transition-colors py-2">Haqq Musalli</a>
+            <a href="#bayt-al-hikmah" class="hover:text-gold-400 transition-colors py-2">Bayt Al Hikmah</a>
+            <a href="#legacy" class="hover:text-gold-400 transition-colors py-2">Legacy</a>
+        </div>
+        <div>
+            <a href="#inquiry-console" class="border border-gold-400/30 hover:border-gold-400 bg-gold-400/5 hover:bg-gold-400 text-gold-400 hover:text-slate-950 px-5 py-2.5 rounded-lg text-xs font-semibold tracking-widest uppercase transition-all duration-300">
+                Inquiry Console
+            </a>
+        </div>
+    </nav>
+
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden px-4 sm:px-6 lg:px-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.04),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_70%,#0b1329_100%)]"></div>
+        
+        <div class="max-w-5xl text-center relative z-10 space-y-8">
+            <div class="inline-flex items-center space-x-2 border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] font-semibold tracking-widest text-gold-400 uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+                <span>Systems Architect &bull; Live Ecosystem Proof-of-Concepts</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif tracking-tight text-white leading-[1.1]">
+                Redefining Structure & Governance<br>
+                <span class="gradient-text italic font-normal">Through Elite Engineering</span>
+            </h1>
+            
+            <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed font-light">
+                Applying 15+ years of software architecture and database design honed in international banking systems to deploy transparent, unassailable public solutions.
+            </p>
+            
+            <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#haqq-musalli" class="w-full sm:w-auto bg-gradient-to-r from-gold-500 to-gold-400 text-slate-950 px-8 py-4 rounded-xl font-medium tracking-wide shadow-xl shadow-gold-500/10 hover:scale-[1.01] transition-all duration-300 text-center text-sm font-semibold uppercase tracking-wider">
+                    Haqq Musalli Dashboard
+                </a>
+                <a href="#bayt-al-hikmah" class="w-full sm:w-auto bg-white/5 border border-white/10 hover:border-white/20 px-8 py-4 rounded-xl font-medium tracking-wide hover:bg-white/10 transition-all duration-300 text-center text-sm font-semibold uppercase tracking-wider text-slate-300">
+                    Bayt Al Hikmah Engine
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="philosophy" class="py-24 border-t border-white/5 bg-slate-950/40 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-5 sticky top-[72px] lg:top-32 bg-slate-950/90 lg:bg-transparent py-4 lg:py-0 h-full space-y-4 z-20 self-start backdrop-blur-sm lg:backdrop-blur-none">
+                    <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block">The Blueprint Shift</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif text-white tracking-tight leading-tight">
+                        Accumulated Wisdom Redirected
+                    </h2>
+                    <div class="h-[1px] w-16 bg-gold-400/50"></div>
+                </div>
+                <div class="lg:col-span-7 space-y-6 text-slate-400 font-light text-base leading-relaxed pt-2">
+                    <blockquote class="border-l border-gold-400/40 pl-6 italic text-white/90 font-serif text-lg my-4 bg-white/[0.01] py-4 pr-4 rounded-r-lg">
+                        "It takes a great deal of self-reflection to look at a successful, elite-level career and decide that the ultimate destination for that accumulated wisdom is service to the Divine and the community."
+                    </blockquote>
+                    <p>
+                        When traditional localized management structures fall short of matching the institutional dignity a sanctuary deserves, real change isn't made through complaints—it is written in production-grade code.
+                    </p>
+                    <p>
+                        This platform hosts live, undeniably transparent technological infrastructure frameworks, rendering obsolete the inefficient processes of legacy setups.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="haqq-musalli" class="py-24 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-5 sticky top-[72px] lg:top-32 bg-slate-950/90 lg:bg-transparent py-4 lg:py-0 h-full space-y-4 z-20 self-start backdrop-blur-sm lg:backdrop-blur-none">
+                    <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Framework Alpha</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif text-white tracking-tight leading-tight">Project Haqq Musalli</h2>
+                    <div class="h-[1px] w-16 bg-gold-400/50"></div>
+                    <p class="text-slate-400 font-light text-sm max-w-sm hidden lg:block">
+                        Open Digital Governance framework engineered with PostgreSQL and Supabase backends. Absolute transparency for regional community structures.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 pt-2">
+                    <p class="text-slate-400 font-light text-sm lg:hidden mb-4">
+                        Open Digital Governance framework engineered with PostgreSQL and Supabase backends. Absolute transparency for regional community structures.
+                    </p>
+
+                    <div class="premium-card rounded-2xl p-6 space-y-6">
+                        <div class="flex justify-between items-center">
+                            <div class="w-10 h-10 rounded-lg bg-gold-400/5 border border-gold-400/20 flex items-center justify-center text-gold-400 text-lg">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                            <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Live Audit</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-serif text-white mb-2">Cryptographic Financial Ledger</h3>
+                            <p class="text-slate-400 font-light text-xs leading-relaxed">
+                                A public, tamper-proof system mapping allocations matching global banking compliance models.
+                            </p>
+                        </div>
+                        <div class="bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-[11px] text-slate-400 space-y-2">
+                            <div class="flex justify-between text-slate-500 border-b border-white/5 pb-1">
+                                <span>Allocation</span>
+                                <span>Audit Signature</span>
+                            </div>
+                            <div class="flex justify-between text-white/90">
+                                <span>Sanctuary Logistics</span>
+                                <span class="text-gold-400 font-bold">0x7F9B...4A</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card rounded-2xl p-6 space-y-6">
+                        <div class="flex justify-between items-center">
+                            <div class="w-10 h-10 rounded-lg bg-gold-400/5 border border-gold-400/20 flex items-center justify-center text-gold-400 text-lg">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <span class="text-[10px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Direct Stream</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-serif text-white mb-2">Manifestos & Direct Campaigns</h3>
+                            <p class="text-slate-400 font-light text-xs leading-relaxed">
+                                Bypassing administrative gatekeepers to stream strategic operational plans directly into mobile loops.
+                            </p>
+                        </div>
+                        <div class="bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-[11px] text-slate-400 space-y-2">
+                            <div class="text-slate-300">Manifesto v2026.06 Update</div>
+                            <div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-gold-400 h-full w-[85%]"></div>
+                            </div>
+                            <div class="text-[9px] text-slate-500 text-right">85% Community Penetration</div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card rounded-2xl p-6 space-y-6">
+                        <div class="flex justify-between items-center">
+                            <div class="w-10 h-10 rounded-lg bg-gold-400/5 border border-gold-400/20 flex items-center justify-center text-gold-400 text-lg">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <span class="text-[10px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Precision Matrix</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-serif text-white mb-2">Asset Allocation Analytics</h3>
+                            <p class="text-slate-400 font-light text-xs leading-relaxed">
+                                Replacing loose paperwork with granular data loops tracking resources, upkeep parameters, and timelines.
+                            </p>
+                        </div>
+                        <div class="bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-[11px] text-slate-400 flex items-center justify-between">
+                            <span class="text-slate-400">Resource Registry</span>
+                            <span class="text-emerald-400 bg-emerald-500/5 px-2 py-0.5 rounded border border-emerald-500/10 text-[10px]">Optimized</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="bayt-al-hikmah" class="py-24 border-t border-white/5 bg-slate-900/20 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-5 sticky top-[72px] lg:top-32 bg-slate-950/90 lg:bg-transparent py-4 lg:py-0 h-full space-y-4 z-20 self-start backdrop-blur-sm lg:backdrop-blur-none">
+                    <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Framework Beta</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif text-white tracking-tight leading-tight">Bayt Al Hikmah Engine</h2>
+                    <div class="h-[1px] w-16 bg-gold-400/50"></div>
+                    <p class="text-slate-400 font-light text-sm max-w-sm hidden lg:block">
+                        Reviving the intersection of high structural science and divine tradition via modular, user-interactive visual applications.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 pt-2">
+                    <p class="text-slate-400 font-light text-sm lg:hidden mb-4">
+                        Reviving the intersection of high structural science and divine tradition via modular, user-interactive visual applications.
+                    </p>
+
+                    <div class="premium-card rounded-2xl p-8 space-y-4">
+                        <span class="text-[10px] font-mono text-gold-400/70 uppercase tracking-widest block">Module 01 // Computational Linguistics</span>
+                        <h3 class="text-xl font-serif text-white">Root-and-Pattern Matrices</h3>
+                        <p class="text-slate-400 font-light text-xs leading-relaxed">
+                            An interactive textual framework rendering algorithmic root analyses and morphologic shifts within historical texts. Clean structural visualization blocks map exact prefixes, suffixes, and core paradigms.
+                        </p>
+                    </div>
+
+                    <div class="premium-card rounded-2xl p-8 space-y-4">
+                        <span class="text-[10px] font-mono text-gold-400/70 uppercase tracking-widest block">Module 02 // Celestial Mechanics</span>
+                        <h3 class="text-xl font-serif text-white">Southern Hemisphere Celestial Tracker</h3>
+                        <p class="text-slate-400 font-light text-xs leading-relaxed">
+                            Observational coordinates projecting planetary tracks, lunar phases, and localized Southern Hemisphere sky maps directly onto automated calculation loops for prayer windows and moon alignments.
+                        </p>
+                    </div>
+
+                    <div class="premium-card rounded-2xl p-8 space-y-4">
+                        <span class="text-[10px] font-mono text-gold-400/70 uppercase tracking-widest block">Module 03 // Evaluation Matrices</span>
+                        <h3 class="text-xl font-serif text-white">Regional Certification Engine</h3>
+                        <p class="text-slate-400 font-light text-xs leading-relaxed">
+                            Moving past standard paper evaluation sheets. This layer executes automated tracking matrices, progression curves, and dynamically signs digital achievement credentials.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry-console" class="py-24 border-t border-white/5 bg-gradient-to-b from-slate-950 to-black relative">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Secure Node Interface</span>
+                <h2 class="text-3xl font-serif text-white">Digital Inquiry & Proposal Intake</h2>
+                <p class="text-slate-400 font-light text-xs max-w-lg mx-auto">
+                    Direct pipe to my secure staging architecture. Submit systems proposals, governance inquiries, or dynamic framework critiques straight into the Postgres ingestion pool.
+                </p>
+            </div>
+
+            <form id="contact-form" class="space-y-6 bg-white/[0.02] border border-white/5 p-8 rounded-2xl backdrop-blur-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Identifier / Name</label>
+                        <input type="text" required placeholder="e.g., Lead Architect" class="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-xs text-white focus:outline-none focus:border-gold-400/60 font-mono transition-colors">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Communication Routing / Email</label>
+                        <input type="email" required placeholder="e.g., routing@node.io" class="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-xs text-white focus:outline-none focus:border-gold-400/60 font-mono transition-colors">
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Target Architecture Vector</label>
+                    <select class="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-xs text-slate-400 focus:outline-none focus:border-gold-400/60 font-mono transition-colors">
+                        <option value="haqq-musalli">Project Haqq Musalli Core</option>
+                        <option value="bayt-al-hikmah">Bayt Al Hikmah Framework</option>
+                        <option value="consultancy">Enterprise System Inquiries</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Transmission Payload (Message)</label>
+                    <textarea rows="4" required placeholder="Outline technical inquiries, architectural system proposals, or community transparency requirements..." class="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-xs text-white focus:outline-none focus:border-gold-400/60 font-mono transition-colors resize-none font-sans font-light"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-gold-500 to-gold-400 text-slate-950 py-3.5 rounded-lg text-xs font-semibold tracking-widest uppercase hover:opacity-95 transition-opacity">
+                    Transmit Message Node
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section id="legacy" class="py-24 border-t border-white/5 bg-black relative text-center">
+        <div class="max-w-4xl mx-auto px-6 space-y-6">
+            <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Sadaqah Jariyah</span>
+            <h2 class="text-2xl sm:text-4xl font-serif text-white tracking-tight">Honoring Legacy Through Unassailable Standards</h2>
+            <p class="text-slate-500 font-light text-xs max-w-xl mx-auto leading-relaxed">
+                Redirecting technical skill sets toward the elevation of community sanctuary architecture. Built as a lasting form of charity honoring parental dedication to knowledge and progress.
+            </p>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-500 gap-4">
+                <p>&copy; 2026 Ashad Dookhee. All Infrastructure Frameworks Reserved.</p>
+                <p class="font-mono">Host Vector: <span class="text-slate-400">ashadmauritiusio.github.io</span></p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
