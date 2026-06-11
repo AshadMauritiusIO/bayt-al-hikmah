@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashad Dookhee | Executive Portfolio & Systems Architecture</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        slate: {
+                            950: '#0b1329',
+                        },
+                        gold: {
+                            100: '#f4ebd0',
+                            400: '#d4af37',
+                            500: '#aa7c11',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 40%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .premium-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 12px 30px -10px rgba(0,0,0,0.7);
+        }
+        /* Global RTL Overrides for Specialized Script Typography sets */
+        [dir="rtl"] {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-gold-400 selection:text-slate-950 antialiased">
+
+    <nav dir="ltr" class="fixed top-0 left-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5 px-6 lg:px-16 py-4 flex justify-between items-center">
+        <div class="text-lg font-serif tracking-widest text-white uppercase">
+            Sadda<span class="text-gold-400">.Haqq</span>
+        </div>
+        <div class="hidden lg:flex space-x-8 text-xs font-medium tracking-widest uppercase text-slate-400">
+            <a href="#philosophy" data-i18n="nav-philosophy" class="hover:text-gold-400 transition-colors py-2">Philosophy</a>
+            <a href="#haqq-musalli" data-i18n="nav-haqq" class="hover:text-gold-400 transition-colors py-2">Haqq Musalli</a>
+            <a href="#bayt-al-hikmah" data-i18n="nav-bayt" class="hover:text-gold-400 transition-colors py-2">Bayt Al Hikmah</a>
+            <a href="#legacy" data-i18n="nav-legacy" class="hover:text-gold-400 transition-colors py-2">Legacy</a>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+            <div class="relative inline-block text-left">
+                <select id="lang-selector" class="bg-slate-900 text-gold-400 text-xs border border-gold-400/20 rounded-md px-2.5 py-1.5 focus:outline-none focus:border-gold-400/60 font-mono cursor-pointer transition-colors">
+                    <option value="en">EN</option>
+                    <option value="ar">AR</option>
+                    <option value="fr">FR</option>
+                    <option value="ur">UR</option>
+                </select>
+            </div>
+            <div>
+                <a href="#inquiry-console" data-i18n="nav-console" class="border border-gold-400/30 hover:border-gold-400 bg-gold-400/5 hover:bg-gold-400 text-gold-400 hover:text-slate-950 px-5 py-2.5 rounded-lg text-xs font-semibold tracking-widest uppercase transition-all duration-300">
+                    Inquiry Console
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden px-4 sm:px-6 lg:px-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.04),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_70%,#0b1329_100%)]"></div>
+        
+        <div class="max-w-5xl text-center relative z-10 space-y-8">
+            <div class="inline-flex items-center space-x-2 border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] font-semibold tracking-widest text-gold-400 uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+                <span data-i18n="hero-tag">The Straight Path &bull; Live Ecosystem Proof-of-Concepts</span>
+            </div>
+
+            <h1 id="hero-title" class="text-4xl sm:text-6xl lg:text-7xl font-serif tracking-tight text-white leading-[1.1]" dir="rtl">وَهَٰذَا صِرَٰطُ رَبِّكَ مُسْتَقِيمًۭا<br>
+                <span class="gradient-text italic font-normal text-xl sm:text-2xl lg:text-3xl block mt-2" dir="ltr">Through Elite Engineering</span>
+            </h1>
+            
+            <p data-i18n="hero-desc" class="max-w-3xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed font-light">
+                Applying 15+ years of software architecture and database design honed in international banking systems to deploy transparent, unassailable public solutions.
+            </p>
+          
+            <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#haqq-musalli" data-i18n="hero-btn-alpha" class="w-full sm:w-auto bg-gradient-to-r from-gold-500 to-gold-400 text-slate-950 px-8 py-4 rounded-xl font-medium tracking-wide shadow-xl shadow-gold-500/10 hover:scale-[1.01] transition-all duration-300 text-center text-sm font-semibold uppercase tracking-wider">
+                    Haqq Musalli Dashboard
+                </a>
+                <a href="#bayt-al-hikmah" data-i18n="hero-btn-beta" class="w-full sm:w-auto bg-white/5 border border-white/10 hover:border-white/20 px-8 py-4 rounded-xl font-medium tracking-wide hover:bg-white/10 transition-all duration-300 text-center text-sm font-semibold uppercase tracking-wider text-slate-300">
+                    Bayt Al Hikmah Engine
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="philosophy" class="py-24 border-t border-white/5 bg-slate-950/40 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-5 sticky top-[72px] lg:top-32 bg-slate-950/90 lg:bg-transparent py-4 lg:py-0 h-full space-y-4 z-20 self-start backdrop-blur-sm lg:backdrop-blur-none">
+                    <span data-i18n="phil-tag" class="text-xs font-bold tracking-widest text-gold-400 uppercase block">The Blueprint Shift</span>
+                    <h2 data-i18n="phil-title" class="text-3xl sm:text-4xl font-serif text-white tracking-tight leading-tight">
+                        Accumulated Wisdom Redirected
+                    </h2>
+                    <div class="h-[1px] w-16 bg-gold-400/50"></div>
+                </div>
+                <div class="lg:col-span-7 space-y-6 text-slate-400 font-light text-base leading-relaxed pt-2">
+                    <blockquote data-i18n="phil-quote" class="border-l border-gold-400/40 pl-6 italic text-white/90 font-serif text-lg my-4 bg-white/[0.01] py-4 pr-4 rounded-r-lg">
+                        "It takes a great deal of self-reflection to look at a successful, elite-level career and decide that the ultimate destination for that accumulated wisdom is service to the Divine and the community."
+                    </blockquote>
+                    <p data-i18n="phil-p1">
+                        When traditional localized management structures fall short of matching the institutional dignity a sanctuary deserves, real change isn't made through complaints—it is written in production-grade code.
+                    </p>
+                    <p data-i18n="phil-p2">
+                        This platform hosts live, undeniably transparent technological infrastructure frameworks, rendering obsolete the inefficient processes of legacy setups.
+                    </p>
+                    
+                    <div class="pt-4 flex flex-wrap gap-4 items-center">
+                        <a href="saddahaqq-movingbeyond.html" class="text-gold-400 hover:text-white underline text-sm transition-colors duration-300">
+                            Moving Beyond the Filtered View
+                        </a>
+                        <button onclick="toggleCampaignManifesto()" class="text-xs font-mono border border-gold-400/30 bg-gold-400/5 text-gold-400 px-4 py-2 rounded-lg hover:bg-gold-400 hover:text-slate-950 transition-all duration-300 flex items-center gap-2">
+                            <i class="fa-solid fa-eye" id="toggle-manifesto-icon"></i> 
+                            <span id="toggle-manifesto-text">Show Campaign Manifesto</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="campaign-manifesto-container" class="hidden mt-16 space-y-12 pt-12 border-t border-white/5 dynamic-content-wrapper transition-all duration-500">
+                
+                <div class="w-full bg-gradient-to-br from-slate-900 via-slate-950 to-gold-950/20 rounded-2xl border border-white/5 p-6 sm:p-12 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                    <div class="z-10 mb-8">
+                        <span class="text-gold-400 text-xs sm:text-sm font-semibold uppercase tracking-wider block mb-3">A Sincere Candidacy for Executive Administration</span>
+                        <h3 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+                            Moving Beyond the <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-300">Filtered View</span> of Community Service
+                        </h3>
+                        <div class="w-20 h-1 bg-gold-500 mt-6 rounded-full"></div>
+                    </div>
+                    <div class="z-10 pt-6 border-t border-white/5">
+                        <p class="text-base sm:text-lg font-medium text-slate-200">A Vision of Pure Stewardship & Accountability</p>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">Built upon radical trust, transparency, and submission to the Divine Decree</p>
+                    </div>
+                </div>
+
+                <div class="w-full bg-white/[0.01] rounded-2xl border border-white/5 p-6 sm:p-12 shadow-2xl">
+                    <span class="text-amber-400 text-xs font-mono uppercase tracking-widest block mb-2">The Spiritual Reality</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-6">Everything We Know is Filtered</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-black/40 p-5 rounded-xl border border-white/5 border-l-4 border-l-rose-500">
+                            <h4 class="text-base font-semibold text-rose-300 mb-2">The Human Filter</h4>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed font-light">
+                                We look at our daily lives, our trials, and our ambitions through narrow filters. We judge our state solely by material change, panic during adversity, and attribute success to our own cleverness.
+                            </p>
+                        </div>
+                        <div class="bg-black/40 p-5 rounded-xl border border-white/5 border-l-4 border-l-gold-500">
+                            <h4 class="text-base font-semibold text-gold-400 mb-2">The Reality of the Ayat (Signs)</h4>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed font-light">
+                                Allah introduces Himself directly through His signs in the universe. When we peel back personal desires, we see that true success isn't just changing our material conditions, but waking our hearts to witness the blessings right in front of us.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full bg-white/[0.01] rounded-2xl border border-white/5 p-6 sm:p-12 shadow-2xl">
+                    <span class="text-gold-400 text-xs font-mono uppercase tracking-widest block mb-2">The Conceptual Shift</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-4">A Matrix of True Belief</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mb-6 font-light">Moving away from treating faith and community service like a transactional arrangement, and stepping into complete transformation.</p>
+                    <div class="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
+                        <table class="w-full text-left border-collapse min-w-[500px]">
+                            <thead>
+                                <tr class="border-b border-white/5 text-[11px] font-mono text-gold-400 uppercase tracking-wider">
+                                    <th class="pb-3 pr-4 w-1/4">Dimension</th>
+                                    <th class="pb-3 px-4 bg-black/20 rounded-t-lg text-rose-400 w-3/8">Transactional Mindset</th>
+                                    <th class="pb-3 pl-4 bg-white/5 rounded-t-lg w-3/8">Transformational Submission</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-xs sm:text-sm divide-y divide-white/5">
+                                <tr>
+                                    <td class="py-4 pr-4 font-medium text-slate-300">Worship & Deen</td>
+                                    <td class="py-4 px-4 text-slate-400 bg-black/10 font-light">"I do good deeds solely as a tool to secure wealth, pass exams, and fix my Dunya."</td>
+                                    <td class="py-4 pl-4 font-medium text-gold-100 bg-white/[0.02] font-light">"I serve because He is worthy of service, accepting whatever reality is decreed."</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 pr-4 font-medium text-slate-300">Community Focus</td>
+                                    <td class="py-4 px-4 text-slate-400 bg-black/10 font-light">Demanding immediate personal credit, focus on outward validation and politics.</td>
+                                    <td class="py-4 pl-4 font-medium text-gold-100 bg-white/[0.02] font-light">Recognizing that the community's success is a visible blessing from Allah to protect.</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 pr-4 font-medium text-slate-300">Core Driver</td>
+                                    <td class="py-4 px-4 text-slate-400 bg-black/10 text-xs italic text-rose-400/80 font-light">"What can I get out of this role?"</td>
+                                    <td class="py-4 pl-4 font-medium text-amber-300 bg-white/[0.02] text-xs italic font-light">"How can I submit my skills to protect this trust?"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="w-full bg-white/[0.01] rounded-2xl border border-white/5 p-6 sm:p-12 shadow-2xl">
+                    <span class="text-amber-400 text-xs font-mono uppercase tracking-widest block mb-2">Our Blueprint</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-2">The Radical Taslim of Ibrahim ('Alayhi as-Salam)</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mb-6 font-light">He did not negotiate with worldly logic. He submitted completely, proving that ultimate safety lies in Divine Obedience.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-black/40 p-5 rounded-xl border border-white/5 hover:border-gold-400/30 transition duration-300">
+                            <div class="w-8 h-8 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-bold text-sm mb-3">01</div>
+                            <h4 class="text-white font-semibold text-sm sm:text-base mb-1">His Body</h4>
+                            <p class="text-slate-400 text-xs leading-relaxed font-light">Stepped directly into the blazing fire, entirely reliant on the perfect protection of Allah.</p>
+                        </div>
+                        <div class="bg-black/40 p-5 rounded-xl border border-white/5 hover:border-gold-400/30 transition duration-300">
+                            <div class="w-8 h-8 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-bold text-sm mb-3">02</div>
+                            <h4 class="text-white font-semibold text-sm sm:text-base mb-1">His Son</h4>
+                            <p class="text-slate-400 text-xs leading-relaxed font-light">Laid down his ultimate joy, trusting the command of the Creator over deep parental instinct.</p>
+                        </div>
+                        <div class="bg-black/40 p-5 rounded-xl border border-white/5 hover:border-gold-400/30 transition duration-300">
+                            <div class="w-8 h-8 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-bold text-sm mb-3">03</div>
+                            <h4 class="text-white font-semibold text-sm sm:text-base mb-1">His Wealth</h4>
+                            <p class="text-slate-400 text-xs leading-relaxed font-light">Refused to ever eat alone. Shared all provisions instantly with the traveler and guest.</p>
+                        </div>
+                        <div class="bg-black/40 p-5 rounded-xl border border-white/5 hover:border-gold-400/30 transition duration-300">
+                            <div class="w-8 h-8 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-bold text-sm mb-3">04</div>
+                            <h4 class="text-white font-semibold text-sm sm:text-base mb-1">His Family</h4>
+                            <p class="text-slate-400 text-xs leading-relaxed font-light">Left his loved ones in a completely barren desert, leading directly to the miracle of Zamzam.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full bg-gradient-to-r from-slate-950 to-black rounded-2xl border border-white/5 p-6 sm:p-12 shadow-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+                        <div class="md:col-span-3">
+                            <span class="text-gold-400 text-xs font-mono uppercase tracking-widest block mb-2">The Executive Mission</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-4">Act in the "Now": Competence Meets Humility</h3>
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 font-light">
+                                Anxiety belongs to the unknown future, and regret belongs to the past. Spiritual logic dictates that <strong class="text-gold-400">Qadr unfolds right now</strong>. The present moment demands an honest, unselfish administrative response.
+                            </p>
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-light">
+                                I am offering my professional IT, data, and structured corporate background to serve as an administrator for our community organization. Not to chase temporary status or alter your pre-decreed success, but to simply fulfill the duty of sincere stewardship.
+                            </p>
+                            <div class="border-l-2 border-gold-400 pl-4 py-1 italic text-xs text-amber-300/90 max-w-md font-light">
+                                "The success of our brothers and families in Riche-Mare is clearly visible; we step forward simply to protect it with absolute transparency."
+                            </div>
+                        </div>
+                        <div class="md:col-span-2 space-y-3 pt-4 md:pt-0">
+                            <div class="bg-black/40 p-4 rounded-xl border border-white/5 flex items-start gap-3">
+                                <span class="text-gold-400 font-bold text-sm">✓</span>
+                                <div>
+                                    <h5 class="text-white text-xs font-semibold uppercase tracking-wider">Clean Administration</h5>
+                                    <p class="text-slate-400 text-xs font-light mt-0.5">Bringing structured data governance and professional accountability to our local initiatives.</p>
+                                </div>
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-xl border border-white/5 flex items-start gap-3">
+                                <span class="text-gold-400 font-bold text-sm">✓</span>
+                                <div>
+                                    <h5 class="text-white text-xs font-semibold uppercase tracking-wider">Open Resource Policy</h5>
+                                    <p class="text-slate-400 text-xs font-light mt-0.5">Ensuring community assets serve the vulnerable, honoring the baseline hospitality of Ibrahim.</p>
+                                </div>
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-xl border border-white/5 flex items-start gap-3">
+                                <span class="text-gold-400 font-bold text-sm">✓</span>
+                                <div>
+                                    <h5 class="text-white text-xs font-semibold uppercase tracking-wider">No Personal Narratives</h5>
+                                    <p class="text-slate-400 text-xs font-light mt-0.5">Stepping away from typical political vanity; working behind the scenes so the community shines.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="haqq-musalli" class="py-24 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-5 sticky top-[72px] lg:top-32 bg-slate-950/90 lg:bg-transparent py-4 lg:py-0 h-full space-y-4 z-20 self-start backdrop-blur-sm lg:backdrop-blur-none">
+                    <span data-i18n="haqq-tag" class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Framework Alpha</span>
+                    <h2 data-i18n="haqq-title" class="text-3xl sm:text-4xl font-serif text-white tracking-tight leading-tight">Project Haqq Musalli</h2>
+                    <div class="h-[1px] w-16 bg-gold-400/50"></div>
+                    <p data-i18n="haqq-desc-lg" class="text-slate-400 font-light text-sm max-w-sm hidden lg:block">
+                        Open Digital Governance framework engineered with PostgreSQL and Supabase backends. Absolute transparency for regional community structures.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 pt-2">
+                    <p data-i18n="haqq-desc-sm" class="text-slate-400 font-light text-sm lg:hidden mb-4">
+                        Open Digital Governance framework engineered with PostgreSQL and Supabase backends. Absolute transparency for regional community structures.
+                    </p>
+
+                    <div class="premium-card rounded-2xl p-6 space-y-6">
+                        <div class="flex justify-between items-center">
+                            <div class="w-10 h-10 rounded-lg bg-gold-400/5 border border-gold-400/20 flex items-center justify-center text-gold-400 text-lg">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                            <span data-i18n="ledger-badge" class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Live Audit</span>
+                        </div>
+                        <div>
+                            <h3 data-i18n="ledger-title" class="text-lg font-serif text-white mb-2">Cryptographic Financial Ledger</h3>
+                            <p data-i18n="ledger-desc" class="text-slate-400 font-light text-xs leading-relaxed">
+                                A public, tamper-proof system mapping allocations matching global banking compliance models.
+                            </p>
+                        </div>
+                        <div class="bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-[11px] text-slate-400 space-y-2">
+                            <div class="flex justify-between text-slate-500 border-b border-white/5 pb-1">
+                                <span data-i18n="ledger-th1">Allocation</span>
+                                <span data-i18n="ledger-th2">Audit Signature</span>
+                            </div>
+                            <div class="flex justify-between text-white/90">
+                                <span data-i18n="ledger-td1">Sanctuary Logistics</span>
+                                <span class="text-gold-400 font-bold">0x7F9B...4A</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card rounded-2xl p-6 space-y-6">
+                        <div class="flex justify-between items-center">
+                            <div class="w-10 h-10 rounded-lg bg-gold-400/5 border border-gold-400/20 flex items-center justify-center text-gold-400 text-lg">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <span data-i18n="manifesto-badge" class="text-[10px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Direct Stream</span>
+                        </div>
+                        <div>
+                            <h3 data-i18n="manifesto-title" class="text-lg font-serif text-white mb-2">Manifestos & Direct Campaigns</h3>
+                            <p data-i18n="manifesto-desc" class="text-slate-400 font-light text-xs leading-relaxed">
+                                Bypassing administrative gatekeepers to stream strategic operational plans directly into mobile loops.
+                            </p>
+                        </div>
+                        <div class="bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-[11px] text-slate-400 space-y-2">
+                            <div class="text-slate-300" data-i18n="manifesto-update">Manifesto v2026.06 Update</div>
+                            <div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-gold-400 h-full w-[85%]"></div>
+                            </div>
+                            <div id="manifesto-penetration" class="text-[9px] text-slate-500 text-right">85% Community Penetration</div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card rounded-2xl p-6 space-y-6">
+                        <div class="flex justify-between items-center">
+                            <div class="w-10 h-10 rounded-lg bg-gold-400/5 border border-gold-400/20 flex items-center justify-center text-gold-400 text-lg">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <span data-i18n="logistics-badge" class="text-[10px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Precision Matrix</span>
+                        </div>
+                        <div>
+                            <h3 data-i18n="logistics-title" class="text-lg font-serif text-white mb-2">Asset Allocation Analytics</h3>
+                            <p data-i18n="logistics-desc" class="text-slate-400 font-light text-xs leading-relaxed">
+                                Replacing loose paperwork with granular data loops tracking resources, upkeep parameters, and timelines.
+                            </p>
+                        </div>
+                        <div class="bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-[11px] text-slate-400 flex items-center justify-between">
+                            <span data-i18n="logistics-reg">Resource Registry</span>
+                            <span data-i18n="logistics-opt" class="text-emerald-400 bg-emerald-500/5 px-2 py-0.5 rounded border border-emerald-500/10 text-[10px]">Optimized</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="bayt-al-hikmah" class="py-24 border-t border-white/5 bg-slate-900/20 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-5 sticky top-[72px] lg:top-32 bg-slate-950/90 lg:bg-transparent py-4 lg:py-0 h-full space-y-4 z-20 self-start backdrop-blur-sm lg:backdrop-blur-none">
+                    <span data-i18n="bayt-tag" class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Framework Beta</span>
+                    <h2 data-i18n="bayt-title" class="text-3xl sm:text-4xl font-serif text-white tracking-tight leading-tight">Bayt Al Hikmah Engine</h2>
+                    <div class="h-[1px] w-16 bg-gold-400/50"></div>
+                    <p data-i18n="bayt-desc-lg" class="text-slate-400 font-light text-sm max-w-sm hidden lg:block">
+                        Reviving the intersection of high structural science and divine tradition via modular, user-interactive visual applications.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 pt-2">
+                    <p data-i18n="bayt-desc-sm" class="text-slate-400 font-light text-sm lg:hidden mb-4">
+                        Reviving the intersection of high structural science and divine tradition via modular, user-interactive visual applications.
+                    </p>
+
+                    <div class="premium-card rounded-2xl p-8 space-y-4">
+                        <span data-i18n="m1-tag" class="text-[10px] font-mono text-gold-400/70 uppercase tracking-widest block">Module 01 // Computational Linguistics</span>
+                        <h3 data-i18n="m1-title" class="text-xl font-serif text-white">Root-and-Pattern Matrices</h3>
+                        <p data-i18n="m1-desc" class="text-slate-400 font-light text-xs leading-relaxed">
+                            An interactive textual framework rendering algorithmic root analyses and morphologic shifts within historical texts. Clean structural visualization blocks map exact prefixes, suffixes, and core paradigms.
+                        </p>
+                        <div class="pt-2">
+                            <button onclick="toggleSandboxMatrix()" class="text-xs font-mono border border-gold-400/30 bg-gold-400/5 text-gold-400 px-4 py-2 rounded-lg hover:bg-gold-400 hover:text-slate-950 transition-all duration-300">
+                                <i class="fa-solid fa-eye-slash mr-1" id="toggle-matrix-icon"></i> <span id="toggle-matrix-text">Hide Live Sandbox Matrix</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="live-sandbox-matrix-container" class="mt-12 bg-slate-900/60 border border-white/5 rounded-2xl p-6 lg:p-8 backdrop-blur-md transition-all duration-300">
+                        <div class="mb-6 flex items-center justify-between border-b border-white/5 pb-4">
+                            <div>
+                                <h4 class="text-sm font-mono tracking-widest text-gold-400 uppercase">// Live Sandbox Matrix</h4>
+                                <h3 class="text-xl font-serif text-white">Root & Pattern Interactive Engine</h3>
+                            </div>
+                            <span class="text-[10px] font-mono bg-gold-400/10 text-gold-400 border border-gold-400/20 px-2.5 py-1 rounded-md uppercase tracking-wider">
+                                Bayt Al Hikmah v1.0
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="space-y-3">
+                                <label class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">1. Select Core Radical Root</label>
+                                <div class="grid grid-cols-1 gap-2">
+                                    <button onclick="selectRoot('ك-ت-ب', 'Concepts of Writing', this)" class="root-btn w-full text-left bg-white/[0.02] hover:bg-gold-400/5 border border-white/10 hover:border-gold-400/40 p-3.5 rounded-xl transition-all flex justify-between items-center group">
+                                        <span class="font-serif text-lg text-white group-hover:text-gold-400 tracking-wider">ك - ت - ب</span>
+                                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">k-t-b</span>
+                                    </button>
+                                    <button onclick="selectRoot('ع-ل-م', 'Concepts of Knowledge', this)" class="root-btn w-full text-left bg-white/[0.02] hover:bg-gold-400/5 border border-white/10 hover:border-gold-400/40 p-3.5 rounded-xl transition-all flex justify-between items-center group">
+                                        <span class="font-serif text-lg text-white group-hover:text-gold-400 tracking-wider">ع - ل - م</span>
+                                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">ʿ-l-m</span>
+                                    </button>
+                                    <button onclick="selectRoot('ح-ك-م', 'Concepts of Wisdom/Governance', this)" class="root-btn w-full text-left bg-white/[0.02] hover:bg-gold-400/5 border border-white/10 hover:border-gold-400/40 p-3.5 rounded-xl transition-all flex justify-between items-center group">
+                                        <span class="font-serif text-lg text-white group-hover:text-gold-400 tracking-wider">ح - ك - م</span>
+                                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">ḥ-k-m</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">2. Select Pattern Template (Wazn)</label>
+                                <div class="grid grid-cols-1 gap-2">
+                                    <button onclick="selectPattern('Faʿil', 'Active Agent / Actor', this)" class="pattern-btn w-full text-left bg-white/[0.02] hover:bg-gold-400/5 border border-white/10 hover:border-gold-400/40 p-3.5 rounded-xl transition-all flex justify-between items-center group">
+                                        <span class="font-serif text-base text-white group-hover:text-gold-400">فَاعِل (Fāʿil)</span>
+                                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">The Doer</span>
+                                    </button>
+                                    <button onclick="selectPattern('Mafʿul', 'Passive Object', this)" class="pattern-btn w-full text-left bg-white/[0.02] hover:bg-gold-400/5 border border-white/10 hover:border-gold-400/40 p-3.5 rounded-xl transition-all flex justify-between items-center group">
+                                        <span class="font-serif text-base text-white group-hover:text-gold-400">مَفْعُول (Mafʿūl)</span>
+                                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">The Object</span>
+                                    </button>
+                                    <button onclick="selectPattern('Maʿfal', 'Place/Location of Action', this)" class="pattern-btn w-full text-left bg-white/[0.02] hover:bg-gold-400/5 border border-white/10 hover:border-gold-400/40 p-3.5 rounded-xl transition-all flex justify-between items-center group">
+                                        <span class="font-serif text-base text-white group-hover:text-gold-400">مَفْعَل (Mafʿal)</span>
+                                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">The Place</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="bg-black/50 border border-white/10 rounded-xl p-5 flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-[9px] font-mono tracking-widest text-slate-500 uppercase block">3. Generated Output Field</span>
+                                    <div class="h-px bg-white/5 my-2"></div>
+                                    <div class="text-[11px] font-mono text-slate-400 space-y-1">
+                                        <div>Active Root: <span id="out-root" class="text-white">—</span></div>
+                                        <div>Active Pattern: <span id="out-pattern" class="text-white">—</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center py-4 bg-white/[0.01] border border-white/5 rounded-lg">
+                                    <div id="matrix-word-output" class="text-3xl lg:text-4xl font-serif text-gold-400 tracking-wide select-all min-h-[40px]">—</div>
+                                    <div id="matrix-translation-output" class="text-xs font-light text-slate-400 mt-1 italic">—</div>
+                                </div>
+
+                                <div class="text-[9px] font-mono text-slate-500 leading-snug">
+                                    <i class="fa-solid fa-microchip text-gold-400/50 mr-1"></i> Algorithmic interpolation processing structural semantics.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card rounded-2xl p-8 space-y-4">
+                        <span data-i18n="m2-tag" class="text-[10px] font-mono text-gold-400/70 uppercase tracking-widest block">Module 02 // Strategic Mapping</span>
+                        <h3 data-i18n="m2-title" class="text-xl font-serif text-white">Interactive Geographic Graphs</h3>
+                        <p data-i18n="m2-desc" class="text-slate-400 font-light text-xs leading-relaxed">
+                            A complete administrative spatial grid modeling regional boundaries, infrastructural hubs, and public facility demographics with infinite real-time database filtering.
+                        </p>
+                        <div class="pt-2">
+                            <span class="inline-flex items-center text-xs font-mono text-gold-400 bg-gold-400/10 border border-gold-400/20 px-3 py-1.5 rounded-lg">
+                                <i class="fa-solid fa-code-branch mr-1.5"></i> Node Mapping Module Compilation Active
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="legacy" class="py-24 border-t border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(212,175,55,0.02),transparent_40%)]"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+            
+            <div class="max-w-3xl space-y-4">
+                <span data-i18n="legacy-tag" class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Historical Track Record</span>
+                <h2 data-i18n="legacy-title" class="text-3xl sm:text-4xl font-serif text-white tracking-tight leading-tight">
+                    Systems Architecture Credentials
+                </h2>
+                <div class="h-[1px] w-16 bg-gold-400/50"></div>
+                <p data-i18n="legacy-desc" class="text-slate-400 font-light text-base leading-relaxed">
+                    Honing institutional deployment methodologies inside financial systems before repurposing core patterns for public infrastructure integrity.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="premium-card rounded-2xl p-8 space-y-4">
+                    <div class="text-3xl font-serif text-gold-400">15+ <span class="text-xs font-mono text-slate-500 uppercase tracking-wider block mt-1">Years</span></div>
+                    <h3 data-i18n="l1-title" class="text-lg font-serif text-white font-medium">Enterprise Software Engineering</h3>
+                    <p data-i18n="l1-desc" class="text-slate-400 font-light text-xs leading-relaxed">
+                        Leading microservice orchestrations and core API layers handling complex state operations at massive scales.
+                    </p>
+                </div>
+
+                <div class="premium-card rounded-2xl p-8 space-y-4">
+                    <div class="text-3xl font-serif text-gold-400">Banking <span class="text-xs font-mono text-slate-500 uppercase tracking-wider block mt-1">Sectors</span></div>
+                    <h3 data-i18n="l2-title" class="text-lg font-serif text-white font-medium">International Financial Systems</h3>
+                    <p data-i18n="l2-desc" class="text-slate-400 font-light text-xs leading-relaxed">
+                        Building bulletproof transactional ledger pipelines compliant with strict international auditing standards.
+                    </p>
+                </div>
+
+                <div class="premium-card rounded-2xl p-8 space-y-4">
+                    <div class="text-3xl font-serif text-gold-400">100% <span class="text-xs font-mono text-slate-500 uppercase tracking-wider block mt-1">Open Source</span></div>
+                    <h3 data-i18n="l3-title" class="text-lg font-serif text-white font-medium">Public Domain Commitment</h3>
+                    <p data-i18n="l3-desc" class="text-slate-400 font-light text-xs leading-relaxed">
+                        Ensuring all written codebases are entirely auditable, secure, and accessible to the public without friction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry-console" class="py-24 border-t border-white/5 bg-slate-900/10 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span data-i18n="form-tag" class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Secure API Endpoint</span>
+                <h2 data-i18n="form-title" class="text-3xl font-serif text-white tracking-tight">Inquiry Transmission Console</h2>
+                <p data-i18n="form-desc" class="text-slate-400 font-light text-xs sm:text-sm">
+                    Establish communication strings directly with the systems administrator network node. Logs process via encrypted datastores.
+                </p>
+            </div>
+
+            <div id="pipeline-success-banner" class="hidden mb-6 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-xl p-4 text-xs font-mono flex items-center">
+                <i class="fa-solid fa-circle-check mr-2 text-sm"></i> Transmission Complete. Entry integrated into public processing ledger pools.
+            </div>
+            <div id="pipeline-error-banner" class="hidden mb-6 bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-xl p-4 text-xs font-mono flex items-center">
+                <i class="fa-solid fa-triangle-exclamation mr-2 text-sm"></i> Pipeline Transmission Interrupted. Check connection streams or switch parameters.
+            </div>
+
+            <form id="secure-contact-form" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label data-i18n="label-name" class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Identifier / Name</label>
+                        <input type="text" id="form-input-name" required class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-gold-400/60 font-sans transition-colors">
+                    </div>
+                    <div class="space-y-2">
+                        <label data-i18n="label-email" class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Routing Vector / Email Address</label>
+                        <input type="email" id="form-input-email" required class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-gold-400/60 font-mono transition-colors">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label data-i18n="label-vector" class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Target Sector Allocation</label>
+                    <select id="form-input-vector" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-slate-300 focus:outline-none focus:border-gold-400/60 font-sans cursor-pointer transition-colors">
+                        <option value="digital-governance">Project Alpha // Open Digital Governance Framework</option>
+                        <option value="computational-linguistics">Project Beta // Computational Linguistics Engine</option>
+                        <option value="general-stewardship">Administrative Oversight & Pure Stewardship Systems</option>
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label data-i18n="label-payload" class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">Transmission Payload / Message</label>
+                    <textarea id="form-input-message" rows="5" required class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-gold-400/60 font-sans transition-colors resize-none"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" id="pipeline-submit-btn" class="w-full bg-white/5 hover:bg-gold-400 border border-gold-400/40 hover:border-gold-400 text-gold-400 hover:text-slate-950 py-4 rounded-xl text-xs font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center space-x-2">
+                        <span>Transmit Message Node</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer dir="ltr" class="py-12 border-t border-white/5 text-center text-xs font-mono text-slate-600 space-y-2">
+        <div>SADDA.HAQQ Architecture Ecosystem &bull; Compiled v2026.06</div>
+        <div data-i18n="footer-credit" class="text-[10px] text-slate-700">Engineered with extreme precision for absolute transparency and community dignity.</div>
+    </footer>
+
+    <script>
+        // Sandbox Computational Linguistics Fallback Dataset Matrix
+        let activeRoot = null;
+        let activePattern = null;
+
+        const lexicalMatrix = {
+            'ك-ت-ب': {
+                'Faʿil': { word: 'كَاتِب', meaning: 'Writer / Author / Scribe' },
+                'Mafʿul': { word: 'مَكْتُوب', meaning: 'Written / Destiny / Letter' },
+                'Maʿfal': { word: 'مَكْتَب', meaning: 'Office / Desk / Study' }
+            },
+            'ع-ل-م': {
+                'Faʿil': { word: 'عَالِم', meaning: 'Scholar / Scientist / One who knows' },
+                'Mafʿul': { word: 'مَعْلُوم', meaning: 'Known / Certain / Fixed Information' },
+                'Maʿfal': { word: 'مَعْلَم', meaning: 'Landmark / Sign / Monument' }
+            },
+            'ح-ك-م': {
+                'Faʿil': { word: 'حَاكِم', meaning: 'Ruler / Judge / Governor' },
+                'Mafʿul': { word: 'مَحْكُوم', meaning: 'Ruled / Sentenced / Governed' },
+                'Maʿfal': { word: 'مَحْكَمَة', meaning: 'Court of Law / Place of Judgement' }
+            }
+        };
+
+        function selectRoot(rootKey, semanticField, element) {
+            activeRoot = rootKey;
+            document.querySelectorAll('.root-btn').forEach(btn => btn.classList.remove('border-gold-400', 'bg-gold-400/5'));
+            element.classList.add('border-gold-400', 'bg-gold-400/5');
+            document.getElementById('out-root').innerText = `${rootKey} (${semanticField})`;
+            evaluateMatrixEngine();
+        }
+
+        function selectPattern(patternKey, patternMeaning, element) {
+            activePattern = patternKey;
+            document.querySelectorAll('.pattern-btn').forEach(btn => btn.classList.remove('border-gold-400', 'bg-gold-400/5'));
+            element.classList.add('border-gold-400', 'bg-gold-400/5');
+            document.getElementById('out-pattern').innerText = `${patternKey} (${patternMeaning})`;
+            evaluateMatrixEngine();
+        }
+
+        function evaluateMatrixEngine() {
+            if (!activeRoot || !activePattern) return;
+            const outputWordBox = document.getElementById('matrix-word-output');
+            const outputTranslationBox = document.getElementById('matrix-translation-output');
+            
+            outputWordBox.classList.add('animate-pulse');
+            setTimeout(() => {
+                const definition = lexicalMatrix[activeRoot]?.[activePattern];
+                if (definition) {
+                    outputWordBox.innerText = definition.word;
+                    outputTranslationBox.innerText = definition.meaning;
+                } else {
+                    outputWordBox.innerText = '—';
+                    outputTranslationBox.innerText = 'Formula Error';
+                }
+                outputWordBox.classList.remove('animate-pulse');
+            }, 150);
+        }
+
+        function toggleSandboxMatrix() {
+            const matrixContainer = document.getElementById('live-sandbox-matrix-container');
+            const toggleIcon = document.getElementById('toggle-matrix-icon');
+            const toggleText = document.getElementById('toggle-matrix-text');
+            if (matrixContainer.classList.contains('hidden')) {
+                matrixContainer.classList.remove('hidden');
+                toggleIcon.classList.replace('fa-eye', 'fa-eye-slash');
+                toggleText.innerText = 'Hide Live Sandbox Matrix';
+            } else {
+                matrixContainer.classList.add('hidden');
+                toggleIcon.classList.replace('fa-eye-slash', 'fa-eye');
+                toggleText.innerText = 'Show Live Sandbox Matrix';
+            }
+        }
+
+        // Dedicated Controller Logic for the Campaign Manifesto Sub-Interface
+        function toggleCampaignManifesto() {
+            const manifestoContainer = document.getElementById('campaign-manifesto-container');
+            const toggleIcon = document.getElementById('toggle-manifesto-icon');
+            const toggleText = document.getElementById('toggle-manifesto-text');
+            
+            if (manifestoContainer.classList.contains('hidden')) {
+                manifestoContainer.classList.remove('hidden');
+                toggleIcon.classList.replace('fa-eye', 'fa-eye-slash');
+                toggleText.innerText = 'Hide Campaign Manifesto';
+            } else {
+                manifestoContainer.classList.add('hidden');
+                toggleIcon.classList.replace('fa-eye-slash', 'fa-eye');
+                toggleText.innerText = 'Show Campaign Manifesto';
+            }
+        }
+
+        // Comprehensive Multilingual Translation Lookups
+        const translations = {
+            en: {
+                "nav-philosophy": "Philosophy", "nav-haqq": "Haqq Musalli", "nav-bayt": "Bayt Al Hikmah", "nav-legacy": "Legacy", "nav-console": "Inquiry Console",
+                "hero-tag": "The Straight Path • Live Ecosystem Proof-of-Concepts",
+                "hero-desc": "Applying 15+ years of software architecture and database design honed in international banking systems to deploy transparent, unassailable public solutions.",
+                "hero-btn-alpha": "Haqq Musalli Dashboard", "hero-btn-beta": "Bayt Al Hikmah Engine",
+                "phil-tag": "The Blueprint Shift", "phil-title": "Accumulated Wisdom Redirected",
+                "phil-quote": "\"It takes a great deal of self-reflection to look at a successful, elite-level career and decide that the ultimate destination for that accumulated wisdom is service to the Divine and the community.\"",
+                "phil-p1": "When traditional localized management structures fall short of matching the institutional dignity a sanctuary deserves, real change isn't made through complaints—it is written in production-grade code.",
+                "phil-p2": "This platform hosts live, undeniably transparent technological infrastructure frameworks, rendering obsolete the inefficient processes of legacy setups.",
+                "haqq-tag": "Framework Alpha", "haqq-title": "Project Haqq Musalli",
+                "haqq-desc-lg": "Open Digital Governance framework engineered with PostgreSQL and Supabase backends. Absolute transparency for regional community structures.",
+                "haqq-desc-sm": "Open Digital Governance framework engineered with PostgreSQL and Supabase backends. Absolute transparency for regional community structures.",
+                "ledger-badge": "Live Audit", "ledger-title": "Cryptographic Financial Ledger", "ledger-desc": "A public, tamper-proof system mapping allocations matching global banking compliance models.",
+                "ledger-th1": "Allocation", "ledger-th2": "Audit Signature", "ledger-td1": "Sanctuary Logistics",
+                "manifesto-badge": "Direct Stream", "manifesto-title": "Manifestos & Direct Campaigns", "manifesto-desc": "Bypassing administrative gatekeepers to stream strategic operational plans directly into mobile loops.",
+                "manifesto-update": "Manifesto v2026.06 Update", "logistics-badge": "Precision Matrix", "logistics-title": "Asset Allocation Analytics",
+                "logistics-desc": "Replacing loose paperwork with granular data loops tracking resources, upkeep parameters, and timelines.",
+                "logistics-reg": "Resource Registry", "logistics-opt": "Optimized",
+                "bayt-tag": "Framework Beta", "bayt-title": "Bayt Al Hikmah Engine",
+                "bayt-desc-lg": "Reviving the intersection of high structural science and divine tradition via modular, user-interactive visual applications.",
+                "bayt-desc-sm": "Reviving the intersection of high structural science and divine tradition via modular, user-interactive visual applications.",
+                "m1-tag": "Module 01 // Computational Linguistics", "m1-title": "Root-and-Pattern Matrices",
+                "m1-desc": "An interactive textual framework rendering algorithmic root analyses and morphologic shifts within historical texts. Clean structural visualization blocks map exact prefixes, suffixes, and core paradigms.",
+                "m2-tag": "Module 02 // Strategic Mapping", "m2-title": "Interactive Geographic Graphs",
+                "m2-desc": "A complete administrative spatial grid modeling regional boundaries, infrastructural hubs, and public facility demographics with infinite real-time database filtering.",
+                "legacy-tag": "Historical Track Record", "legacy-title": "Systems Architecture Credentials",
+                "legacy-desc": "Honing institutional deployment methodologies inside financial systems before repurposing core patterns for public infrastructure integrity.",
+                "l1-title": "Enterprise Software Engineering", "l1-desc": "Leading microservice orchestrations and core API layers handling complex state operations at massive scales.",
+                "l2-title": "International Financial Systems", "l2-desc": "Building bulletproof transactional ledger pipelines compliant with strict international auditing standards.",
+                "l3-title": "Public Domain Commitment", "l3-desc": "Ensuring all written codebases are entirely auditable, secure, and accessible to the public without friction.",
+                "form-tag": "Secure API Endpoint", "form-title": "Inquiry Transmission Console",
+                "form-desc": "Establish communication strings directly with the systems administrator network node. Logs process via encrypted datastores.",
+                "label-name": "Identifier / Name", "label-email": "Routing Vector / Email Address", "label-vector": "Target Sector Allocation", "label-payload": "Transmission Payload / Message",
+                "footer-credit": "Engineered with extreme precision for absolute transparency and community dignity."
+            },
+            ar: {
+                "nav-philosophy": "الفلسفة", "nav-haqq": "حق مصلي", "nav-bayt": "بيت الحكمة", "nav-legacy": "الإرث النظمي", "nav-console": "وحدة الاستفسار",
+                "hero-tag": "الصراط المستقيم • نماذج حية لإثبات المفهوم",
+                "hero-desc": "تطبيق أكثر من ١٥ عاماً من هندسة البرمجيات وتصميم قواعد البيانات المتقدمة في الأنظمة المصرفية الدولية لنشر حلول عامة شفافة ولا تقبل الجدال.",
+                "hero-btn-alpha": "لوحة حق مصلي", "hero-btn-beta": "محرك بيت الحكمة",
+                "phil-tag": "تحول المخطط الأساسي", "phil-title": "إعادة توجيه الحكمة المتراكمة",
+                "phil-quote": "«يتطلب الأمر قدراً كبيراً من التفكير الذاتي للنظر إلى مسيرة مهنية ناجحة على مستوى النخبة وتحديد أن الوجهة النهائية لتلك الحكمة المتراكمة هي خدمة الخالق والمجتمع».",
+                "phil-p1": "عندما تقصر الهياكل الإدارية المحلية التقليدية عن مطابقة الكرامة المؤسسية التي يستحقها الملاذ، فإن التغيير الحقيقي لا يأتي من الشكاوى، بل يُكتب في كود برمي جاهز للإنتاج.",
+                "phil-p2": "تستضيف هذه المنصة أطر عمل تكنولوجية حية وشفافة بشكل لا يمكن إنكاره، مما يلغي تماماً العمليات غير الفعالة للإعدادات القديمة.",
+                "haqq-tag": "النموذج ألفا", "haqq-title": "مشروع حق مصلي",
+                "haqq-desc-lg": "إطار الحوكمة الرقمية المفتوحة المصمم بقواعد بيانات PostgreSQL وSupabase. شفافية مطلقة للهياكل المجتمعية الإقليمية.",
+                "haqq-desc-sm": "إطار الحوكمة الرقمية المفتوحة المصمم بقواعد بيانات PostgreSQL وSupabase. شفافية مطلقة للهياكل المجتمعية الإقليمية.",
+                "ledger-badge": "تدقيق حي", "ledger-title": "الدفتر المالي المشفر", "ledger-desc": "نظام عام مقاوم للتلاعب يطابق نماذج الامتثال المصرفي العالمي.",
+                "ledger-th1": "التخصيص", "ledger-th2": "توقيع التدقيق", "ledger-td1": "لوجستيات الملاذ",
+                "manifesto-badge": "بث مباشر", "manifesto-title": "البيانات والحملات المباشرة", "manifesto-desc": "تجاوز الحواجز الإدارية لبث الخطط التشغيلية الإستراتيجية مباشرة إلى الأجهزة المحمولة.",
+                "manifesto-update": "تحديث البيان v2026.06", "logistics-badge": "مصفوفة الدقة", "logistics-title": "تحليلات تخصيص الأصول",
+                "logistics-desc": "استبدال المعاملات الورقية بحلقات بيانات دقيقة لتتبع الموارد ومعايير الصيانة والجداول الزمنية.",
+                "logistics-reg": "سجل الموارد", "logistics-opt": "مُحسَّن",
+                "bayt-tag": "النموذج بيتا", "bayt-title": "محرك بيت الحكمة",
+                "bayt-desc-lg": "إحياء التداخل بين العلوم البنيوية العالية والتقاليد الإلهية من خلال تطبيقات مرئية تفاعلية ومجزأة.",
+                "bayt-desc-sm": "إحياء التداخل بين العلوم البنيوية العالية والتقاليد الإلهية من خلال تطبيقات مرئية تفاعلية ومجزأة.",
+                "m1-tag": "الوحدة ٠١ // اللسانيات الحاسوبية", "m1-title": "مصفوفات الجذور والأوزان",
+                "m1-desc": "إطار نصي تفاعلي يقدم تحليلات جذورية خوارزمية وتحولات صرفية داخل النصوص التاريخية. مصفوفات مرئية واضحة تحدد السوابق واللواحق والنماذج الأساسية.",
+                "m2-tag": "الوحدة ٠٢ // الخرائط الإستراتيجية", "m2-title": "الرسوم البيانية الجغرافية التفاعلية",
+                "m2-desc": "شبكة مكانية إدارية كاملة لنمذجة الحدود الإقليمية، والمراكز البنيوية، والبيانات الديموغرافية للمرافق العامة مع تصفية البيانات في الوقت الفعلي.",
+                "legacy-tag": "سجل الإنجازات التاريخي", "legacy-title": "مؤهلات هندسة الأنظمة",
+                "legacy-desc": "صقل منهجيات النشر المؤسسي داخل الأنظمة المالية قبل إعادة استخدام الأنماط الأساسية لسلامة البنية التحتية العامة.",
+                "l1-title": "هندسة برمجيات المؤسسات", "l1-desc": "قيادة منصات الخدمات المصغرة وطبقات واجهة برمجة التطبيقات الأساسية التي تتعامل مع العمليات المعقدة على نطاق واسع.",
+                "l2-title": "الأنظمة المالية الدولية", "l2-desc": "بناء خطوط دفاتر معاملات مضادة للاختراق ومتوافقة مع معايير التدقيق الدولية الصارمة.",
+                "l3-title": "الالتزام بالمجال العام", "l3-desc": "ضمان أن تكون جميع الأكواد المكتوبة قابلة للتدقيق بالكامل وآمنة ويمكن للمجتمع الوصول إليها دون قيود.",
+                "form-tag": "نقطة نهاية واجهة برمجة التطبيقات الآمنة", "form-title": "콘솔 وحدة إرسال الاستفسارات",
+                "form-desc": "إنشاء قنوات اتصال مباشرة مع عقدة مسؤول الأنظمة. تُعالج السجلات عبر مخازن بيانات مشفرة.",
+                "label-name": "المعرف / الاسم", "label-email": "موجه الاتصال / البريد الإلكتروني", "label-vector": "تخصيص القطاع المستهدف", "label-payload": "حمولة الرسالة / النص",
+                "footer-credit": "تمت الهندسة بدقة متناهية من أجل الشفافية المطلقة وكرامة المجتمع."
+            },
+            fr: {
+                "nav-philosophy": "Philosophie", "nav-haqq": "Haqq Musalli", "nav-bayt": "Bayt Al Hikmah", "nav-legacy": "Héritage", "nav-console": "Console d'Enquête",
+                "hero-tag": "Le Droit Chemin • Preuves de Concept Live",
+                "hero-desc": "Déploiement de 15 ans d'expertise en architecture logicielle et bases de données bancaires internationales pour concevoir des solutions publiques inattaquables.",
+                "hero-btn-alpha": "Tableau Haqq Musalli", "hero-btn-beta": "Moteur Bayt Al Hikmah",
+                "phil-tag": "Mutation de Paradigme", "phil-title": "Sagesse Accumulée Redirigée",
+                "phil-quote": "\"Il faut énormément de recul pour analyser une carrière d'élite et décider de consacrer toute cette sagesse accumulée au service du Divin et de la communauté.\"",
+                "phil-p1": "Quand les gestions locales manquent de dignité institutionnelle, le vrai changement ne s'opère pas par des plaintes—il s'écrit directement en code de production.",
+                "phil-p2": "Cette plateforme héberge des infrastructures technologiques transparentes, rendant obsolètes les processus inefficaces des configurations traditionnelles.",
+                "haqq-tag": "Framework Alpha", "haqq-title": "Projet Haqq Musalli",
+                "haqq-desc-lg": "Gouvernance numérique ouverte propulsée par PostgreSQL et Supabase. Transparence absolue pour les structures régionales.",
+                "haqq-desc-sm": "Gouvernance numérique ouverte propulsée par PostgreSQL et Supabase. Transparence absolue pour les structures régionales.",
+                "ledger-badge": "Audit Live", "ledger-title": "Registre Financier Cryptographique", "ledger-desc": "Un système public inviolable calqué sur les modèles de conformité bancaire mondiaux.",
+                "ledger-th1": "Allocation", "ledger-th2": "Signature d'Audit", "ledger-td1": "Logistique du Sanctuaire",
+                "manifesto-badge": "Flux Direct", "manifesto-title": "Manifestes & Campagnes Directes", "manifesto-desc": "Contourner les intermédiaires pour diffuser des plans opérationnels stratégiques directement sur mobile.",
+                "manifesto-update": "Mise à jour Manifeste v2026.06", "logistics-badge": "Matrice de Précision", "logistics-title": "Analyse d'Allocation des Actifs",
+                "logistics-desc": "Remplacer les formalités administratives par des boucles de données granulaires pour suivre les ressources.",
+                "logistics-reg": "Registre des Ressources", "logistics-opt": "Optimisé",
+                "bayt-tag": "Framework Beta", "bayt-title": "Moteur Bayt Al Hikmah",
+                "bayt-desc-lg": "Faire revivre l'intersection entre haute science structurelle et tradition divine via des applications modulaires.",
+                "bayt-desc-sm": "Faire revivre l'intersection entre haute science structurelle et tradition divine via des applications modulaires.",
+                "m1-tag": "Module 01 // Linguistique Computationnelle", "m1-title": "Matrices Racines & Modèles",
+                "m1-desc": "Analyse textuelle algorithmique cartographiant les structures linguistiques complexes et les paradigmes morphologiques.",
+                "m2-tag": "Module 02 // Cartographie Stratégique", "m2-title": "Graphes Géographiques Interactifs",
+                "m2-desc": "Grille spatiale administrative modélisant les frontières régionales et infrastructures publiques en temps réel.",
+                "legacy-tag": "Parcours Historique", "legacy-title": "Qualifications en Architecture",
+                "legacy-desc": "Perfectionner les méthodologies de déploiement institutionnel bancaire avant de sécuriser l'intérêt public.",
+                "l1-title": "Ingénierie Logicielle d'Entreprise", "l1-desc": "Direction des architectures de microservices gérant des opérations d'état complexes à grande échelle.",
+                "l2-title": "Systèmes Financiers Internationaux", "l2-desc": "Construction de registres de transactions hautement sécurisés conformes aux normes internationales.",
+                "l3-title": "Engagement Public Dévolu", "l3-desc": "Garantir que toutes les bases de données écrites sont auditables, hautement sécurisées et libres d'accès.",
+                "form-tag": "Endpoint API Sécurisé", "form-title": "Console de Transmission d'Enquêtes",
+                "form-desc": "Établir un canal de communication direct avec le nœud administrateur. Données chiffrées au repos.",
+                "label-name": "Identifiant / Nom", "label-email": "Vecteur de Routage / Email", "label-vector": "Allocation du Secteur Cible", "label-payload": "Message / Contenu utile",
+                "footer-credit": "Développé avec une précision rigoureuse pour la transparence absolue et la dignité publique."
+            },
+            ur: {
+                "nav-philosophy": "فلسفہ", "nav-haqq": "حق مصلی", "nav-bayt": "بیت الحکمہ", "nav-legacy": "نظامی وراثت", "nav-console": "انکوائری کنسول",
+                "hero-tag": "صراطِ مستقیم • لائیو ایکو سسٹم تصوراتی ثبوت",
+                "hero-desc": "شفاف اور غیر متنازعہ عوامی حل تعینات کرنے کے لیے انٹرنیشنل بینکنگ سسٹمز میں حاصل کردہ 15 سالہ سافٹ ویئر آرکیٹیکچر کا استعمال۔",
+                "hero-btn-alpha": "حق مصلی ڈیش بورڈ", "hero-btn-beta": "بیت الحکمہ انجن",
+                "phil-tag": "بلو پرنٹ شفٹ", "phil-title": "جمع شدہ حکمت کا نیا رخ",
+                "phil-quote": "«ایک کامیاب، اشرافیہ کی سطح کے کیریئر کو دیکھنے اور یہ فیصلہ کرنے کے لیے بہت زیادہ خود عکاسی کی ضرورت ہوتی ہے کہ اس جمع شدہ حکمت کی آخری منزل خالق اور کمیونٹی کی خدمت ہے۔»",
+                "phil-p1": "جب روایتی مقامی انتظامی ڈھانچے اس ادارہ جاتی وقار سے میل کھانے میں ناکام ہو جاتے ہیں جس کا ایک مقدس گاہ حقدار ہے، تو حقیقی تبدیلی شکایات کے ذریعے نہیں آتی—یہ پروڈکشن گریڈ کوڈ میں لکھی جاتی ہے۔",
+                "phil-p2": "یہ پلیٹ فارم لائیو، ناقابل تردید شفاف تکنیکی انفراسٹرکچر فریم ورک کی میزبانی کرتا ہے، جو پرانے سیٹ اپس کے ناکارہ عمل کو ختم کرتا ہے۔",
+                "haqq-tag": "فریم ورک الفا", "haqq-title": "پروجیکٹ حق مصلی",
+                "haqq-desc-lg": "اوپن ڈیجیٹل گورننس فریم ورک جو PostgreSQL اور Supabase بیک اینڈ کے ساتھ انجینئرڈ ہے۔ علاقائی کمیونٹی کے ڈھانچے کے لیے مطلق شفافیت۔",
+                "haqq-desc-sm": "اوپن ڈیجیٹل گورننس فریم ورک جو PostgreSQL اور Supabase بیک اینڈ کے ساتھ انجینئرڈ ہے۔ علاقائی کمیونٹی کے ڈھانچے کے لیے مطلق شفافیت۔",
+                "ledger-badge": "لائیو آڈٹ", "ledger-title": "کرپٹوگرافک فنانشل لیجر", "ledger-desc": "ایک عوامی، چھیڑ چھاڑ سے پاک نظام جو عالمی بینکنگ تعمیل کے ماڈلز سے میل کھاتا ہے۔",
+                "ledger-th1": "مختص رقم", "ledger-th2": "آڈٹ دستخط", "ledger-td1": "مقدس گاہ کی لاجسٹکس",
+                "manifesto-badge": "براہِ راست سلسلہ", "manifesto-title": "منشور اور براہ راست مہمات", "manifesto-desc": "انتظامی دربانوں کو نظر انداز کرتے ہوئے سٹریٹجک آپریشنل منصوبوں کو براہ راست موبائل لوپس میں سٹریم کرنا۔",
+                "manifesto-update": "منشور v2026.06 اپ ڈیٹ", "logistics-badge": "درستگی میٹرکس", "logistics-title": "اثاثوں کی تقسیم کے تجزیات",
+                "logistics-desc": "وسائل، دیکھ بھال کے پیرامیٹرز اور ٹائم لائنز کو ٹریک کرنے والے گرینولر ڈیٹا لوپس کے ساتھ کاغذی کارروائی کو تبدیل کرنا۔",
+                "logistics-reg": "وسائل کی رجسٹری", "logistics-opt": "بہتر بنایا گیا",
+                "bayt-tag": "فریم ورک بیٹا", "bayt-title": "بیت الحکمہ انجن",
+                "bayt-desc-lg": "ماڈیولر، صارف کے انٹرایکٹو بصری ایپلی کیشنز کے ذریعے اعلی ساختی سائنس اور الہی روایت کے ملاپ کو زندہ کرنا۔",
+                "bayt-desc-sm": "ماڈیولر، صارف کے انٹرایکٹو بصری ایپلی کیشنز کے ذریعے اعلی ساختی سائنس اور الہی روایت کے ملاپ کو زندہ کرنا۔",
+                "m1-tag": "ماڈیول 01 // کمپیوٹر کی لسانیات", "m1-title": "روٹ اور پیٹرن میٹرکس",
+                "m1-desc": "ایک انٹرایکٹو متنی فریم ورک جو تاریخی تحریروں کے اندر الگورتھمک روٹ تجزیہ اور مورفولوجک تبدیلیوں کو پیش کرتا ہے۔ صاف ساختی تصوراتی بلاکس درست سابقے، لاحقے اور بنیادی نمونوں کی نقشہ سازی کرتے ہیں۔",
+                "m2-tag": "ماڈیول 02 // سٹریٹجک میپنگ", "m2-title": "انٹرایکٹو جغرافیائی گراف",
+                "m2-desc": "لامحدود ریئل ٹائم ڈیٹا بیس فلٹرنگ کے ساتھ علاقائی حدود، بنیادی ڈھانچے کے مراکز، اور عوامی سہولت کے ڈیموگرافکس کی ماڈلنگ کرنے والا ایک مکمل انتظامی ماحولیاتی گرڈ۔",
+                "legacy-tag": "تاریخی ریکارڈ", "legacy-title": "سسٹمز آرکیٹیکچر کی اسناد",
+                "legacy-desc": "عوامی انفراسٹرکچر کی سالمیت کے لیے بنیادی نمونوں کو دوبارہ استعمال کرنے سے پہلے مالیاتی نظام کے اندر ادارہ جاتی تعیناتی کے طریقہ کار کو بہتر بنانا۔",
+                "l1-title": "انٹرپرائز سافٹ ویئر انجینئرنگ", "l1-desc": "بڑے پیمانے پر پیچیدہ ریاستی کارروائیوں کو سنبھالنے والے مائیکرو سروس آرکیسٹریشنز اور بنیادی API لیئرز کی قیادت کرنا۔",
+                "l2-title": "بین الاقوامی مالیاتی نظام", "l2-desc": "سخت بین الاقوامی آڈٹنگ کے معیار کے مطابق بلٹ پروف ٹرانزیکشنل لیجر پائپ لائنز بنانا۔",
+                "l3-title": "عوامی ڈومین سے وابستگی", "l3-desc": "اس بات کو یقینی بنانا کہ تمام لکھے گئے کوڈ بیس مکمل طور پر قابل آڈٹ، محفوظ اور بغیر کسی رکاوٹ کے عوام کے لیے قابل رساں ہیں۔",
+                "form-tag": "محفوظ API اینڈ پوائنٹ", "form-title": "انکوائری ٹرانسمیشن کنسول",
+                "form-desc": "سسٹمز ایڈمنسٹریٹر نیٹ ورک نوڈ کے ساتھ براہ راست رابطہ قائم کریں۔ لاگز انکرپٹڈ ڈیٹا اسٹورز کے ذریعے پروسیس ہوتے ہیں۔",
+                "label-name": "نام / شناخت کنندہ", "label-email": "ای میل ایڈریس / روٹنگ ویکٹر", "label-vector": "ٹارگٹ سیکٹر کی تقسیم", "label-payload": "پیغام / ٹرانسمیشن پے لوڈ",
+                "footer-credit": "مطلق شفافیت اور کمیونٹی کے وقار کے لیے انتہائی درستگی کے ساتھ انجینئرڈ۔"
+            }
+        };
+
+        // Core Translation Routine Interceptor
+        function applyLanguageLocalization(langCode) {
+            // Modify active document structural directionality context
+            if (langCode === 'ar' || langCode === 'ur') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
+
+            // Loop Through Translation Targets
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                // Safeguard embedded campaign manifesto dashboard elements from being overwritten by localization
+                if (element.closest('#campaign-manifesto-container')) return;
+
+                const translationKey = element.getAttribute('data-i18n');
+                if (translations[langCode] && translations[langCode][translationKey]) {
+                    element.innerHTML = translations[langCode][translationKey];
+                }
+            });
+
+            // Specific dynamic heading override to preserve rendering styling blocks and updated text sizes
+            if (langCode === 'en' || langCode === 'ur') { 
+                document.getElementById('hero-title').innerHTML = `وَهَٰذَا صِرَٰطُ رَبِّكَ مُسْتَقِيمًۭا<br><span class="gradient-text italic font-normal text-xl sm:text-2xl lg:text-3xl block mt-2" dir="ltr">Through Elite Engineering</span>`;
+            } else if (langCode === 'ar') {
+                document.getElementById('hero-title').innerHTML = `وَهَٰذَا صِرَٰطُ رَبِّكَ مُسْتَقِيمًۭا<br><span class="gradient-text italic font-normal text-xl sm:text-2xl lg:text-3xl block mt-2" dir="rtl">من خلال الهندسة المتميز</span>`;
+            } else if (langCode === 'fr') {
+                document.getElementById('hero-title').innerHTML = `وَهَٰذَا صِرَٰطُ رَبِّكَ مُسْتَقِيمًۭا<br><span class="gradient-text italic font-normal text-xl sm:text-2xl lg:text-3xl block mt-2" dir="ltr">Par l'ingénierie d'élite</span>`;
+            }
+        }
+
+        // Language Selector Operational Event Attachment
+        document.getElementById('lang-selector').addEventListener('change', (e) => {
+            applyLanguageLocalization(e.target.value);
+        });
+
+        // Initialize Supabase Connection Pipeline Client configuration
+        const SUPABASE_ANONYMOUS_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsdGNicXN2dnd4cHZ5YmNyeG1wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYzMTU2MDAsImV4cCI6MjAyOTg5MTYwMH0.placeholder"; 
+        const SUPABASE_PROJECT_URL = "https://placeholder-project-id.supabase.co";
+        
+        let supabaseClient = null;
+        try {
+            if (typeof supabase !== 'undefined' && SUPABASE_PROJECT_URL.indexOf('placeholder') === -1) {
+                supabaseClient = supabase.createClient(SUPABASE_PROJECT_URL, SUPABASE_ANONYMOUS_KEY);
+            }
+        } catch(e) {
+            console.warn("Supabase initialization deferred: Sandbox context fallback engine operation active.");
+        }
+
+        // Contact Form Pipeline Request Management
+        document.getElementById('secure-contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('form-input-name').value;
+            const email = document.getElementById('form-input-email').value;
+            const vector = document.getElementById('form-input-vector').value;
+            const message = document.getElementById('form-input-message').value;
+
+            const successBanner = document.getElementById('pipeline-success-banner');
+            const errorBanner = document.getElementById('pipeline-error-banner');
+            const submitBtn = document.getElementById('pipeline-submit-btn');
+            const contactForm = document.getElementById('secure-contact-form');
+
+            successBanner.classList.add('hidden');
+            errorBanner.classList.add('hidden');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span>Processing Transmission...</span>`;
+
+            // Sandbox Fallback Logic Execution
+            if (!supabaseClient) {
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<span>Transmit Message Node</span>`;
+                    successBanner.innerHTML = `<i class="fa-solid fa-vial mr-2"></i> Sandbox Environment Success! Config your tokens to stream live.`;
+                    successBanner.classList.remove('hidden');
+                    contactForm.reset();
+                }, 1200);
+                return;
+            }
+
+            try {
+                // Execute Secure Database Entry Ingestion Influx
+                const { error } = await supabaseClient
+                    .from('inquiry_ingestion_pool')
+                    .insert([
+                        { 
+                            identifier: name, 
+                            communication_routing: email, 
+                            target_vector: vector, 
+                            transmission_payload: message 
+                        }
+                    ]);
+
+                if (error) throw error;
+
+                successBanner.classList.remove('hidden');
+                contactForm.reset();
+
+            } catch (err) {
+                console.error("Pipeline Transmission Interrupted:", err.message);
+                errorBanner.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Transmit Message Node</span>`;
+            }
+        });
+    </script>
+</body>
+</html>
