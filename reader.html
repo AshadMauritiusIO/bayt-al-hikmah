@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayt Al-Hikmah | Reader Platform Node</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        arabic: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        slate: { 950: '#0b1329' },
+                        gold: { 100: '#f4ebd0', 400: '#d4af37', 500: '#aa7c11' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .base-scroll::-webkit-scrollbar { width: 6px; }
+        .base-scroll::-webkit-scrollbar-track { background: rgba(11, 19, 41, 1); }
+        .base-scroll::-webkit-scrollbar-thumb { background: rgba(214, 175, 55, 0.15); border-radius: 3px; }
+        .base-scroll::-webkit-scrollbar-thumb:hover { background: rgba(214, 175, 55, 0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Premium Top Fixed Navigation Subsystem -->
+    <nav class="w-full bg-slate-950/80 backdrop-blur-md border-b border-white/5 px-4 sm:px-8 py-4 flex items-center justify-between sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <!-- Dynamic Navigation Back Button returning safely to the main dashboard module -->
+            <a href="index.html#islamic-hub" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gold-400/30 bg-gold-400/5 text-gold-400 text-xs tracking-wider uppercase font-mono hover:bg-gold-400/10 transition-colors decoration-none">
+                <i class="fa-solid fa-arrow-left-long"></i> <span id="analyzer-back-label">Category</span>
+            </a>
+            <div class="h-4 w-[1px] bg-white/10 hidden sm:block"></div>
+            <div class="hidden sm:block">
+                <span class="text-[9px] font-mono tracking-widest text-slate-500 uppercase block leading-none">Active Analysis Node</span>
+                <h4 id="analyzer-doc-title" class="font-serif text-sm text-white font-medium mt-0.5">Document Title</h4>
+            </div>
+        </div>
+        
+        <!-- Mobile-only Title Badge -->
+        <div class="sm:hidden text-right">
+            <span id="analyzer-doc-title-mobile" class="font-serif text-xs text-white font-medium block truncate max-w-[150px]">Document Title</span>
+        </div>
+
+        <!-- Dynamic Sub-Category Location Tracker -->
+        <div class="flex items-center gap-2">
+            <span id="analyzer-subcat-badge" class="text-[10px] font-mono text-emerald-400 bg-slate-900 px-2 py-1 rounded border border-emerald-500/10 uppercase tracking-widest">
+                Sub Category
+            </span>
+        </div>
+    </nav>
+    
+    <!-- Spacious Content View Stream Area -->
+    <main class="flex-1 overflow-y-auto px-4 sm:px-8 py-12 max-w-3xl mx-auto w-full base-scroll">
+        <article id="analyzer-text-stream" class="text-slate-300 font-light space-y-6 leading-relaxed text-sm sm:text-base antialiased pb-24">
+            <!-- Content hydrates inside this sector dynamically via script parsing -->
+            <div class="text-center py-12 text-slate-500 font-mono text-xs">Initializing internal document engine...</div>
+        </article>
+    </main>
+
+    <!-- CONTENT DATA STREAM MATRIX -->
+    <script>
+        const contentDatabase = {
+            'aqeedah': {
+                label: "Aqeedah",
+                items: {
+                    'salah_purpose': {
+                        classification: "Foundations of Faith",
+                        title: "Purpose of Salah",
+                        htmlContent: `
+                            <div class="space-y-6">
+                                <div class="space-y-2 border-b border-white/5 pb-6">
+                                    <h5 class="text-gold-400 font-serif text-2xl sm:text-3xl tracking-tight">The Cosmic Ascent: Reclaiming the True Purpose of Salah</h5>
+                                    <p class="text-xs font-mono text-slate-500 uppercase tracking-widest">Core Metaphysical Study Matrix</p>
+                                </div>
+                                
+                                <p class="text-base sm:text-lg italic text-slate-300 font-serif pl-4 border-l-2 border-gold-400/40 py-1 bg-white/[0.01] pr-2 rounded-r">
+                                    "You do not step onto the prayer mat to get a light stretch or calm your nervous system; those are merely the incidental, physical footprints of a profound metaphysical reality. You pray because your soul requires it."
+                                </p>
+                                
+                                <h6 class="text-white font-serif text-lg font-medium tracking-wide pt-4 flex items-center gap-2">
+                                    <span class="font-mono text-xs text-gold-400 bg-gold-400/10 px-2 py-0.5 rounded">1</span>
+                                    The Ultimate Ascent: Connection Over Ritual
+                                </h6>
+                                <p class="text-slate-300 leading-relaxed font-light">
+                                    Salah is an invitation to step out of the linear rush of the material world and enter a private audience with the Master of the Cosmos. Classical scholars beautifully referred to Salah as <em>Mi’raj al-Mu’min</em>—the spiritual ascension of the believer. Just as the Prophet Muhammad was physically transported through the heavens during the Night Journey to commune directly with Allah, you are granted a spiritual doorway to do the same five times every single day.
+                                </p>
+                                
+                                <div class="bg-slate-900/60 p-4 sm:p-5 rounded-xl border border-gold-400/10 my-6" dir="ltr">
+                                    <span class="text-[10px] font-mono uppercase tracking-widest text-gold-400 block mb-2">Hadith Qudsi Stream</span>
+                                    <p class="font-arabic text-right text-lg sm:text-xl text-slate-200 leading-loose mb-3" dir="rtl">
+                                        قَال اللَّهُ تَعَالَى: قَسَمْتُ الصَّلَاةَ بَيْنِي وَبَيْنَ عَبْدِي نِصْفَيْنِ، وَلِعَبْدِي مَا سَأَلَ
+                                    </p>
+                                    <p class="text-xs sm:text-sm font-light text-slate-300 italic border-t border-white/5 pt-3 leading-relaxed">
+                                        "Allah the Exalted said: 'I have divided the prayer into two halves between Myself and My servant, and My servant shall have what he asks for.' When the servant says: Al-hamdu lillahi rabbil-'alamin, Allah says: 'My servant has praised Me.'" — (Sahih Muslim)
+                                    </p>
+                                </div>
+                                
+                                <h6 class="text-white font-serif text-lg font-medium tracking-wide pt-4 flex items-center gap-2">
+                                    <span class="font-mono text-xs text-gold-400 bg-gold-400/10 px-2 py-0.5 rounded">2</span>
+                                    The Architecture of Surrender
+                                </h6>
+                                <p class="text-slate-300 leading-relaxed font-light">
+                                    The physical postures of Salah are not standard gym movements; they are the external, physical manifestations of your soul’s deepest internal states:
+                                </p>
+                                <ul class="space-y-3 pl-2 border-l border-white/10 mt-2 text-slate-300 font-light text-sm sm:text-base">
+                                    <li><strong class="text-white font-medium">Qiyam (Standing):</strong> Standing straight, eyes lowered, stripping away worldly status. You stand in utter awe and transparency before the All-Seeing.</li>
+                                    <li><strong class="text-white font-medium">Ruku (Bowing):</strong> Bending forward, lowering your gaze further. This is the physical declaration of reverence, breaking the back of human arrogance.</li>
+                                    <li><strong class="text-white font-medium">Sujood (Prostration):</strong> Placing your forehead—the very symbol of your intellect, ego, and dignity—flat upon the lowest ground. It is in this ultimate paradox of humility that you reach your highest spiritual peak.</li>
+                                </ul>
+                            </div>
+                        `
+                    }
+                }
+            },
+            'quranic-sciences': {
+                label: "Quranic Sciences",
+                items: {
+                    'arabic_path': {
+                        classification: "Tajweed & Qira'at",
+                        title: "The Classical Arabic Learning Path",
+                        htmlContent: `
+                            <div class="space-y-6">
+                                <div class="space-y-2 border-b border-white/5 pb-6">
+                                    <h5 class="text-gold-400 font-serif text-2xl sm:text-3xl tracking-tight">The Classical Arabic Learning Path</h5>
+                                    <p class="text-xs font-mono text-slate-500 uppercase tracking-widest">Linguistic Structural Development Framework</p>
+                                </div>
+                                
+                                <p class="text-slate-300 leading-relaxed font-light">
+                                    Expanding the learning path reveals how the Arabic language moves from isolated sounds to complex, layered meanings. This progression is often compared to building a structure: you start with the raw materials (sounds), refine them (characteristics), assemble them into blocks (morphology), and finally arrange the blocks into a functional building (grammar).
+                                </p>
+                                
+                                <div class="space-y-4 mt-6">
+                                    <div class="bg-slate-900/40 p-4 sm:p-5 rounded-xl border border-white/5 space-y-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                            <strong class="text-white font-medium font-serif text-base">1. Al-Makharij (Articulation Points)</strong>
+                                        </div>
+                                        <p class="text-slate-300 font-light text-xs sm:text-sm pl-4 leading-relaxed">
+                                            The physical "station" where a letter's sound is cut off. Focuses on the 5 foundational areas: Throat, Tongue, Lips, Oral Cavity, and Nasal Cavity. Demands total precision in distinguishing similar sounds like Taa (ط) and Taa (ت) solely by position adjustments.
+                                        </p>
+                                    </div>
+
+                                    <div class="bg-slate-900/40 p-4 sm:p-5 rounded-xl border border-white/5 space-y-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                            <strong class="text-white font-medium font-serif text-base">2. Sifat al-Huruf (Characteristics)</strong>
+                                        </div>
+                                        <p class="text-slate-300 font-light text-xs sm:text-sm pl-4 leading-relaxed">
+                                            The "quality" of the sound while it is being produced at the Makhraj. Evaluates opposing attributes—such as whether the sound flows (Rikhwah) or stops (Shiddah)—and unique attributes like the whistle (Saffir) of Seen (س).
+                                        </p>
+                                    </div>
+
+                                    <div class="bg-slate-900/40 p-4 sm:p-5 rounded-xl border border-white/5 space-y-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                            <strong class="text-white font-medium font-serif text-base">3. At-Tajwid (Applied Phonetics)</strong>
+                                        </div>
+                                        <p class="text-slate-300 font-light text-xs sm:text-sm pl-4 leading-relaxed">
+                                            How individual letters systematically interact when they meet sequentially inside a sentence. Governs rules like Idgham (merging), Ikhfa (hiding), and precise vowel extension counts (Madd) to achieve a seamless flow.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    }
+                }
+            }
+        };
+
+        // Execution Pipeline Handler
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const branchKey = params.get('branch');
+            const itemId = params.get('id');
+
+            const fallbackError = '<div class="text-center py-12 text-rose-400 font-mono text-xs">Error: Document context structure parameters unresolved.</div>';
+
+            if (!branchKey || !itemId || !contentDatabase[branchKey]) {
+                document.getElementById('analyzer-text-stream').innerHTML = fallbackError;
+                return;
+            }
+
+            const branchData = contentDatabase[branchKey];
+            const targetDoc = branchData.items[itemId];
+
+            if (!targetDoc) {
+                document.getElementById('analyzer-text-stream').innerHTML = fallbackError;
+                return;
+            }
+
+            // Hydrate the layout with parsed variable definitions
+            document.getElementById('analyzer-back-label').innerText = branchData.label;
+            document.getElementById('analyzer-subcat-badge').innerText = targetDoc.classification;
+            document.getElementById('analyzer-doc-title').innerText = targetDoc.title;
+            document.getElementById('analyzer-doc-title-mobile').innerText = targetDoc.title;
+            document.getElementById('analyzer-text-stream').innerHTML = targetDoc.htmlContent;
+        });
+    </script>
+</body>
+</html>
