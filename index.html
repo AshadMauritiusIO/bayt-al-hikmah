@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayt Al-Hikmah | The Digital House of Wisdom</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        arabic: ['Amiri', 'serif'],
+                        urdu: ['Noto Nastaliq Urdu', 'serif'],
+                    },
+                    colors: {
+                        slate: { 950: '#0b1329' },
+                        gold: { 100: '#f4ebd0', 400: '#d4af37', 500: '#aa7c11' },
+                        emeraldCustom: { 800: '#064e3b', 900: '#022c22' }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 40%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .premium-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 12px 30px -10px rgba(0,0,0,0.7);
+        }
+        .locked-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 100%);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        .lang-rtl { font-family: 'Amiri', serif !important; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-gold-400 selection:text-slate-950 antialiased">
+    <nav id="main-nav" dir="ltr" class="fixed top-0 left-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/5 px-4 sm:px-6 lg:px-16 py-4 flex justify-between items-center">
+        <!-- Left Side: English Title with Premium Border Wrapper -->
+        <div class="flex items-center flex-shrink-0 select-none">
+            <div class="px-4 py-1.5 rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-sm hover:border-gold-400/30 hover:bg-gold-400/[0.02] transition-all duration-300">
+                <a href="index.html" class="text-base sm:text-lg font-serif tracking-widest text-white hover:text-gold-400 transition-colors block">
+                    House <span class="text-gold-400">of Wisdom</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Center Links -->
+        <div class="hidden lg:flex space-x-8 text-xs font-medium tracking-widest uppercase text-slate-400">
+            <a href="#islamic-hub" class="hover:text-gold-400 transition-colors py-2">Knowledge Hub</a>
+            <a href="#science-hub" class="hover:text-gold-400 transition-colors py-2">Science Hub</a>
+            <a href="#interactive-framework" class="hover:text-gold-400 transition-colors py-2">Learning Framework</a>
+        </div>
+        
+        <!-- Right Side: Controls and Arabic Title with Matching Border Wrapper -->
+        <div class="flex items-center gap-4 flex-shrink-0 ml-auto lg:ml-0">
+            <!-- Language Selector (2nd from right) -->
+            <div class="relative inline-block text-left flex-shrink-0">
+                <select id="lang-selector" class="bg-slate-900 text-gold-400 text-[10px] sm:text-xs border border-gold-400/20 rounded-md px-1.5 sm:px-2.5 py-1.5 focus:outline-none focus:border-gold-400/60 font-mono cursor-pointer transition-colors">
+                    <option value="en">EN</option>
+                    <option value="ar">AR</option>
+                </select>
+            </div>
+
+            <!-- Absolute Right Corner: Arabic Calligraphy with Matching Premium Border -->
+            <div class="px-4 py-1 rounded-lg border border-gold-400/20 bg-gold-400/[0.02] backdrop-blur-sm hover:border-gold-400/50 hover:bg-gold-400/[0.05] transition-all duration-300">
+                <div class="flex-shrink-0 font-arabic text-lg sm:text-xl text-gold-400 font-medium tracking-wide antialiased pt-0.5">
+                    بَيْت الحِكْمَة
+                </div>
+            </div>
+        </div>
+    </nav>
+
+     <nav id="main-nav" dir="ltr" class="fixed top-0 left-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/5 px-4 sm:px-6 lg:px-16 py-4 flex justify-between items-center">
+        <!-- Left Side: English Title with Premium Border Wrapper -->
+        <div class="flex items-center flex-shrink-0 select-none">
+            <div class="px-4 py-1.5 rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-sm hover:border-gold-400/30 hover:bg-gold-400/[0.02] transition-all duration-300">
+                <a href="index.html" class="text-base sm:text-lg font-serif tracking-widest text-white hover:text-gold-400 transition-colors block">
+                    House <span class="text-gold-400">of Wisdom</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Center Links -->
+        <div class="hidden lg:flex space-x-8 text-xs font-medium tracking-widest uppercase text-slate-400">
+            <a href="#islamic-hub" class="hover:text-gold-400 transition-colors py-2">Knowledge Hub</a>
+            <a href="#science-hub" class="hover:text-gold-400 transition-colors py-2">Science Hub</a>
+            <a href="#interactive-framework" class="hover:text-gold-400 transition-colors py-2">Learning Framework</a>
+        </div>
+        
+        <!-- Right Side: Controls and Arabic Title with Matching Border Wrapper -->
+        <div class="flex items-center gap-4 flex-shrink-0 ml-auto lg:ml-0">
+            <!-- Language Selector (2nd from right) -->
+            <div class="relative inline-block text-left flex-shrink-0">
+                <select id="lang-selector" class="bg-slate-900 text-gold-400 text-[10px] sm:text-xs border border-gold-400/20 rounded-md px-1.5 sm:px-2.5 py-1.5 focus:outline-none focus:border-gold-400/60 font-mono cursor-pointer transition-colors">
+                    <option value="en">EN</option>
+                    <option value="ar">AR</option>
+                </select>
+            </div>
+
+            <!-- Absolute Right Corner: Arabic Calligraphy with Matching Premium Border -->
+            <div class="px-4 py-1 rounded-lg border border-gold-400/20 bg-gold-400/[0.02] backdrop-blur-sm hover:border-gold-400/50 hover:bg-gold-400/[0.05] transition-all duration-300">
+                <div class="flex-shrink-0 font-arabic text-lg sm:text-xl text-gold-400 font-medium tracking-wide antialiased pt-0.5">
+                    بَيْت الحِكْمَة
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative min-h-[60vh] flex items-center justify-center pt-24 overflow-hidden px-4 sm:px-6 lg:px-8 border-b border-white/5">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(6,78,59,0.15),transparent_60%)]"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_60%,#0b1329_100%)]"></div>
+        
+        <div class="max-w-4xl text-center relative z-10 space-y-6">
+            <div class="inline-flex items-center justify-center gap-2 border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-md px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-semibold tracking-widest text-emerald-400 uppercase w-fit mx-auto whitespace-nowrap">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+ <i class="fas fa- text-gold-500 mr-2"></i>               
+                
+                <span>The Digital House of Wisdom</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-arabic tracking-widest text-white leading-[1.2]">
+                بَيْت الحِكْمَة
+                <br>
+                <span class="gradient-text italic font-normal text-xl sm:text-2xl lg:text-3xl block mt-2">Bayt Al-Hikmah</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-400 leading-relaxed font-light">
+                An institutional pipeline categorizing structured intellectual branches. Bridging primary sources with high-end modern pedagogical architectures.
+            </p>
+        </div>
+    </header>
+
+    <section id="islamic-hub" class="py-24 relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <div class="lg:col-span-4 sticky top-[72px] lg:top-32 bg-slate-950/90 lg:bg-transparent py-4 lg:py-0 space-y-4 z-20 self-start backdrop-blur-sm lg:backdrop-blur-none">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Engine Subsystem 01</span>
+                <h2 class="text-3xl sm:text-4xl font-serif text-white tracking-tight">
+                    Islamic Knowledge Hub
+                </h2>
+                <p class="text-xs font-mono text-slate-500 uppercase tracking-widest">Primary Source Disciplines</p>
+                <div class="h-[1px] w-16 bg-gold-400/50"></div>
+                <p class="text-xs text-slate-400 font-light leading-relaxed max-w-sm pt-2">
+                    Core foundational disciplines mapped into distinct evolutionary branches to provide a structured pathway from basic functional literacy up to advanced computational scholarship.
+                </p>
+            </div>
+            
+            <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="premium-card rounded-xl p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-serif font-bold text-sm">
+                            01
+                        </div>
+                        <span class="font-arabic text-sm text-slate-500" dir="rtl">العقيدة</span>
+                    </div>
+                    <h3 class="text-lg font-serif text-white font-semibold">Aqeedah <span class="text-slate-500 text-xs font-sans font-normal">(Theology & Creed)</span></h3>
+                    <ul class="space-y-3.5 text-xs text-slate-400 font-light">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Foundations of Faith:</strong> Comprehensive overview of the core articles of Islamic belief (Allah, His Angels, His Books, His Messengers, the Last Day, and Divine Decree).</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Asma was-Sifat:</strong> Analytical explanations detailing the Names and Perfect Attributes of God.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Theological Studies:</strong> Comparative evaluation of classical frameworks to preserve authentic, mainstream creeds.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="premium-card rounded-xl p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-serif font-bold text-sm">
+                            02
+                        </div>
+                        <span class="font-arabic text-sm text-slate-500" dir="rtl">علوم القرآن</span>
+                    </div>
+                    <h3 class="text-lg font-serif text-white font-semibold">Quranic Sciences <span class="text-slate-500 text-xs font-sans font-normal">(Ulum al-Quran)</span></h3>
+                    <ul class="space-y-3.5 text-xs text-slate-400 font-light">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Tafsir (Exegesis):</strong> Structural, analytical, grammatical, and contextual explanations of Quranic verses.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Tajweed & Qira'at:</strong> Phonetic articulation rules, precision pronunciation, and verified modes of recitation.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Asbab al-Nuzul:</strong> Historical contextualization maps detailing specific triggers behind verse revelations.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="premium-card rounded-xl p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-serif font-bold text-sm">
+                            03
+                        </div>
+                        <span class="font-arabic text-sm text-slate-500" dir="rtl">علوم الحديث</span>
+                    </div>
+                    <h3 class="text-lg font-serif text-white font-semibold">Hadith Sciences <span class="text-slate-500 text-xs font-sans font-normal">(Ulum al-Hadith)</span></h3>
+                    <ul class="space-y-3.5 text-xs text-slate-400 font-light">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Mustalah al-Hadith:</strong> Structural methodologies utilized to analyze chain authenticity and grading frameworks.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Textual Studies:</strong> Textual analysis of primary collections (the Six Books and Imam Nawawi’s Forty Hadith).</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="premium-card rounded-xl p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-serif font-bold text-sm">
+                            04
+                        </div>
+                        <span class="font-arabic text-sm text-slate-500" dir="rtl">الفقه وأصوله</span>
+                    </div>
+                    <h3 class="text-lg font-serif text-white font-semibold">Jurisprudence <span class="text-slate-500 text-xs font-sans font-normal">(Fiqh & Usul)</span></h3>
+                    <ul class="space-y-3.5 text-xs text-slate-400 font-light">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Fiqh al-Ibadat:</strong> Rulings governing daily actions and ritual worship (purification, prayer, fasting, zakat, and pilgrimage).</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Fiqh al-Muamalat:</strong> Commercial contracts, operational finance laws, inheritance, and family law parameters.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Usul al-Fiqh:</strong> Methodologies used by scholars to extract specific rulings directly from primary legislative materials.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="premium-card rounded-xl p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-serif font-bold text-sm">
+                            05
+                        </div>
+                        <span class="font-arabic text-sm text-slate-500" dir="rtl">السيرة والتاريخ</span>
+                    </div>
+                    <h3 class="text-lg font-serif text-white font-semibold">History & Seerah <span class="text-slate-500 text-xs font-sans font-normal">(Tarikh)</span></h3>
+                    <ul class="space-y-3.5 text-xs text-slate-400 font-light">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">The Seerah:</strong> Chronological academic exploration of the life, immaculate character, and prophetic mission of Prophet Muhammad.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Tarikh:</strong> Historical study of the Rightly Guided Caliphs, evolutionary expansion architectures, and early empires.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="premium-card rounded-xl p-6 space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-serif font-bold text-sm">
+                            06
+                        </div>
+                        <span class="font-arabic text-sm text-slate-500" dir="rtl">التزكية والأخلاق</span>
+                    </div>
+                    <h3 class="text-lg font-serif text-white font-semibold">Spirituality & Ethics <span class="text-slate-500 text-xs font-sans font-normal">(Tazkiyah)</span></h3>
+                    <ul class="space-y-3.5 text-xs text-slate-400 font-light">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Tazkiyat al-Nafs:</strong> Purification paradigms tracking metrics for character development and internal spiritual diagnostics.</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-400 mt-0.5">▪</span>
+                            <div><strong class="text-slate-200 font-medium">Akhlaq:</strong> Structural study of prophetic attributes, moral philosophies, and social ethics parameters.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="premium-card rounded-xl p-6 space-y-4 md:col-span-2">
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-gold-400/10 text-gold-400 flex items-center justify-center font-serif font-bold text-sm">
+                            07
+                        </div>
+                        <span class="font-arabic text-sm text-slate-500" dir="rtl">اللغة العربية</span>
+                    </div>
+                    <h3 class="text-lg font-serif text-white font-semibold">Arabic Language <span class="text-slate-500 text-xs font-sans font-normal">(Lughah)</span></h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-400 font-light">
+                        <div class="bg-black/30 p-3.5 rounded-lg border border-white/5">
+                            <strong class="text-gold-400 font-medium block mb-1">Nahu (Syntax)</strong>
+                            Classical Arabic sentence structuring and structural case ending rules.
+                        </div>
+                        <div class="bg-black/30 p-3.5 rounded-lg border border-white/5">
+                            <strong class="text-gold-400 font-medium block mb-1">Sarf (Morphology)</strong>
+                            Word origin architecture, derivation structures, and transformation systems.
+                        </div>
+                        <div class="bg-black/30 p-3.5 rounded-lg border border-white/5">
+                            <strong class="text-gold-400 font-medium block mb-1">Balaqah (Rhetoric)</strong>
+                            Classical linguistic eloquence, literary devices, and complex semantic layers.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="science-hub" class="py-24 border-t border-white/5 bg-slate-900/20 relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase block">Engine Subsystem 02</span>
+                <h2 class="text-3xl sm:text-4xl font-serif text-white tracking-tight">
+                    Modern Science Hub
+                </h2>
+                <p class="text-xs font-mono text-slate-500 uppercase tracking-widest">Empirical & Technical Architectures</p>
+                <div class="h-[1px] w-16 bg-emerald-500/50"></div>
+                <p class="text-sm text-slate-400 font-light leading-relaxed pt-2">
+                    An empirical learning pipeline intended to integrate modern engineering and standard scientific methodologies with universal logic.
+                </p>
+            </div>
+            <div class="lg:col-span-7">
+                <div class="locked-card rounded-2xl p-8 text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emeraldCustom-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mx-auto mb-4 text-slate-500">
+                        <i class="fa-solid fa-lock text-sm"></i>
+                    </div>
+                    <h4 class="font-serif text-lg text-slate-300 font-medium mb-1">Subsystem Sealed</h4>
+                    <p class="text-xs text-slate-500 max-w-xs mx-auto font-light mb-4">This layout sector will be deployed and systematically initialized in a subsequent operational phase.</p>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-[10px] font-mono tracking-wider text-emerald-400 uppercase">
+                        <span class="w-1 h-1 rounded-full bg-emerald-400 animate-ping"></span> Queued for Sequential Release
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interactive-framework" class="py-24 border-t border-white/5 relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-amber-500 uppercase block">Engine Subsystem 03</span>
+                <h2 class="text-3xl sm:text-4xl font-serif text-white tracking-tight">
+                    Interactive Learning Framework
+                </h2>
+                <p class="text-xs font-mono text-slate-500 uppercase tracking-widest">Active Pedagogy Matrix</p>
+                <div class="h-[1px] w-16 bg-amber-500/50"></div>
+                <p class="text-sm text-slate-400 font-light leading-relaxed pt-2">
+                    Dynamic computational sandboxes, adaptive knowledge tracking, and interface structures optimizing collaborative training ecosystems.
+                </p>
+            </div>
+            <div class="lg:col-span-7">
+                <div class="locked-card rounded-2xl p-8 text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mx-auto mb-4 text-slate-500">
+                        <i class="fa-solid fa-lock text-sm"></i>
+                    </div>
+                    <h4 class="font-serif text-lg text-slate-300 font-medium mb-1">Subsystem Sealed</h4>
+                    <p class="text-xs text-slate-500 max-w-xs mx-auto font-light mb-4">This dynamic engine layout sector will be deployed sequentially following Phase 2 verification.</p>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-[10px] font-mono tracking-wider text-amber-500 uppercase">
+                        <span class="w-1 h-1 rounded-full bg-amber-400 animate-ping"></span> Deployment Pipeline Locked
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 bg-slate-950 py-12 px-4 sm:px-6 lg:px-16 text-center text-xs text-slate-500 font-mono tracking-wider uppercase">
+        <div>&copy; 2026 Sadda.Haqq Sub-Architecture Engine. All Rights Reserved.</div>
+    </footer>
+
+    <script>
+        const langSelector = document.getElementById('lang-selector');
+        
+        const translations = {
+            en: {
+                title: "Bayt Al-Hikmah | The Modern Digital House of Wisdom",
+                desc: "An institutional pipeline categorizing structured intellectual branches. Bridging primary sources with high-end modern pedagogical architectures."
+            },
+            ar: {
+                title: "بيت الحكمة | دار المعرفة الرقمية الحديثة",
+                desc: "منظومة مؤسسية تصنف الفروع المعرفية المنظمة. مد جسور التواصل بين المصادر الأصلية والهياكل التربوية الحديثة المتقدمة."
+            }
+        };
+
+        langSelector.addEventListener('change', (e) => {
+            const currentLang = e.target.value;
+            const body = document.body;
+            
+            if (currentLang === 'ar') {
+                body.setAttribute('dir', 'rtl');
+                body.classList.add('lang-rtl');
+            } else {
+                body.setAttribute('dir', 'ltr');
+                body.classList.remove('lang-rtl');
+            }
+        });
+    </script>
+</body>
+</html>
