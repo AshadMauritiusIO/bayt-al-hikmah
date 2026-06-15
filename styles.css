@@ -1,0 +1,81 @@
+/* --- Core Engine Text & Animations --- */
+.gradient-text {
+    background: linear-gradient(135deg, #ffffff 40%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.premium-card {
+    background: linear-gradient(180deg, #ffffff08 0%, #ffffff00 100%);
+    border: 1px solid #ffffff0d;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card:hover {
+    transform: translateY(-4px);
+    border-color: #d4af374d;
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.7);
+}
+
+.locked-card {
+    background: linear-gradient(180deg, #ffffff03 0%, #ffffff00 100%);
+    border: 1px dashed #ffffff1a;
+}
+
+/* --- Animation System Keys --- */
+.animate-fade-in {
+    animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ambientPillPulse {
+    0%, 100% {
+        opacity: 1;
+        border-color: rgba(16, 185, 129, 0.3);
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.05);
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        border-color: rgba(16, 185, 129, 0.15);
+        box-shadow: 0 0 5px rgba(16, 185, 129, 0.01);
+        transform: scale(0.99);
+    }
+}
+
+/* --- Interactive Accordion Zones --- */
+.content-toggle-zone {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.content-toggle-zone.expanded {
+    grid-template-rows: 1fr;
+}
+
+.content-inner {
+    overflow: hidden;
+}
+
+/* --- Global Scrollbar Structural Refinements --- */
+.base-scroll::-webkit-scrollbar { 
+    width: 6px; 
+}
+
+.base-scroll::-webkit-scrollbar-track { 
+    background: rgba(11, 19, 41, 0.5); 
+}
+
+.base-scroll::-webkit-scrollbar-thumb { 
+    background: rgba(214, 175, 55, 0.15); 
+    border-radius: 3px; 
+}
+
+.base-scroll::-webkit-scrollbar-thumb:hover { 
+    background: rgba(214, 175, 55, 0.3); 
+}
