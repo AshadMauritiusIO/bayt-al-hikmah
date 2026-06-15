@@ -4,23 +4,20 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.premium-card {
-    background: linear-gradient(180deg, #ffffff08 0%, #ffffff00 100%);
-    border: 1px solid #ffffff0d;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.premium-card:hover {
-    transform: translateY(-4px);
-    border-color: #d4af374d;
-    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.7);
-}
-
-.locked-card {
-    background: linear-gradient(180deg, #ffffff03 0%, #ffffff00 100%);
-    border: 1px dashed #ffffff1a;
-}
+        .premium-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 12px 30px -10px rgba(0,0,0,0.7);
+        }
+        .locked-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 100%);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+        }
 
 /* --- Animation System Keys --- */
 .animate-fade-in {
