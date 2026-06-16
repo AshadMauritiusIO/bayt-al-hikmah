@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayt al-Hikmah - The Hijri Calendar & 1st Muharram</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Smooth CSS Accordion Transitions matching index.html */
+        .content-toggle-zone {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 330ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease;
+            opacity: 0;
+        }
+        .content-toggle-zone.expanded {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+        .content-inner {
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        arabic: ['Amiri', 'serif'],
+                        urdu: ['Noto Nastaliq Urdu', 'serif'],
+                    },
+                    colors: {
+                        slate: { 950: '#0b1329' },
+                        gold: { 100: '#f4ebd0', 400: '#d4af37', 500: '#aa7c11' },
+                        emeraldCustom: { 800: '#064e3b', 900: '#022c22' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-gold-400 selection:text-slate-950 antialiased">
+
+    <!-- Top Navigation Layer -->
+    <nav id="main-nav" class="sticky top-0 w-full z-40 bg-slate-950/90 backdrop-blur-md border-b border-white/5 px-4 sm:px-6 lg:px-16 py-4 flex justify-between items-center">
+        <div class="flex items-center flex-shrink-0 select-none">
+            <a href="index.html" class="px-4 py-2 rounded-lg border border-gold-400/20 bg-gold-400/[0.02] backdrop-blur-sm hover:border-gold-400/50 hover:bg-gold-400/[0.05] transition-all duration-300 flex flex-col items-center justify-center text-center">
+                <div class="font-arabic text-base sm:text-lg text-white font-medium tracking-wide antialiased leading-none" dir="rtl">
+                    بَيْت الحِكْمَة
+                </div>
+                <div class="font-serif italic text-[9px] sm:text-[10px] text-gold-400 tracking-widest uppercase mt-1 leading-none">
+                    Bayt Al-Hikmah
+                </div>
+            </a>
+        </div>
+        
+        <div class="flex items-center gap-4 flex-shrink-0">
+            <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+                <h4 class="font-mono text-[10px] sm:text-xs text-slate-400 uppercase tracking-widest">
+                    Islamic History Module
+                </h4>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header class="relative min-h-[40vh] flex items-center justify-center pt-12 overflow-hidden px-4 sm:px-6 lg:px-8 border-b border-white/5">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(6,78,59,0.12),transparent_60%)]"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_60%,#0b1329_100%)]"></div>
+        
+        <div class="max-w-3xl text-center relative z-10 space-y-4">
+            <div class="inline-flex items-center justify-center gap-2 border border-gold-400/30 bg-gold-400/5 backdrop-blur-md px-3 py-1.5 rounded-full text-[9px] sm:text-[10px] font-semibold tracking-widest text-gold-400 uppercase w-fit mx-auto whitespace-nowrap shadow-[0_0_15px_rgba(212,175,55,0.02)]">
+                <i class="fa-solid fa-scroll text-gold-400"></i>               
+                <span>Historical Perspective</span>
+                <i class="fa-solid fa-scroll text-gold-400"></i>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl font-serif tracking-wide text-white leading-tight">
+                The Dawn of the Hijri Calendar: <br class="hidden sm:inline">
+                <span class="text-gold-400 italic font-normal">Understanding 1st Muharram</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-xs sm:text-sm text-slate-400 leading-relaxed font-light pt-2">
+                Unlike calendars anchored to solar cycles or royal lineages, the Islamic calendar marks its inception from a profound displacement—the <span class="italic text-slate-200">Hijrah</span>. The first of Muharram stands not as a day of revelry, but as an invitation to historical reflection and rigorous spiritual introspection.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+        
+        <!-- Interactive Year Conversion Tool Card -->
+        <section class="border border-white/5 bg-slate-900/40 rounded-xl p-6 md:p-8 space-y-6">
+            <div class="border-b border-white/5 pb-4">
+                <div class="flex items-center gap-2 text-white">
+                    <i class="fa-solid fa-calendar-days text-gold-400 text-sm"></i>
+                    <h2 class="text-base sm:text-lg font-serif tracking-wide">
+                        Mathematical Synchronization: Hijri Converter
+                    </h2>
+                </div>
+                <p class="text-[11px] font-mono text-slate-500 mt-1 uppercase tracking-wider">
+                    Lunar cycles run approximately 11 days shorter than solar cycles.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="space-y-4">
+                    <div>
+                        <label for="gregorianYear" class="block text-[10px] font-mono font-medium text-slate-400 uppercase tracking-widest mb-2">Gregorian Year (CE)</label>
+                        <input type="number" id="gregorianYear" value="2026" min="622" max="3000" class="w-full px-4 py-2.5 bg-slate-950 border border-white/10 rounded-lg focus:outline-none focus:border-gold-400/50 transition-colors text-white font-mono text-sm">
+                    </div>
+                    <button onclick="calculateYears()" class="w-full bg-gold-400/10 hover:bg-gold-400/20 text-gold-400 border border-gold-400/30 font-mono text-xs tracking-widest uppercase py-3 px-4 rounded-lg transition-all duration-300">
+                        Calculate Corresponding Hijri Year
+                    </button>
+                </div>
+
+                <div class="bg-white/[0.02] rounded-xl p-6 border border-white/5 text-center md:text-left flex flex-col justify-center h-full">
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-slate-500">Approximated Output</span>
+                    <div class="text-4xl font-serif font-bold text-gold-400 my-2" id="hijriOutput">1448 AH</div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed" id="formulaExplanation">
+                        Calculated using the structural convergence formula: H = (G - 622) * (33 / 32)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabbed Core Knowledge Framework -->
+        <section class="space-y-4">
+            <div class="flex border-b border-white/5 bg-slate-900/20 p-1 rounded-t-xl border-t border-x border-white/5 gap-1">
+                <button onclick="switchTab('historical')" id="tab-historical" class="flex-1 text-center py-2.5 text-xs font-mono font-medium tracking-wider uppercase rounded-lg transition-all duration-300 text-gold-400 bg-gold-400/10 border border-gold-400/20 shadow-sm">
+                    1. The Hijrah Meaning
+                </button>
+                <button onclick="switchTab('caliphate')" id="tab-caliphate" class="flex-1 text-center py-2.5 text-xs font-mono font-medium tracking-wider uppercase rounded-lg transition-all duration-300 text-slate-400 hover:text-slate-200">
+                    2. Caliphate Choice
+                </button>
+                <button onclick="switchTab('sacred')" id="tab-sacred" class="flex-1 text-center py-2.5 text-xs font-mono font-medium tracking-wider uppercase rounded-lg transition-all duration-300 text-slate-400 hover:text-slate-200">
+                    3. Sacred Status
+                </button>
+            </div>
+
+            <!-- Tab Content Window Layout -->
+            <div class="bg-slate-900/40 border border-white/5 rounded-b-xl p-6 md:p-8 min-h-[220px]">
+                <!-- Tab 1 Component -->
+                <div id="content-historical" class="space-y-4 tab-content">
+                    <div class="flex justify-between items-baseline border-b border-white/5 pb-2">
+                        <h3 class="text-lg font-serif text-white tracking-wide">From Persecution to Community Sovereignty</h3>
+                        <span class="font-arabic text-sm text-gold-400/40 select-none">الهجرة</span>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed text-xs sm:text-sm">
+                        The Hijrah (622 CE) was not a mere flight from danger, but a calculated pivot. It marked the transition of the early Muslim community from a persecuted minority in Mecca to a cohesive, self-governing brotherhood in Medina. In Islamic thought, it stands as the ultimate template for choosing long-term structural integrity and moral rectitude over local compromise.
+                    </p>
+                </div>
+
+                <!-- Tab 2 Component -->
+                <div id="content-caliphate" class="space-y-4 tab-content hidden">
+                    <div class="flex justify-between items-baseline border-b border-white/5 pb-2">
+                        <h3 class="text-lg font-serif text-white tracking-wide">The Decision of Umar Ibn al-Khattab</h3>
+                        <span class="font-arabic text-sm text-gold-400/40 select-none">الفاروق</span>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed text-xs sm:text-sm">
+                        During the caliphate of the second Caliph, Umar ibn al-Khattab, the rapid growth of the state necessitated an official administrative calendar. Rejecting options to begin dating from the Prophet’s birth or the first revelation, the senior companions aligned on the Hijrah. They established <strong class="text-slate-200">Muharram</strong> as the first month because it directly followed the annual Hajj pilgrimage—signifying a clean, renewed cycle for society.
+                    </p>
+                </div>
+
+                <!-- Tab 3 Component -->
+                <div id="content-sacred" class="space-y-4 tab-content hidden">
+                    <div class="flex justify-between items-baseline border-b border-white/5 pb-2">
+                        <h3 class="text-lg font-serif text-white tracking-wide">One of the Four Luminous Horizons</h3>
+                        <span class="font-arabic text-sm text-gold-400/40 select-none">الأشهر الحرم</span>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed text-xs sm:text-sm">
+                        Muharram holds a status defined explicitly within the Quranic text as one of the four sanctified periods where internal conflicts are strictly forbidden and virtuous deeds yield elevated spiritual resonance.
+                    </p>
+                    <blockquote class="border-l-2 border-gold-400/40 pl-4 italic text-slate-300 bg-white/[0.01] p-4 rounded-r-lg text-xs sm:text-sm leading-relaxed">
+                        "Indeed, the number of months with Allah is twelve [lunar] months in the register of Allah [from] the day He created the heavens and the earth; of these, four are sacred..." 
+                        <span class="block text-right font-sans font-semibold text-[10px] text-slate-500 mt-2">— Surah At-Tawbah (9:36)</span>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Observation / Accordion Panel Engine -->
+        <section class="space-y-4">
+            <div class="mb-2">
+                <h2 class="text-lg font-serif text-white tracking-wide">Observational Frameworks & Introspection</h2>
+                <p class="text-[11px] font-mono text-slate-500 uppercase tracking-wider">Unpack structural components tracking active practices.</p>
+            </div>
+
+            <!-- Accordion Item 1 -->
+            <div class="border border-white/5 rounded-xl bg-slate-900/40 overflow-hidden">
+                <button onclick="toggleAccordion('acc1')" class="w-full flex items-center justify-between px-6 py-4 bg-white/[0.01] hover:bg-white/[0.03] transition-colors text-left focus:outline-none">
+                    <span class="font-medium text-slate-200 text-xs sm:text-sm font-mono tracking-wide">Concept 1: Muhasabah (Rigorous Self-Accounting)</span>
+                    <span id="icon-acc1" class="text-slate-500 font-mono text-xs transition-colors">[+]</span>
+                </button>
+                <div id="toggle-zone-acc1" class="content-toggle-zone">
+                    <div class="content-inner">
+                        <div class="px-6 py-4 border-t border-white/5 text-xs sm:text-sm text-slate-400 font-light leading-relaxed bg-slate-950/40">
+                            Rather than modern celebrations, the start of the Hijri year demands an internal audit. Believers are encouraged to analyze their moral accounts over the preceding twelve months, setting strategic spiritual objectives for the upcoming cycle.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 2 -->
+            <div class="border border-white/5 rounded-xl bg-slate-900/40 overflow-hidden">
+                <button onclick="toggleAccordion('acc2')" class="w-full flex items-center justify-between px-6 py-4 bg-white/[0.01] hover:bg-white/[0.03] transition-colors text-left focus:outline-none">
+                    <span class="font-medium text-slate-200 text-xs sm:text-sm font-mono tracking-wide">Concept 2: Fasting in the Month of Allah</span>
+                    <span id="icon-acc2" class="text-slate-500 font-mono text-xs transition-colors">[+]</span>
+                </button>
+                <div id="toggle-zone-acc2" class="content-toggle-zone">
+                    <div class="content-inner">
+                        <div class="px-6 py-4 border-t border-white/5 text-xs sm:text-sm text-slate-400 font-light leading-relaxed bg-slate-950/40">
+                            While the first of Muharram is not a mandatory fast, prophetic traditions explicitly identify voluntary fasts within this month as the most meritorious outside of Ramadan. This sets up a spiritual gradient leading to the 10th day (<span class="italic text-slate-300">Ashura</span>).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Structural Element -->
+    <footer class="mt-24 border-t border-white/5 bg-slate-950 py-12 text-center text-xs text-slate-500 font-mono tracking-wider uppercase">
+        Bayt Al-Hikmah Portal &bull; Knowledge. Transmission. Integrity.
+    </footer>
+
+    <!-- Interactive Component Controller Script -->
+    <script>
+        // 1. Date Converter Logic Axis
+        function calculateYears() {
+            const gregInput = document.getElementById('gregorianYear').value;
+            const year = parseInt(gregInput);
+            
+            if (isNaN(year) || year < 622) {
+                alert("Please enter a valid Gregorian year equal to or greater than 622 CE.");
+                return;
+            }
+
+            // High-precision approximation algorithm matching the internal tracking logic
+            const hijriCalculated = Math.round((year - 622) * (33 / 32));
+            
+            document.getElementById('hijriOutput').innerText = `${hijriCalculated} AH`;
+            document.getElementById('formulaExplanation').innerHTML = `Approximated using structural convergence: (${year} - 622) &times; 1.03125. Exact dates vary based on local astronomical horizon sighting.`;
+        }
+
+        // 2. Tab Interface Controller
+        function switchTab(tabId) {
+            // Hide all active tab layouts
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Revert all tab buttons to default styles
+            const tabs = ['historical', 'caliphate', 'sacred'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                btn.className = "flex-1 text-center py-2.5 text-xs font-mono font-medium tracking-wider uppercase rounded-lg transition-all duration-300 text-slate-400 hover:text-slate-200";
+            });
+
+            // Activate chosen tab layout applying distinct gold tracking border styles
+            document.getElementById(`content-${tabId}`).classList.remove('hidden');
+            document.getElementById(`tab-${tabId}`).className = "flex-1 text-center py-2.5 text-xs font-mono font-medium tracking-wider uppercase rounded-lg transition-all duration-300 text-gold-400 bg-gold-400/10 border border-gold-400/20 shadow-sm";
+        }
+
+        // 3. Smooth CSS Grid Accordion Toggler
+        function toggleAccordion(id) {
+            const container = document.getElementById(`toggle-zone-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (container.classList.contains('expanded')) {
+                container.classList.remove('expanded');
+                icon.innerText = '[+]';
+                icon.classList.remove('text-gold-400');
+            } else {
+                container.classList.add('expanded');
+                icon.innerText = '[−]';
+                icon.classList.add('text-gold-400');
+            }
+        }
+        
+        // Populate initial calculation state seamlessly on window load parameters
+        window.onload = function() {
+            calculateYears();
+        };
+    </script>
+</body>
+</html>
