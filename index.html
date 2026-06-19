@@ -169,14 +169,12 @@
         <!-- Scrollable Inner Panel Base Container -->
         <div class="flex-1 overflow-y-auto base-scroll flex flex-col">
             
-            <!-- STICKY DISCIPLINE TITLE RIBBON
-                 Only EnglishTitle and arabicText stick right here at top on viewport scroll. -->
+            <!-- STICKY DISCIPLINE TITLE RIBBON -->
             <div class="w-full bg-slate-950/95 backdrop-blur-md border-b border-white/5 px-4 sm:px-8 py-5 sticky top-0 z-40">
                 <div class="max-w-4xl mx-auto" id="discipline-sticky-title-zone"></div>
             </div>
             
-            <!-- SCROLLING CONTAINER
-                 Contains description sub-elements and the grid items list. -->
+            <!-- SCROLLING CONTAINER -->
             <div class="w-full px-4 sm:px-8 py-6 max-w-4xl mx-auto flex-1">
                 <div id="discipline-scrolling-desc-zone" class="mb-8"></div>
                 <div id="materials-container" class="space-y-6 pb-24"></div>
@@ -261,7 +259,6 @@
                 shortDescription: "The study of the core tenets of Islamic belief, Names and Attributes of God, and comparative classical theological frameworks.",
                 isWideLayout: false,
                 
-                // Segregated titles that stay cleanly fixed on screen 2
                 stickyHeaderHtml: `
                     <div class="flex items-center justify-between w-full select-none">
                         <h2 class="text-2xl sm:text-3xl font-serif text-white tracking-tight flex items-baseline gap-3 m-0">
@@ -273,74 +270,108 @@
                         </div>
                     </div>`,
                 
-                // Scrolling information parameters
                 scrollingDescHtml: `
                     <div class="space-y-3 mt-2 animate-fade-in">
                         <span class="text-[10px] font-bold tracking-widest text-gold-400 uppercase block font-mono">Theology & Creed</span>
                         <div class="h-[1px] w-12 bg-gold-400/30 mb-4"></div>
                         <ul class="space-y-2 text-xs sm:text-sm text-slate-400 font-light pl-1 border-l border-white/5">
-                            <li><span class="text-gold-400 mr-2">▪</span><strong>Foundations of Faith:</strong> The study of the core tenets of Islamic belief, specifically the Six Articles of Faith.</li>
-                            <li><span class="text-gold-400 mr-2">▪</span><strong>Asma was-Sifat:</strong> Explographies detailing the Names and Attributes of God.</li>
-                            <li><span class="text-gold-400 mr-2">▪</span><strong>Sectarian & Theological Studies:</strong> Comparative analysis of classical theological frameworks to preserve the authentic, mainstream Islamic creed.</li>
+                            <li><span class="text-gold-400 mr-2">▪</span><strong>Foundations of Faith:</strong> The study of the core tenets of Islamic belief, specifically the Six Articles of Faith[span_1](start_span)[span_1](end_span).</li>
+                            <li><span class="text-gold-400 mr-2">▪</span><strong>Asma was-Sifat:</strong> Explorations detailing the Names and Attributes of God[span_2](start_span)[span_2](end_span).</li>
+                            <li><span class="text-gold-400 mr-2">▪</span><strong>Sectarian & Theological Studies:</strong> Comparative analysis of classical theological frameworks to preserve the authentic, mainstream Islamic creed[span_3](start_span)[span_3](end_span).</li>
                         </ul>
                     </div>`,
                 materials: [
                     {
-                        id: "aq_salah_purpose",
-                        classification: "Foundations of Faith",
-                        title: "Purpose of Salah",
-                        summary: "An analytical study framing prayer as a deliberate cosmic rupture in linear time, a passport for salvation, and the ultimate equalizer breaking the back of human arrogance.",
+                        id: "aq_ashari_school",
+                        classification: "Sectarian & Theological Studies",
+                        title: "1. The Ash'ari School (The Scholastic Synthesizer)",
+                        summary: "Founded by Imam Abu al-Hasan al-Ash'ari (874–936 CE / 260–324 AH) in Basra and Baghdad, Iraq[span_4](start_span)[span_4](end_span). A middle path that used rationalist tools (Kalam) to defend traditionalist beliefs[span_5](start_span)[span_5](end_span). Today it stands as the dominant creed of the Muslim world[span_6](start_span)[span_6](end_span).",
                         expandedContentHtml: `
                             <div class="space-y-4 pt-4 border-t border-white/5 text-slate-300 text-xs sm:text-sm font-light">
-                                <p class="text-base sm:text-lg italic text-slate-300 font-serif pl-4 border-l-2 border-gold-400/40 py-1 bg-white/[0.01] pr-2 rounded-r">
-                                    "You do not step onto the prayer mat to get a light stretch or calm your nervous system; those are merely the incidental, physical footprints of a profound metaphysical reality."
-                                </p>
-                                <p class="leading-relaxed">Salah serves as an active detachment engine from material velocity, forcing submission to divine proximity five times a day.</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Reason Subservient to Revelation:</span> Ash'aris use formal logic (Kalam) and speculative philosophy to defend the text[span_7](start_span)[span_7](end_span). They argue that while reason can prove the existence of God, it cannot independently determine moral truths without revelation[span_8](start_span)[span_8](end_span).</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Interpretation of Divine Attributes (Ta'wil):</span> When the Quran mentions concepts like the "Hand" or "Face" of God, Ash'aris generally utilize Ta'wil—metaphorically interpreting these terms (e.g., "Hand" means God's Power or Grace) to avoid anthropomorphism (Tashbih)[span_9](start_span)[span_9](end_span).</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Acquisition (Kasb):</span> To resolve the debate between absolute free will and absolute predestination, they formulated the concept of Kasb[span_10](start_span)[span_10](end_span). God creates all actions, but human beings "acquire" them through their intentions, making humans morally accountable[span_11](start_span)[span_11](end_span).</p>
                             </div>`
                     },
                     {
-                        id: "aq_schools_evolution",
+                        id: "aq_maturidi_school",
                         classification: "Sectarian & Theological Studies",
-                        title: "Evolution of Islamic Creed & Primary Schools",
-                        summary: "An advanced comparative breakdown tracking how encounters with foreign philosophy and internal political schisms generated the primary Sunni schools (Ash'ari, Maturidi, Athari) alongside Shia and Ibadi theological systems.",
+                        title: "2. The Maturidi School (The Rationalist-Traditionalist Balance)",
+                        summary: "Founded by Imam Abu Mansur al-Maturidi (853–944 CE / 238–333 AH) in Samarkand (modern Uzbekistan)[span_12](start_span)[span_12](end_span). It is strictly bound to the Hanafi school of jurisprudence and dominant in Central, South, and East Asia[span_13](start_span)[span_13](end_span).",
                         expandedContentHtml: `
                             <div class="space-y-4 pt-4 border-t border-white/5 text-slate-300 text-xs sm:text-sm font-light">
-                                <p class="leading-relaxed">
-                                    Just as <em>Fiqh</em> regulates outward actions, <strong>Aqeedah</strong> governs deep internal metaphysics, theology, and how the divine attributes are conceptualized. Early political realignments and contacts with Greek thought prompted deep debates regarding revelation and human logic, crystallizing into distinct historical systems.
-                                </p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ The Power of Reason:</span> Maturidis argue that the human intellect is powerful enough to recognize the existence of God and basic moral truths (like the evil of murder or theft) entirely on its own, even if a prophet or revelation had never reached that society[span_14](start_span)[span_14](end_span).</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ God's Wisdom (Hikmah):</span> They emphasize that all of God's actions are bound to an inherent, ultimate wisdom[span_15](start_span)[span_15](end_span). Ash'aris, by contrast, emphasize absolute divine will, arguing that something is "just" simply because God wills it, not because of an intrinsic property[span_16](start_span)[span_16](end_span).</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ The Attribute of Creation (Takwin):</span> Maturidis classify Takwin (the active power of bringing things into existence) as an eternal, independent attribute of God's essence, whereas Ash'aris view it as a manifestation of God's power in time[span_17](start_span)[span_17](end_span).</p>
+                            </div>`
+                    },
+                    {
+                        id: "aq_athari_school",
+                        classification: "Sectarian & Theological Studies",
+                        title: "3. The Athari School (The Traditionalist / Literalist Creed)",
+                        summary: "Championed historically by Imam Ahmad ibn Hanbal and later systematized by Ibn Taymiyyah (1263–1328 CE) in Baghdad and Damascus[span_18](start_span)[span_18](end_span). It fiercely rejects the use of speculative philosophy (Kalam) or rationalizing theological matters[span_19](start_span)[span_19](end_span).",
+                        expandedContentHtml: `
+                            <div class="space-y-4 pt-4 border-t border-white/5 text-slate-300 text-xs sm:text-sm font-light">
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Literal Affirmation Without Modality (Bila Kayf):</span> Atharis affirm exactly what is written in scripture regarding God's attributes (e.g., God establishing Himself over the Throne) literally, but they state that the modality (the "how") is completely unknown to humans[span_20](start_span)[span_20](end_span).</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Rejection of Metaphorical Interpretation:</span> They strictly reject the Ash'ari practice of Ta'wil[span_21](start_span)[span_21](end_span). They argue that translating "Hand" to "Power" is altering the word of God based on human guesswork[span_22](start_span)[span_22](end_span).</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Rejection of Philosophy:</span> They believe that early Muslims (the Salaf) did not need Greek logic to understand their faith, and therefore, introducing philosophy corrupts the pristine, intuitive nature of Islam[span_23](start_span)[span_23](end_span).</p>
+                            </div>`
+                    },
+                    {
+                        id: "aq_shia_ibadi_schools",
+                        classification: "Sectarian & Theological Studies",
+                        title: "4. Shia Theology & Ibadi Theology",
+                        summary: "Alternative historical schools including Ja'fari/Twelver (formalized by Imam Ja'far al-Sadiq) and Zaydi paths in Shia Islam[span_24](start_span)[span_24](end_span), alongside the strictly distinct Ibadi theology emerging from Basra and centered primarily in Oman[span_25](start_span)[span_25](end_span).",
+                        expandedContentHtml: `
+                            <div class="space-y-4 pt-4 border-t border-white/5 text-slate-300 text-xs sm:text-sm font-light">
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Ja'fari/Twelver Theology:</span> Highly rationalistic, adopting many frameworks from the early Mu'tazilites[span_26](start_span)[span_26](end_span). They place massive emphasis on Divine Justice (Adl), arguing that God cannot do anything objectively evil or unjust, and view divine attributes as completely unified with God's absolute essence[span_27](start_span)[span_27](end_span).</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Zaydi Theology:</span> Considered the closest Shia branch to Sunni Islam, their theology is almost entirely rationalist-Mu'tazilite, prioritizing human free will and rejecting anthropomorphic descriptions[span_28](start_span)[span_28](end_span).</p>
+                                <p class="leading-relaxed"><span class="text-gold-400 font-medium">▪ Ibadi Theology:</span> Shares certain rational principles with Shia and Mu'tazilite thought while remaining distinct[span_29](start_span)[span_29](end_span). They maintain that God cannot be seen visually in the afterlife, interpret physical attributes metaphorically, and hold that the Quran was "created" in time rather than being uncreated[span_30](start_span)[span_30](end_span).</p>
                                 
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-                                    <div class="bg-white/[0.02] border border-white/5 rounded-lg p-3 space-y-1">
-                                        <div class="text-gold-400 font-medium font-serif">1. The Ash'ari School</div>
-                                        <div class="text-[11px] text-slate-400"><strong>Founder:</strong> Abu al-Hasan al-Ash'ari (Basra/Baghdad). Middle path using formal logic (<em>Kalam</em>) to defend scripture. Relies heavily on metaphorical interpretation (<em>Ta'wil</em>) and Acquisition (<em>Kasb</em>).</div>
+                                <!-- Integrated Epistemological Comparison Matrix Component -->
+                                <div class="mt-4 border border-white/10 rounded-lg overflow-hidden bg-slate-900/60 shadow-xl select-none">
+                                    <div class="p-3 bg-white/[0.02] border-b border-white/10 font-mono text-[10px] uppercase tracking-wider text-gold-400">
+                                        Summary of Key Theological Differences
                                     </div>
-                                    <div class="bg-white/[0.02] border border-white/5 rounded-lg p-3 space-y-1">
-                                        <div class="text-gold-400 font-medium font-serif">2. The Maturidi School</div>
-                                        <div class="text-[11px] text-slate-400"><strong>Founder:</strong> Abu Mansur al-Maturidi (Samarkand). Grants higher authority to human intellect to discern basic truths; frames all actions via God's supreme Wisdom (<em>Hikmah</em>).</div>
-                                    </div>
-                                    <div class="bg-white/[0.02] border border-white/5 rounded-lg p-3 space-y-1">
-                                        <div class="text-gold-400 font-medium font-serif">3. The Athari School</div>
-                                        <div class="text-[11px] text-slate-400"><strong>Key Figures:</strong> Ahmad ibn Hanbal / Ibn Taymiyyah. Fiercely literal affirmation of scripture without inquiring into modality (<em>Bila Kayf</em>), rejecting philosophy.</div>
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-left text-[11px] border-collapse font-sans">
+                                            <thead>
+                                                <tr class="border-b border-white/5 text-slate-400 font-mono text-[10px]">
+                                                    <th class="py-2 px-3">Feature / Issue</th>
+                                                    <th class="py-2 px-3">Athari (Traditionalist)</th>
+                                                    <th class="py-2 px-3">Ash'ari (Scholastic)</th>
+                                                    <th class="py-2 px-3">Maturidi (Scholastic)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-white/5 text-slate-300">
+                                                <tr>
+                                                    <td class="py-2 px-3 font-medium text-slate-400 font-mono text-[10px]">Primary Tool</td>
+                                                    <td class="py-2 px-3">Direct Text (Quran/Hadith)[span_31](start_span)[span_31](end_span).</td>
+                                                    <td class="py-2 px-3">Revelation defended and explained by Reason[span_32](start_span)[span_32](end_span).</td>
+                                                    <td class="py-2 px-3">Harmony between Revelation and independent Reason[span_33](start_span)[span_33](end_span).</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-3 font-medium text-slate-400 font-mono text-[10px]">Ambiguous Attributes</td>
+                                                    <td class="py-2 px-3">Accept literally as stated, pass over modality (Bila Kayf)[span_34](start_span)[span_34](end_span).</td>
+                                                    <td class="py-2 px-3">Metaphorically interpret (Ta'wil) to avoid physical comparison[span_35](start_span)[span_35](end_span).</td>
+                                                    <td class="py-2 px-3">Metaphorically interpret, or consign exact meaning entirely to God[span_36](start_span)[span_36](end_span).</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-3 font-medium text-slate-400 font-mono text-[10px]">Reason & Morality</td>
+                                                    <td class="py-2 px-3">No. Good and evil are strictly defined by divine command[span_37](start_span)[span_37](end_span).</td>
+                                                    <td class="py-2 px-3">No. Human intellect can observe logic, but moral obligation requires scripture[span_38](start_span)[span_38](end_span).</td>
+                                                    <td class="py-2 px-3">Yes. Human intellect can independently realize basic moral truths[span_39](start_span)[span_39](end_span).</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-3 font-medium text-slate-400 font-mono text-[10px]">Human Free Will</td>
+                                                    <td class="py-2 px-3">Affirm divine decree while affirming human choice; reject philosophical debate on it[span_40](start_span)[span_40](end_span).</td>
+                                                    <td class="py-2 px-3">Kasb (Acquisition): God creates the action, the human chooses to acquire it[span_41](start_span)[span_41](end_span).</td>
+                                                    <td class="py-2 px-3">Human free will is an effective, real choice (Mashi'ah) granted by God[span_42](start_span)[span_42](end_span).</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-
-                                <div class="bg-white/[0.02] border border-white/5 rounded-lg p-3 space-y-2 mt-2">
-                                    <div class="text-gold-400 font-medium font-serif text-xs">Shia & Ibadi Frameworks</div>
-                                    <p class="text-[11px] text-slate-400 leading-relaxed">
-                                        <strong>Ja'fari/Twelver & Zaydi:</strong> Integrate framework within the divine leadership (Imamate). Rationalistic leanings that heavily emphasize absolute Divine Justice (<em>Adl</em>). <br>
-                                        <strong>Ibadi Theology:</strong> Asserts that the Quran was created in time and rejects the literal possibility of seeing God visually in the afterlife.
-                                    </p>
-                                </div>
-                            </div>`
-                    },
-                    {
-                        id: "aq_revelation_vector",
-                        classification: "Sectarian & Theological Studies",
-                        title: "Theological Preservations Matrix",
-                        summary: "Comparative analysis of classical frameworks to protect the mainstream creed against ideological distortions.",
-                        expandedContentHtml: `
-                            <div class="space-y-4 pt-4 border-t border-white/5 text-slate-300 text-xs sm:text-sm font-light">
-                                <p class="leading-relaxed">Mainstream creedal verification handles analytical evaluation parameters strictly across verified traditional metrics without compromising basic core assumptions.</p>
                             </div>`
                     }
                 ]
@@ -481,7 +512,6 @@
                 shortDescription: "Chronological study of the prophetic life paired with educational exploration of early empires and civilizations.",
                 isWideLayout: false,
                 
-                // Sticky header bar configuration for Screen 2
                 stickyHeaderHtml: `
                     <div class="flex items-center justify-between w-full select-none">
                         <h2 class="text-2xl sm:text-3xl font-serif text-white tracking-tight flex items-baseline gap-3 m-0">
@@ -493,7 +523,6 @@
                         </div>
                     </div>`,
                 
-                // Track descriptions derived from historical sub-branches
                 scrollingDescHtml: `
                     <div class="space-y-3 mt-2 animate-fade-in">
                         <span class="text-[10px] font-bold tracking-widest text-gold-400 uppercase block font-mono">Islamic History Tracks</span>
@@ -504,7 +533,6 @@
                         </ul>
                     </div>`,
                     
-                // Single consolidated material card mapping to Hiring.html text
                 materials: [
                     {
                         id: "st_hijri_framework",
@@ -647,7 +675,6 @@
             const card = cardsConfiguration.find(c => c.key === branchKey);
             if (!card) return;
 
-            // Update content slots - Segregating sticky layout items vs non-sticky desc nodes
             stickyTitleZone.innerHTML = card.stickyHeaderHtml || '';
             scrollingDescZone.innerHTML = card.scrollingDescHtml || '';
 
@@ -679,7 +706,7 @@
                             </div>
                         </div>
                         
-                        <!-- Action Row: Link on the left, Toggler on the right -->
+                        <!-- Action Row -->
                         <div class="pt-2 flex justify-end items-center gap-3">
                             <a href="hijrah.html" class="px-4 py-2 rounded bg-gold-400/10 border border-gold-400/20 text-[10px] font-mono text-gold-400 uppercase tracking-widest hover:bg-gold-400/20 transition-all duration-300 flex items-center gap-1.5">
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i> View Full Material
